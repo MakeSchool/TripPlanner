@@ -12,6 +12,9 @@
 		620448341B5DA59200219CD4 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6204482D1B5DA53B00219CD4 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		620448351B5DA59200219CD4 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6204482E1B5DA53B00219CD4 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		620448381B5DA5E200219CD4 /* TripSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620448371B5DA5E200219CD4 /* TripSpec.swift */; };
+		6204483B1B5DBD0800219CD4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483A1B5DBD0800219CD4 /* CoreDataStack.swift */; };
+		6204483E1B5DBEA500219CD4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483D1B5DBEA500219CD4 /* CoreDataStack.swift */; };
+		620448401B5DBF0D00219CD4 /* CoreDataStackInMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483F1B5DBF0D00219CD4 /* CoreDataStackInMemory.swift */; };
 		62549B991B5D9FC000C148C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549B981B5D9FC000C148C4 /* AppDelegate.swift */; };
 		62549B9B1B5D9FC000C148C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549B9A1B5D9FC000C148C4 /* ViewController.swift */; };
 		62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549B9C1B5D9FC000C148C4 /* Main.storyboard */; };
@@ -56,6 +59,9 @@
 		6204482D1B5DA53B00219CD4 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		6204482E1B5DA53B00219CD4 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		620448371B5DA5E200219CD4 /* TripSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSpec.swift; sourceTree = "<group>"; };
+		6204483A1B5DBD0800219CD4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		6204483D1B5DBEA500219CD4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		6204483F1B5DBF0D00219CD4 /* CoreDataStackInMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackInMemory.swift; sourceTree = "<group>"; };
 		62549B951B5D9FC000C148C4 /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62549B981B5D9FC000C148C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62549B9A1B5D9FC000C148C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +124,16 @@
 		620448391B5DBC2200219CD4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				6204483A1B5DBD0800219CD4 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		6204483C1B5DBE3600219CD4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				6204483D1B5DBEA500219CD4 /* CoreDataStack.swift */,
+				6204483F1B5DBF0D00219CD4 /* CoreDataStackInMemory.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -146,6 +162,7 @@
 		62549B971B5D9FC000C148C4 /* TripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				6204483C1B5DBE3600219CD4 /* CoreData */,
 				62549B981B5D9FC000C148C4 /* AppDelegate.swift */,
 				62549B9A1B5D9FC000C148C4 /* ViewController.swift */,
 				62549B9C1B5D9FC000C148C4 /* Main.storyboard */,
@@ -309,8 +326,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				62549B9B1B5D9FC000C148C4 /* ViewController.swift in Sources */,
+				620448401B5DBF0D00219CD4 /* CoreDataStackInMemory.swift in Sources */,
 				62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */,
 				62549B991B5D9FC000C148C4 /* AppDelegate.swift in Sources */,
+				6204483E1B5DBEA500219CD4 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				620448381B5DA5E200219CD4 /* TripSpec.swift in Sources */,
+				6204483B1B5DBD0800219CD4 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
