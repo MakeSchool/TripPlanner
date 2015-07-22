@@ -29,7 +29,8 @@
 		62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62549B9F1B5D9FC000C148C4 /* TripPlanner.xcdatamodeld */; };
 		62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62549BA21B5D9FC000C148C4 /* Assets.xcassets */; };
 		62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549BA41B5D9FC000C148C4 /* LaunchScreen.storyboard */; };
-		62549BBC1B5D9FC000C148C4 /* TripPlannerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549BBB1B5D9FC000C148C4 /* TripPlannerUITests.swift */; };
+		62549BBC1B5D9FC000C148C4 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */; };
+		62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,13 @@
 			remoteGlobalIDString = 62549B941B5D9FC000C148C4;
 			remoteInfo = TripPlanner;
 		};
+		62B82AA41B6020EE00F919DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 623E479F1B5EF7CD009F2863 /* ListKitDemo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6265183B1A96474900F1D760;
+			remoteInfo = ListKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,6 +95,17 @@
 				620448341B5DA59200219CD4 /* Nimble.framework in CopyFiles */,
 				620448351B5DA59200219CD4 /* Quick.framework in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62B82AA61B6020EF00F919DA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -115,8 +134,11 @@
 		62549BAC1B5D9FC000C148C4 /* TripPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62549BB21B5D9FC000C148C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62549BB71B5D9FC000C148C4 /* TripPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		62549BBB1B5D9FC000C148C4 /* TripPlannerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlannerUITests.swift; sourceTree = "<group>"; };
+		62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		62549BBD1B5D9FC000C148C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62B82AAC1B60348800F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		62B82AAD1B6045B700F919DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		62B82AAE1B6045BA00F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +318,7 @@
 		62549BBA1B5D9FC000C148C4 /* TripPlannerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				62549BBB1B5D9FC000C148C4 /* TripPlannerUITests.swift */,
+				62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */,
 				62549BBD1B5D9FC000C148C4 /* Info.plist */,
 			);
 			path = TripPlannerUITests;
@@ -312,10 +334,12 @@
 				62549B911B5D9FC000C148C4 /* Sources */,
 				62549B921B5D9FC000C148C4 /* Frameworks */,
 				62549B931B5D9FC000C148C4 /* Resources */,
+				62B82AA61B6020EF00F919DA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				62B82AA51B6020EE00F919DA /* PBXTargetDependency */,
 			);
 			name = TripPlanner;
 			productName = TripPlanner;
@@ -498,7 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62549BBC1B5D9FC000C148C4 /* TripPlannerUITests.swift in Sources */,
+				62549BBC1B5D9FC000C148C4 /* MainViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +539,11 @@
 			target = 62549B941B5D9FC000C148C4 /* TripPlanner */;
 			targetProxy = 62549BB81B5D9FC000C148C4 /* PBXContainerItemProxy */;
 		};
+		62B82AA51B6020EE00F919DA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ListKit;
+			targetProxy = 62B82AA41B6020EE00F919DA /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -522,6 +551,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				62549B9D1B5D9FC000C148C4 /* Base */,
+				62B82AAD1B6045B700F919DA /* en */,
+				62B82AAE1B6045BA00F919DA /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -530,6 +561,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				62549BA51B5D9FC000C148C4 /* Base */,
+				62B82AAC1B60348800F919DA /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -624,6 +656,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TripPlanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.TripPlanner;
@@ -635,6 +668,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TripPlanner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.TripPlanner;

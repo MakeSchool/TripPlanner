@@ -1,0 +1,9 @@
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "MKz-ku-ktV"; */
+"MKz-ku-ktV.title" = "Title";
+
+/* Class = "UILabel"; text = "Custom Cell with Xib Demo"; ObjectID = "O4G-Ov-rkI"; */
+"O4G-Ov-rkI.text" = "Custom Cell with Xib Demo";
+
+/* Class = "UILabel"; text = "Simple Demo"; ObjectID = "uBn-mF-8jW"; */
+"uBn-mF-8jW.text" = "Simple Demo";
