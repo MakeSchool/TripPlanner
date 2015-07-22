@@ -51,6 +51,32 @@ class MainViewControllerSpec: QuickSpec {
           mainViewController.viewWillAppear(true)
           expect(coreDataClientMock.called).to(beTrue())
         }
+        
+        it("table view data source serves trips retrieved from core data") {
+            let stack = CoreDataStack(stackType: .InMemory)
+            
+            class CoreDataClientMock: CoreDataClient {
+                
+                override func allTrips() -> [Trip] {
+                    let trip1 = Trip(context: context)
+                    trip1.locationDescription = "San Francisco"
+                    
+                    let trip2 = Trip(context: context)
+                    trip2.locationDescription = "New York"
+                    
+                    return [trip1, trip2]
+                }
+            }
+            
+            let coreDataClientMock = CoreDataClientMock(context: stack.managedObjectContext)
+            mainViewController.coreDataClient = coreDataClientMock
+            
+            mainViewController.viewWillAppear(true)
+            
+            let cell = mainViewController.tableView.dataSource?.tableView(mainViewController.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! TripMainTableViewCell
+            
+            expect(cell.destinationLabel.text).to(equal("San Francisco"))
+        }
       }
     }
     
