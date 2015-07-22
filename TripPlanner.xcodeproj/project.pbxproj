@@ -21,6 +21,9 @@
 		623E47B71B5EF900009F2863 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47B61B5EF900009F2863 /* MainViewController.swift */; };
 		623E47BA1B5EF935009F2863 /* TripMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47B91B5EF935009F2863 /* TripMainTableViewCell.swift */; };
 		623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 623E47BB1B5EF9BA009F2863 /* TripMainTableViewCell.xib */; };
+		623E47BE1B5F0686009F2863 /* CoreDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47BD1B5F0686009F2863 /* CoreDataClient.swift */; };
+		623E47C21B5F095B009F2863 /* MainViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47C11B5F095B009F2863 /* MainViewControllerSpec.swift */; };
+		623E47C31B5F0A8C009F2863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549B9C1B5D9FC000C148C4 /* Main.storyboard */; };
 		62549B991B5D9FC000C148C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549B981B5D9FC000C148C4 /* AppDelegate.swift */; };
 		62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549B9C1B5D9FC000C148C4 /* Main.storyboard */; };
 		62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62549B9F1B5D9FC000C148C4 /* TripPlanner.xcdatamodeld */; };
@@ -100,6 +103,8 @@
 		623E47B61B5EF900009F2863 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		623E47B91B5EF935009F2863 /* TripMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMainTableViewCell.swift; sourceTree = "<group>"; };
 		623E47BB1B5EF9BA009F2863 /* TripMainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripMainTableViewCell.xib; sourceTree = "<group>"; };
+		623E47BD1B5F0686009F2863 /* CoreDataClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataClient.swift; sourceTree = "<group>"; };
+		623E47C11B5F095B009F2863 /* MainViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerSpec.swift; sourceTree = "<group>"; };
 		62549B951B5D9FC000C148C4 /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62549B981B5D9FC000C148C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62549B9D1B5D9FC000C148C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -174,6 +179,7 @@
 			children = (
 				62549B9F1B5D9FC000C148C4 /* TripPlanner.xcdatamodeld */,
 				6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */,
+				623E47BD1B5F0686009F2863 /* CoreDataClient.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -198,6 +204,7 @@
 		623E47661B5EC590009F2863 /* MainScene */ = {
 			isa = PBXGroup;
 			children = (
+				623E47C11B5F095B009F2863 /* MainViewControllerSpec.swift */,
 			);
 			path = MainScene;
 			sourceTree = "<group>";
@@ -448,6 +455,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623E47C31B5F0A8C009F2863 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6226F8D31B5EB1F700B8BFEF /* Trip.swift in Sources */,
+				623E47BE1B5F0686009F2863 /* CoreDataClient.swift in Sources */,
 				620448401B5DBF0D00219CD4 /* CoreDataStack.swift in Sources */,
 				62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */,
 				623E47B71B5EF900009F2863 /* MainViewController.swift in Sources */,
@@ -481,6 +490,7 @@
 			files = (
 				620448381B5DA5E200219CD4 /* TripSpec.swift in Sources */,
 				6204483B1B5DBD0800219CD4 /* CoreDataStackSpec.swift in Sources */,
+				623E47C21B5F095B009F2863 /* MainViewControllerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

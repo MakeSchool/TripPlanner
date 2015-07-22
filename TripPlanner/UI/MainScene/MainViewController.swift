@@ -14,7 +14,9 @@ class MainViewController: UIViewController {
   
   @IBOutlet var tableView: UITableView!
   
-  var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>?
+  var coreDataClient: CoreDataClient!
+  
+  private var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>?
   
   var trips: [Trip]? {
     didSet {
@@ -25,14 +27,15 @@ class MainViewController: UIViewController {
     }
   }
   
-  override func viewDidLoad() {
-    let stack = CoreDataStack(stackType: .SQLite)
-    let trip = Trip(context: stack.managedObjectContext)
-    trip.locationDescription = "Frankfurt"
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
     
-    stack.save()
+    if (coreDataClient == nil) {
+      let stack = CoreDataStack(stackType: .SQLite)
+      coreDataClient = CoreDataClient(context: stack.managedObjectContext)
+    }
     
-    self.trips = try! stack.managedObjectContext.executeFetchRequest(NSFetchRequest(entityName: "Trip")) as? [Trip]
+    trips = coreDataClient.allTrips()
     
     self.tableView.dataSource = arrayDataSource
   }
