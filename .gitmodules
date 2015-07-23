@@ -1,0 +1,8 @@
+[submodule "Modules/Quick"]
+	path = Modules/Quick
+	url = git@github.com:Quick/Quick.git
+	branch = swift-2.0
+[submodule "Modules/Nimble"]
+	path = Modules/Nimble
+	url = git@github.com:Quick/Nimble.git
+	branch = swift-2.0
