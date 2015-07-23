@@ -21,4 +21,11 @@ class CoreDataClient {
     return try! self.context.executeFetchRequest(NSFetchRequest(entityName: "Trip")) as! [Trip]
   }
   
+  func createObjectInTemporaryContext<T: TripPlannerManagedObject>(object: T.Type) -> T {
+    let childContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+    childContext.parentContext = context
+    
+    return object.init(context: childContext)
+  }
+  
 }

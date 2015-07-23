@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mPe-c7-puv">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Planned Trips-->
@@ -32,9 +33,17 @@
                     <navigationItem key="navigationItem" title="Planned Trips" id="b3x-I5-U0Z">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="j45-Jp-Vbf">
                             <connections>
-                                <segue destination="fWi-4J-gYd" kind="show" id="D5V-sj-fxN"/>
+                                <segue destination="fWi-4J-gYd" kind="presentation" identifier="AddNewTrip" id="D5V-sj-fxN"/>
                             </connections>
                         </barButtonItem>
+                        <attributedString key="userComments">
+                            <fragment content="aasdsa asdd sadsd  adsda adsd adas">
+                                <attributes>
+                                    <font key="NSFont" metaFont="smallSystem"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ILI-iv-ndj" id="vmG-sw-aRw"/>
@@ -47,7 +56,7 @@
         <!--Add Trip-->
         <scene sceneID="hD2-2m-m7Q">
             <objects>
-                <viewController id="fWi-4J-gYd" sceneMemberID="viewController">
+                <viewController id="fWi-4J-gYd" customClass="AddTripViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hhN-i9-pv1"/>
                         <viewControllerLayoutGuide type="bottom" id="gOD-2T-WKU"/>
@@ -55,11 +64,45 @@
                     <view key="view" contentMode="scaleToFill" id="G8a-Du-4MN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="owK-aX-v76">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="6eY-hw-oMy"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Add Trip" id="iPW-Rf-FAN">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="rgl-M5-iKu">
+                                            <connections>
+                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="cancelTripCreation:" id="k15-Kg-sHX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="jCV-kJ-DYo">
+                                            <connections>
+                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="saveTrip:" id="zCN-eU-Jhb"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="owK-aX-v76" firstAttribute="leading" secondItem="G8a-Du-4MN" secondAttribute="leading" id="A1D-J1-OT0"/>
+                            <constraint firstAttribute="trailing" secondItem="owK-aX-v76" secondAttribute="trailing" id="cSR-qg-Jzd"/>
+                            <constraint firstItem="owK-aX-v76" firstAttribute="top" secondItem="G8a-Du-4MN" secondAttribute="topMargin" id="h8Q-gg-yms"/>
+                            <constraint firstItem="owK-aX-v76" firstAttribute="top" secondItem="hhN-i9-pv1" secondAttribute="bottom" id="tAv-2G-WOX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tAv-2G-WOX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Add Trip" id="1nB-xb-vkd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3F8-Mk-0nX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bmg-R8-rdV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1287" y="351"/>
         </scene>

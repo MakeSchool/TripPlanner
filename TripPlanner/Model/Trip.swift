@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Trip: NSManagedObject {
+final class Trip: NSManagedObject, TripPlannerManagedObject {
 
   convenience init(context: NSManagedObjectContext) {
     let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: context)!

@@ -13,8 +13,10 @@ import CoreData
 class MainViewController: UIViewController {
   
   @IBOutlet var tableView: UITableView!
-  
+
   var coreDataClient: CoreDataClient!
+  var coreDataStack: CoreDataStack!
+  var newTrip: Trip?
   
   private var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>?
   
@@ -31,13 +33,30 @@ class MainViewController: UIViewController {
     super.viewWillAppear(animated)
     
     if (coreDataClient == nil) {
-      let stack = CoreDataStack(stackType: .SQLite)
-      coreDataClient = CoreDataClient(context: stack.managedObjectContext)
+      coreDataStack = CoreDataStack(stackType: .SQLite)
+      coreDataClient = CoreDataClient(context: coreDataStack.managedObjectContext)
     }
     
     trips = coreDataClient.allTrips()
     
     self.tableView.dataSource = arrayDataSource
+  }
+  
+  // MARK: Segues
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if (segue.identifier == "AddNewTrip") {
+      newTrip = coreDataClient.createObjectInTemporaryContext(Trip.self)
+    }
+  }
+  
+  @IBAction func saveTrip(segue:UIStoryboardSegue) {
+    try! newTrip?.managedObjectContext?.save()
+    coreDataStack.save()
+  }
+  
+  @IBAction func cancelTripCreation(segue:UIStoryboardSegue) {
+    
   }
   
 }
