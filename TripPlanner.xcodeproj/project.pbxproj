@@ -28,6 +28,7 @@
 		62549BBC1B5D9FC000C148C4 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */; };
 		62A2C8E91B6188EE008CF3B1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8D51B61889B008CF3B1 /* Quick.framework */; };
 		62A2C8EA1B6188F3008CF3B1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8E21B6188A4008CF3B1 /* Nimble.framework */; };
+		62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */; };
 		62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62B82AB11B604A5200F919DA /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB01B604A5200F919DA /* AddTripViewController.swift */; };
 		62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */; };
@@ -204,6 +205,7 @@
 		62549BBD1B5D9FC000C148C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62A2C8C51B61889B008CF3B1 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		62A2C8DA1B6188A4008CF3B1 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Modules/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
+		62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
 		62B82AAC1B60348800F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		62B82AAD1B6045B700F919DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		62B82AAE1B6045BA00F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 		623E47651B5EC590009F2863 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				62A2C8EB1B619586008CF3B1 /* AppDelegate */,
 				623E47661B5EC590009F2863 /* MainScene */,
 			);
 			path = UI;
@@ -418,6 +421,14 @@
 				62A2C8E81B6188A4008CF3B1 /* NimbleTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		62A2C8EB1B619586008CF3B1 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		62B82AAF1B604A1700F919DA /* AddTripScene */ = {
@@ -699,6 +710,7 @@
 				620448381B5DA5E200219CD4 /* TripSpec.swift in Sources */,
 				6204483B1B5DBD0800219CD4 /* CoreDataStackSpec.swift in Sources */,
 				623E47C21B5F095B009F2863 /* MainViewControllerSpec.swift in Sources */,
+				62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
