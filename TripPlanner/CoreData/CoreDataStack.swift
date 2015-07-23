@@ -13,7 +13,7 @@ enum CoreDataStackType {
   case InMemory, SQLite
 }
 
-final class CoreDataStack {
+class CoreDataStack {
   
   private(set) var managedObjectContext: NSManagedObjectContext
     
