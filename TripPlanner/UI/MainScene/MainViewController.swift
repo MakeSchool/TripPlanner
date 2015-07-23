@@ -32,11 +32,6 @@ class MainViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    if (coreDataClient == nil) {
-      let coreDataStack = CoreDataStack(stackType: .SQLite)
-      coreDataClient = CoreDataClient(stack: coreDataStack)
-    }
-
     trips = coreDataClient.allTrips()
     
     self.tableView.dataSource = arrayDataSource

@@ -31,6 +31,16 @@ class AppDelegateSpec: QuickSpec {
           expect(appDelegate.coreDataClient).notTo(beNil())
         }
         
+        it("passes the CoreDataClient to the initial view controller") {
+          // we need access to AppDelegate of UIApplication because we want to access the root view controller
+          let actualAppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+          actualAppDelegate.application(UIApplication.sharedApplication(), didFinishLaunchingWithOptions: nil)
+
+          let mainViewController = (actualAppDelegate.window?.rootViewController as! UINavigationController).topViewController as! MainViewController
+          
+          expect(mainViewController.coreDataClient).notTo(beNil())
+        }
+        
       }
       
       describe("when applicationWillTerminate is called") {

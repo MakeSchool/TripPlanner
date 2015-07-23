@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let coreDataStack = CoreDataStack(stackType: .SQLite)
     coreDataClient = CoreDataClient(stack: coreDataStack)
 
+    let mainViewController = (window?.rootViewController as? UINavigationController)?.topViewController as? MainViewController
+    mainViewController?.coreDataClient = coreDataClient
+    
     return true
   }
   
