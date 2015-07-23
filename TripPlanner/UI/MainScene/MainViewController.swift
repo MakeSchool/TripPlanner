@@ -15,8 +15,8 @@ class MainViewController: UIViewController {
   @IBOutlet var tableView: UITableView!
 
   var coreDataClient: CoreDataClient!
-  var coreDataStack: CoreDataStack!
-  var newTrip: Trip?
+  var currentTrip: Trip?
+  var temporaryContext: NSManagedObjectContext?
   
   private var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>?
   
@@ -33,10 +33,10 @@ class MainViewController: UIViewController {
     super.viewWillAppear(animated)
     
     if (coreDataClient == nil) {
-      coreDataStack = CoreDataStack(stackType: .SQLite)
-      coreDataClient = CoreDataClient(context: coreDataStack.managedObjectContext)
+      let coreDataStack = CoreDataStack(stackType: .SQLite)
+      coreDataClient = CoreDataClient(stack: coreDataStack)
     }
-    
+
     trips = coreDataClient.allTrips()
     
     self.tableView.dataSource = arrayDataSource
@@ -46,17 +46,19 @@ class MainViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == "AddNewTrip") {
-      newTrip = coreDataClient.createObjectInTemporaryContext(Trip.self)
+      let (newTrip, newContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
+      currentTrip = newTrip
+      temporaryContext = newContext
     }
   }
   
   @IBAction func saveTrip(segue:UIStoryboardSegue) {
-    try! newTrip?.managedObjectContext?.save()
-    coreDataStack.save()
+    try! temporaryContext?.save()
+    coreDataClient.saveStack()
   }
   
   @IBAction func cancelTripCreation(segue:UIStoryboardSegue) {
-    
+    temporaryContext = nil
   }
   
 }

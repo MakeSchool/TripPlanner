@@ -10,6 +10,7 @@ import Foundation
 import Quick
 import Nimble
 import UIKit
+import CoreData
 
 @testable import TripPlanner
 
@@ -48,7 +49,7 @@ class MainViewControllerSpec: QuickSpec {
             }
           }
           
-          let coreDataClientMock = CoreDataClientMock(context: stack.managedObjectContext)
+          let coreDataClientMock = CoreDataClientMock(stack: stack)
           
           mainViewController.coreDataClient = coreDataClientMock
           
@@ -70,10 +71,10 @@ class MainViewControllerSpec: QuickSpec {
                 }
             }
             
-            let coreDataClientMock = CoreDataClientStub(context: stack.managedObjectContext)
+            let coreDataClientMock = CoreDataClientStub(stack: stack)
             mainViewController.coreDataClient = coreDataClientMock
             
-            mainViewController.viewWillAppear(true)
+            mainViewController.viewWillAppear(false)
             
             let cell = mainViewController.tableView.dataSource?.tableView(mainViewController.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! TripMainTableViewCell
             
@@ -88,16 +89,20 @@ class MainViewControllerSpec: QuickSpec {
           class CoreDataClientMock: CoreDataClient {
             var called = false
             
-            override func createObjectInTemporaryContext<T: TripPlannerManagedObject>(object: T.Type) -> T {
+            override func createObjectInTemporaryContext<T: TripPlannerManagedObject>(object: T.Type) -> (T, NSManagedObjectContext) {
+              let childContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+
               if (object == Trip.self) {
                 called = true
               }
-              return object.init(context: context)
+              return (object.init(context: stack.managedObjectContext), childContext)
             }
           }
           
-          let coreDataClientMock = CoreDataClientMock(context: stack.managedObjectContext)
+          let coreDataClientMock = CoreDataClientMock(stack: stack)
           mainViewController.coreDataClient = coreDataClientMock
+          
+          mainViewController.viewWillAppear(false)
           
           mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
           
@@ -108,14 +113,61 @@ class MainViewControllerSpec: QuickSpec {
       
       describe("when save trip exit segue is triggered after add button is tapped") {
         
-        it("persists the newly created trip") {
-          mainViewController.viewWillAppear(false)
-          let coreDataClient = CoreDataClient(context: stack.managedObjectContext)
+        it("persists the newly created trip when the 'save' exit segue is called") {
+          let coreDataClient = CoreDataClient(stack: stack)
           mainViewController.coreDataClient = coreDataClient
+
+          mainViewController.viewWillAppear(false)
+          
           mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
           mainViewController.saveTrip(UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController()))
           
           expect(coreDataClient.allTrips().count).to(equal(1))
+        }
+        
+        it("does not persist the trip when 'cancel' segue is called") {
+          let coreDataClient = CoreDataClient(stack: stack)
+          mainViewController.coreDataClient = coreDataClient
+          
+          mainViewController.viewWillAppear(false)
+          
+          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
+          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController())))
+          
+          expect(coreDataClient.allTrips().count).to(equal(0))
+        }
+        
+        it("discards previous trips successfully") {
+          let coreDataClient = CoreDataClient(stack: stack)
+          mainViewController.coreDataClient = coreDataClient
+          
+          mainViewController.viewWillAppear(false)
+          
+          // one trip is discarded
+          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
+          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController())))
+          
+          // the other trip is saved
+          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
+          mainViewController.saveTrip(UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController()))
+          
+          expect(coreDataClient.allTrips().count).to(equal(1))
+        }
+        
+        it("discards previous trips successfully") {
+          let coreDataClient = CoreDataClient(stack: stack)
+          mainViewController.coreDataClient = coreDataClient
+          
+          mainViewController.viewWillAppear(false)
+          
+          // one trip is discarded
+          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
+          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController())))
+          
+          // save exit segue is called immediately afterwards (technically not possible with current UI setup)
+          mainViewController.saveTrip(UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController()))
+          
+          expect(coreDataClient.allTrips().count).to(equal(0))
         }
         
       }

@@ -12,20 +12,26 @@ import CoreData
 class CoreDataClient {
   
   let context: NSManagedObjectContext
+  let stack: CoreDataStack
   
-  init(context: NSManagedObjectContext) {
-    self.context = context
+  init(stack: CoreDataStack) {
+    self.stack = stack
+    self.context = stack.managedObjectContext
   }
   
   func allTrips() -> [Trip] {
     return try! self.context.executeFetchRequest(NSFetchRequest(entityName: "Trip")) as! [Trip]
   }
   
-  func createObjectInTemporaryContext<T: TripPlannerManagedObject>(object: T.Type) -> T {
+  func createObjectInTemporaryContext<T: TripPlannerManagedObject>(object: T.Type) -> (T, NSManagedObjectContext) {
     let childContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
     childContext.parentContext = context
     
-    return object.init(context: childContext)
+    return (object.init(context: childContext), childContext)
+  }
+  
+  func saveStack() -> Void {
+    stack.save()
   }
   
 }
