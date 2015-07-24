@@ -6,3 +6,7 @@
 	path = Modules/Nimble
 	url = git@github.com:Quick/Nimble.git
 	branch = swift-2.0
+[submodule "Modules/Argo"]
+	path = Modules/Argo
+	url = https://github.com/thoughtbot/Argo.git
+	branch = td-swift-2

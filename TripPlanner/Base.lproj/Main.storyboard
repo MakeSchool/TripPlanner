@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mPe-c7-puv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mPe-c7-puv">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -85,13 +85,26 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where do you want to go?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFw-gW-uXS">
+                                <rect key="frame" x="200" y="105" width="200" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HXe-1c-mGf">
+                                <rect key="frame" x="252" y="134" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="owK-aX-v76" firstAttribute="leading" secondItem="G8a-Du-4MN" secondAttribute="leading" id="A1D-J1-OT0"/>
+                            <constraint firstItem="fFw-gW-uXS" firstAttribute="top" secondItem="owK-aX-v76" secondAttribute="bottom" constant="41" id="c5s-BG-OBV"/>
                             <constraint firstAttribute="trailing" secondItem="owK-aX-v76" secondAttribute="trailing" id="cSR-qg-Jzd"/>
                             <constraint firstItem="owK-aX-v76" firstAttribute="top" secondItem="G8a-Du-4MN" secondAttribute="topMargin" id="h8Q-gg-yms"/>
                             <constraint firstItem="owK-aX-v76" firstAttribute="top" secondItem="hhN-i9-pv1" secondAttribute="bottom" id="tAv-2G-WOX"/>
+                            <constraint firstItem="fFw-gW-uXS" firstAttribute="centerX" secondItem="G8a-Du-4MN" secondAttribute="centerX" id="ty4-V8-ukH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

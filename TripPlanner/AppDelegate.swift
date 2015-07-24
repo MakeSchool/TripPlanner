@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
+import HNKGooglePlacesAutocomplete
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var coreDataClient: CoreDataClient?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    HNKGooglePlacesAutocompleteQuery.setupSharedQueryWithAPIKey("")
+    
     let coreDataStack = CoreDataStack(stackType: .SQLite)
     coreDataClient = CoreDataClient(stack: coreDataStack)
 

@@ -1,0 +1,52 @@
+PODS:
+  - AFNetworking (2.5.4):
+    - AFNetworking/NSURLConnection (= 2.5.4)
+    - AFNetworking/NSURLSession (= 2.5.4)
+    - AFNetworking/Reachability (= 2.5.4)
+    - AFNetworking/Security (= 2.5.4)
+    - AFNetworking/Serialization (= 2.5.4)
+    - AFNetworking/UIKit (= 2.5.4)
+  - AFNetworking/NSURLConnection (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.5.4):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.5.4)
+  - AFNetworking/Security (2.5.4)
+  - AFNetworking/Serialization (2.5.4)
+  - AFNetworking/UIKit (2.5.4):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - GoogleMaps (1.10.1)
+  - HNKGooglePlacesAutocomplete (1.1.0):
+    - HNKGooglePlacesAutocomplete/Models (= 1.1.0)
+    - HNKServerFacade (~> 0.3)
+    - Mantle (~> 2.0)
+  - HNKGooglePlacesAutocomplete/Models (1.1.0):
+    - HNKGooglePlacesAutocomplete/Models/Networking (= 1.1.0)
+    - HNKServerFacade (~> 0.3)
+    - Mantle (~> 2.0)
+  - HNKGooglePlacesAutocomplete/Models/Networking (1.1.0):
+    - HNKServerFacade (~> 0.3)
+    - Mantle (~> 2.0)
+  - HNKServerFacade (0.3.0):
+    - AFNetworking (~> 2.5)
+  - Mantle (2.0.2):
+    - Mantle/extobjc (= 2.0.2)
+  - Mantle/extobjc (2.0.2)
+
+DEPENDENCIES:
+  - GoogleMaps
+  - HNKGooglePlacesAutocomplete (~> 1.1)
+
+SPEC CHECKSUMS:
+  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  GoogleMaps: ebf08677f181d9c2dcdbd1721d206f02beccc9b1
+  HNKGooglePlacesAutocomplete: 0022f666d245c18fb8cd860e79712526d6f88267
+  HNKServerFacade: 0fa3839353480b8862563a34903ad1406a38b4c9
+  Mantle: 967fd31ea0220890b2e76589198996b534bb3fb1
+
+COCOAPODS: 0.37.2
