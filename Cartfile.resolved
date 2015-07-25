@@ -1,3 +1,4 @@
 github "thoughtbot/Argo" "93163721c3c67d99b0de1d1458328d1e83e0ca51"
+github "venmo/DVR" "85c7e8be56e4b850c2a75a944f48473a8adf2075"
 github "Quick/Nimble" "dbc5bb3e2bd7e7ce322b128d674983937bbffd57"
 github "Quick/Quick" "v0.5.0"

@@ -1,0 +1,33 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1437783552.862863,
+      "response" : {
+        "body" : "ewogICAiZXJyb3JfbWVzc2FnZSIgOiAiVGhpcyBzZXJ2aWNlIHJlcXVpcmVzIGFuIEFQSSBrZXkuIiwKICAgInByZWRpY3Rpb25zIiA6IFtdLAogICAic3RhdHVzIiA6ICJSRVFVRVNUX0RFTklFRCIKfQo=",
+        "status" : 200,
+        "url" : "https:\/\/maps.googleapis.com\/maps\/api\/place\/autocomplete\/json?input=Stuttgart&key=",
+        "headers" : {
+          "Server" : "mafe",
+          "Content-Type" : "application\/json; charset=UTF-8",
+          "Pragma" : "no-cache",
+          "Cache-Control" : "no-cache, must-revalidate",
+          "Date" : "Sat, 25 Jul 2015 00:19:12 GMT",
+          "Accept-Ranges" : "none",
+          "x-frame-options" : "SAMEORIGIN",
+          "alternate-protocol" : "443:quic,p=1",
+          "x-xss-protection" : "1; mode=block",
+          "Expires" : "Fri, 01 Jan 1990 00:00:00 GMT",
+          "Vary" : "Accept-Language,Accept-Encoding"
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/maps.googleapis.com\/maps\/api\/place\/autocomplete\/json?input=Stuttgart&key=",
+        "headers" : {
+
+        }
+      }
+    }
+  ],
+  "name" : "example"
+}

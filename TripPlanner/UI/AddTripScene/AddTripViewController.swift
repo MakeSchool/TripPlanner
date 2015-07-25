@@ -9,8 +9,11 @@
 import UIKit
 import GoogleMaps
 import HNKGooglePlacesAutocomplete
+import DVR
 
 class AddTripViewController: UIViewController {
+  
+  var session: Session!
   
   override func viewWillAppear(animated: Bool) {
     
@@ -29,8 +32,9 @@ class AddTripViewController: UIViewController {
 //      }
 //    })
     
+    session = Session(cassetteName: "example", testBundle: NSBundle.mainBundle())
     
-    LocationSearch().findPlaces("Stuttgart") { result in
+    LocationSearch(urlSession: session).findPlaces("Stuttgart") { result in
 
     }
   }

@@ -12,6 +12,8 @@
 		620448401B5DBF0D00219CD4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */; };
 		6226F8D21B5EB1F700B8BFEF /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226F8D01B5EB1F700B8BFEF /* Trip+CoreDataProperties.swift */; };
 		6226F8D31B5EB1F700B8BFEF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226F8D11B5EB1F700B8BFEF /* Trip.swift */; };
+		623DA8B51B630B5E00D8BF61 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; };
+		623DA8B61B630B6600D8BF61 /* DVR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		623E47B21B5EF85A009F2863 /* ListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; };
 		623E47B31B5EF860009F2863 /* ListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; };
 		623E47B71B5EF900009F2863 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47B61B5EF900009F2863 /* MainViewController.swift */; };
@@ -27,6 +29,7 @@
 		62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549BA41B5D9FC000C148C4 /* LaunchScreen.storyboard */; };
 		62549BBC1B5D9FC000C148C4 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */; };
 		626671281B61B200006A1A2B /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626671271B61B200006A1A2B /* LocationSearch.swift */; };
+		628234321B630E2500FA098A /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 628234311B630E2500FA098A /* example.json */; };
 		62A2C8E91B6188EE008CF3B1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8D51B61889B008CF3B1 /* Quick.framework */; };
 		62A2C8EA1B6188F3008CF3B1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8E21B6188A4008CF3B1 /* Nimble.framework */; };
 		62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */; };
@@ -45,6 +48,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		623DA89A1B630B4B00D8BF61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3647AF9B1B335D5500EF10D4;
+			remoteInfo = "DVR-iOS";
+		};
+		623DA89C1B630B4B00D8BF61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3647AFA51B335D5500EF10D4;
+			remoteInfo = "DVRTests-iOS";
+		};
+		623DA89E1B630B4B00D8BF61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3690A06E1B33AA0900731222;
+			remoteInfo = "DVR-watchOS";
+		};
+		623DA8A01B630B4B00D8BF61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3690A07B1B33AA3B00731222;
+			remoteInfo = "DVR-OSX";
+		};
+		623DA8A21B630B4B00D8BF61 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3690A0841B33AA3C00731222;
+			remoteInfo = "DVRTests-OSX";
+		};
 		623E47A61B5EF7CD009F2863 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 623E479F1B5EF7CD009F2863 /* ListKitDemo.xcodeproj */;
@@ -266,6 +304,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				623DA8B61B630B6600D8BF61 /* DVR.framework in Embed Frameworks */,
 				62DA35A91B62FE9B0041048D /* Box.framework in Embed Frameworks */,
 				62DA35971B62FE340041048D /* Runes.framework in Embed Frameworks */,
 				62DA35711B62F7420041048D /* Argo.framework in Embed Frameworks */,
@@ -283,6 +322,7 @@
 		6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		6226F8D01B5EB1F700B8BFEF /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6226F8D11B5EB1F700B8BFEF /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DVR.xcodeproj; path = Carthage/Checkouts/DVR/DVR.xcodeproj; sourceTree = "<group>"; };
 		623E479F1B5EF7CD009F2863 /* ListKitDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ListKitDemo.xcodeproj; path = Dependencies/ListKit/ListKitDemo.xcodeproj; sourceTree = "<group>"; };
 		623E47B61B5EF900009F2863 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		623E47B91B5EF935009F2863 /* TripMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMainTableViewCell.swift; sourceTree = "<group>"; };
@@ -302,6 +342,7 @@
 		62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		62549BBD1B5D9FC000C148C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		626671271B61B200006A1A2B /* LocationSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
+		628234311B630E2500FA098A /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		62A2C8C51B61889B008CF3B1 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		62A2C8DA1B6188A4008CF3B1 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Modules/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
@@ -324,6 +365,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623DA8B51B630B5E00D8BF61 /* DVR.framework in Frameworks */,
 				62DA35A71B62FE8E0041048D /* Box.framework in Frameworks */,
 				62DA35961B62FE2D0041048D /* Runes.framework in Frameworks */,
 				62DA35631B62F73C0041048D /* Argo.framework in Frameworks */,
@@ -364,6 +406,7 @@
 		6204482C1B5DA52700219CD4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */,
 				62DA35981B62FE830041048D /* Box.xcodeproj */,
 				62DA35761B62FE1F0041048D /* Runes.xcodeproj */,
 				62DA354C1B62F70C0041048D /* Argo.xcodeproj */,
@@ -410,6 +453,18 @@
 				62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		623DA88B1B630B4B00D8BF61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				623DA89B1B630B4B00D8BF61 /* DVR.framework */,
+				623DA89D1B630B4B00D8BF61 /* DVRTests-iOS.xctest */,
+				623DA89F1B630B4B00D8BF61 /* DVR.framework */,
+				623DA8A11B630B4B00D8BF61 /* DVR.framework */,
+				623DA8A31B630B4B00D8BF61 /* DVRTests-OSX.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		623E47651B5EC590009F2863 /* UI */ = {
@@ -492,6 +547,7 @@
 		62549B971B5D9FC000C148C4 /* TripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				628234301B630E2500FA098A /* DVRRecordings */,
 				626671191B61B1F5006A1A2B /* BusinessLogic */,
 				623E47B41B5EF900009F2863 /* UI */,
 				6226F8CF1B5EB16600B8BFEF /* Model */,
@@ -533,6 +589,14 @@
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
+		};
+		628234301B630E2500FA098A /* DVRRecordings */ = {
+			isa = PBXGroup;
+			children = (
+				628234311B630E2500FA098A /* example.json */,
+			);
+			path = DVRRecordings;
+			sourceTree = SOURCE_ROOT;
 		};
 		62A2C8C61B61889B008CF3B1 /* Products */ = {
 			isa = PBXGroup;
@@ -713,6 +777,10 @@
 					ProjectRef = 62DA35981B62FE830041048D /* Box.xcodeproj */;
 				},
 				{
+					ProductGroup = 623DA88B1B630B4B00D8BF61 /* Products */;
+					ProjectRef = 623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */;
+				},
+				{
 					ProductGroup = 623E47A01B5EF7CD009F2863 /* Products */;
 					ProjectRef = 623E479F1B5EF7CD009F2863 /* ListKitDemo.xcodeproj */;
 				},
@@ -739,6 +807,41 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		623DA89B1B630B4B00D8BF61 /* DVR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DVR.framework;
+			remoteRef = 623DA89A1B630B4B00D8BF61 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		623DA89D1B630B4B00D8BF61 /* DVRTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "DVRTests-iOS.xctest";
+			remoteRef = 623DA89C1B630B4B00D8BF61 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		623DA89F1B630B4B00D8BF61 /* DVR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DVR.framework;
+			remoteRef = 623DA89E1B630B4B00D8BF61 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		623DA8A11B630B4B00D8BF61 /* DVR.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DVR.framework;
+			remoteRef = 623DA8A01B630B4B00D8BF61 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		623DA8A31B630B4B00D8BF61 /* DVRTests-OSX.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "DVRTests-OSX.xctest";
+			remoteRef = 623DA8A21B630B4B00D8BF61 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		623E47A71B5EF7CD009F2863 /* ListKitDemo.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -929,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */,
+				628234321B630E2500FA098A /* example.json in Resources */,
 				623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */,
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,
 				62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */,
