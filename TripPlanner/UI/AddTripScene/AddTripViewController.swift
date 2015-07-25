@@ -32,10 +32,10 @@ class AddTripViewController: UIViewController {
 //      }
 //    })
     
-    session = Session(cassetteName: "example", testBundle: NSBundle.mainBundle())
+    session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
     
-    LocationSearch(urlSession: session).findPlaces("Stuttgart") { result in
-
+    LocationSearch(urlSession: session).findPlaces("St") { result in
+      
     }
   }
   

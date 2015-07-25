@@ -29,7 +29,8 @@
 		62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549BA41B5D9FC000C148C4 /* LaunchScreen.storyboard */; };
 		62549BBC1B5D9FC000C148C4 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */; };
 		626671281B61B200006A1A2B /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626671271B61B200006A1A2B /* LocationSearch.swift */; };
-		628234321B630E2500FA098A /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 628234311B630E2500FA098A /* example.json */; };
+		628234541B6313E900FA098A /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 628234521B6313E900FA098A /* example.json */; };
+		628234551B6313E900FA098A /* google_maps_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 628234531B6313E900FA098A /* google_maps_api.json */; };
 		62A2C8E91B6188EE008CF3B1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8D51B61889B008CF3B1 /* Quick.framework */; };
 		62A2C8EA1B6188F3008CF3B1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8E21B6188A4008CF3B1 /* Nimble.framework */; };
 		62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */; };
@@ -342,7 +343,8 @@
 		62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		62549BBD1B5D9FC000C148C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		626671271B61B200006A1A2B /* LocationSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
-		628234311B630E2500FA098A /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
+		628234521B6313E900FA098A /* example.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
+		628234531B6313E900FA098A /* google_maps_api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = google_maps_api.json; sourceTree = "<group>"; };
 		62A2C8C51B61889B008CF3B1 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		62A2C8DA1B6188A4008CF3B1 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Modules/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
@@ -547,7 +549,7 @@
 		62549B971B5D9FC000C148C4 /* TripPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				628234301B630E2500FA098A /* DVRRecordings */,
+				628234511B6313E900FA098A /* DVRRecordings */,
 				626671191B61B1F5006A1A2B /* BusinessLogic */,
 				623E47B41B5EF900009F2863 /* UI */,
 				6226F8CF1B5EB16600B8BFEF /* Model */,
@@ -590,10 +592,11 @@
 			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
-		628234301B630E2500FA098A /* DVRRecordings */ = {
+		628234511B6313E900FA098A /* DVRRecordings */ = {
 			isa = PBXGroup;
 			children = (
-				628234311B630E2500FA098A /* example.json */,
+				628234521B6313E900FA098A /* example.json */,
+				628234531B6313E900FA098A /* google_maps_api.json */,
 			);
 			path = DVRRecordings;
 			sourceTree = SOURCE_ROOT;
@@ -1032,9 +1035,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */,
-				628234321B630E2500FA098A /* example.json in Resources */,
+				628234541B6313E900FA098A /* example.json in Resources */,
 				623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */,
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,
+				628234551B6313E900FA098A /* google_maps_api.json in Resources */,
 				62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

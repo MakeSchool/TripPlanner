@@ -16,6 +16,10 @@ class SessionDataTask: NSURLSessionDataTask {
         self.request = request
         self.completion = completion
     }
+  
+  deinit {
+    
+  }
 
 
     // MARK: - NSURLSessionDataTask
