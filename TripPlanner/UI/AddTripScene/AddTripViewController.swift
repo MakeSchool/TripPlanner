@@ -30,12 +30,9 @@ class AddTripViewController: UIViewController {
 //    })
     
     
-//    LocationSearch().findPlaces("Stuttgart") { result in
-//      if case let result = LocationSearchResult.Success(results) {
-//        
-//      }
-//      print("got location")
-//    }
+    LocationSearch().findPlaces("Stuttgart") { result in
+
+    }
   }
   
 }

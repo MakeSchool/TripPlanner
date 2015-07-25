@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Argo
 
 typealias LocationSearchCallback = LocationSearchResult -> Void
 
@@ -29,10 +30,16 @@ struct LocationSearch {
   func findPlaces(searchString: String, callback: LocationSearchCallback) {
     var request = urlRequestForSearchString(searchString)
     
-    urlSession.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+    let task = urlSession.dataTaskWithRequest(request) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+      let json: AnyObject? = try! NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0))
       
+      if let j: AnyObject = json {
+        let user: Decoded<Predictions> = decode(j)
+        print(user)
+      }
     }
     
+    task.resume()
   }
   
   func urlRequestForSearchString(searchString: String) -> NSURLRequest {

@@ -29,21 +29,36 @@ extension LocationSearchEntry: Decodable {
     return LocationSearchEntry.create
       <^> j <|  "description"
       <*> j <|  "id"
-      <*> j <|| "matchedSubstrings"
-      <*> j <|  "placeId"
+      <*> j <|| "matched_substrings"
+      <*> j <|  "place_id"
       <*> j <|  "reference"
       <*> j <|| "terms"
       <*> j <|| "types"
   }
 }
 
+struct Predictions {
+  let predictions: [LocationSearchEntry]
+}
+
+extension Predictions: Decodable {
+  static func create(predictions: [LocationSearchEntry]) -> Predictions {
+    return Predictions(predictions: predictions)
+  }
+  
+  static func decode(j: JSON) -> Decoded<Predictions> {
+    return Predictions.create
+      <^> j <|| "predictions"
+  }
+}
+
 struct Term {
-  let offset: String
+  let offset: Int
   let value: String
 }
 
 extension Term: Decodable {
-  static func create(offset: String)(value: String) -> Term {
+  static func create(offset: Int)(value: String) -> Term {
     return Term(offset: offset, value: value)
   }
   
