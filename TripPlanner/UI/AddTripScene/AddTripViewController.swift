@@ -54,7 +54,7 @@ class AddTripViewController: UIViewController {
       switch result {
       case let .Success(predictions):
         self.locations = predictions.predictions
-      case let .Error(error):
+      case let .Failure(error):
         print(error)
       }
     }
@@ -82,7 +82,7 @@ extension AddTripViewController: UITableViewDelegate {
       switch result {
       case let .Success(place):
         self.mapViewDecorator.displayedLocation = place
-      case let .Error(error):
+      case let .Failure(error):
         print(error)
       }
     }

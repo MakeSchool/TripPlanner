@@ -63,9 +63,3 @@ struct PlaceDetailsResultLocation: Decodable {
       <*> j <| "lng"
   }
 }
-
-//struct PlaceDetailAddressComponent {
-//  let longName: String
-//  let shortName: String
-//  let types: String
-//}

@@ -8,19 +8,10 @@
 
 import Foundation
 import CoreLocation
+import Result
 
-typealias LocationSearchCallback = LocationSearchResult -> Void
-typealias PlacesDetailsCallback = PlacesDetailsResult -> Void
-
-enum LocationSearchResult {
-  case Success(Predictions)
-  case Error(NSError)
-}
-
-enum PlacesDetailsResult {
-  case Success(PlaceWithLocation)
-  case Error(NSError)
-}
+typealias LocationSearchCallback = Result<Predictions, NSError> -> Void
+typealias PlacesDetailsCallback = Result<PlaceWithLocation, NSError> -> Void
 
 struct LocationSearch {
   
