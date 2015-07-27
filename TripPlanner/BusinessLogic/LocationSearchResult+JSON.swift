@@ -9,10 +9,10 @@
 import Foundation
 import Argo
 
-func parsePredictions(data: NSData) -> Predictions? {
+func parse<T: Decodable where T == T.DecodedType>(data: NSData) -> T? {
   let json: AnyObject? = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
   if let j: AnyObject = json {
-    let predictionsDecoded: Decoded<Predictions> = decode(j)
+    let predictionsDecoded: Decoded<T> = decode(j)
     
     switch predictionsDecoded {
     case let .Success(value): return value
