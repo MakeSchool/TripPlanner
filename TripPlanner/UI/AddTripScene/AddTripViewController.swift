@@ -15,7 +15,7 @@ import MapKit
 
 //TODO: Show google logo as part of search
 class LocationResulTableViewCell: UITableViewCell, TableViewCellProtocol {
-  var model:LocationSearchEntry? {
+  var model: Place? {
     didSet {
       if let model = model {
         self.textLabel!.text = ", ".join(model.terms.map{$0.value})
@@ -27,14 +27,14 @@ class LocationResulTableViewCell: UITableViewCell, TableViewCellProtocol {
 class AddTripViewController: UIViewController {
   
   var session: Session!
-  var locations: [LocationSearchEntry] = [] {
+  var locations: [Place] = [] {
     didSet {
       arrayDataSource.array = locations
       tableView.reloadData()
     }
   }
   
-  var arrayDataSource: ArrayDataSource<LocationResulTableViewCell, LocationSearchEntry>!
+  var arrayDataSource: ArrayDataSource<LocationResulTableViewCell, Place>!
   var mapViewDecorator: LocationSearchMapViewDecorator!
   
   @IBOutlet var tableView: UITableView!

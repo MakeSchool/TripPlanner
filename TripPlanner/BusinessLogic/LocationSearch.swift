@@ -43,7 +43,7 @@ struct LocationSearch {
     }
   }
   
-  func detailsForPlace(place: LocationSearchEntry, callback: PlacesDetailsCallback) {
+  func detailsForPlace(place: Place, callback: PlacesDetailsCallback) {
     let resource: Resource<PlaceDetails> = Resource(
       baseURL:"https://maps.googleapis.com",
       path: "maps/api/place/details/json",

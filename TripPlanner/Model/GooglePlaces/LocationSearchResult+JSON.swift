@@ -29,7 +29,7 @@ func parse<T: Decodable where T == T.DecodedType>(data: NSData) -> T? {
 }
 
 extension Predictions: Decodable {
-  static func create(predictions: [LocationSearchEntry]) -> Predictions {
+  static func create(predictions: [Place]) -> Predictions {
     return Predictions(predictions: predictions)
   }
   
@@ -39,13 +39,13 @@ extension Predictions: Decodable {
   }
 }
 
-extension LocationSearchEntry: Decodable {
-  static func create(description: String)(id: String)(matchedSubstrings: [SubstringMatch])(placedId:String)(reference: String)(terms: [Term])(types: [String]) -> LocationSearchEntry {
-    return LocationSearchEntry(description: description, id: id, matchedSubstrings: matchedSubstrings, placeId: placedId, reference: reference, terms: terms, types: types)
+extension Place: Decodable {
+  static func create(description: String)(id: String)(matchedSubstrings: [SubstringMatch])(placedId:String)(reference: String)(terms: [Term])(types: [String]) -> Place {
+    return Place(description: description, id: id, matchedSubstrings: matchedSubstrings, placeId: placedId, reference: reference, terms: terms, types: types)
   }
   
-  static func decode(j: JSON) -> Decoded<LocationSearchEntry> {
-    return LocationSearchEntry.create
+  static func decode(j: JSON) -> Decoded<Place> {
+    return Place.create
       <^> j <|  "description"
       <*> j <|  "id"
       <*> j <|| "matched_substrings"

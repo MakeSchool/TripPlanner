@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-struct LocationSearchEntry {
+struct Place {
   let description: String
   let id: String
   let matchedSubstrings: [SubstringMatch]
@@ -20,12 +20,12 @@ struct LocationSearchEntry {
 }
 
 struct PlaceWithLocation {
-  let locationSearchEntry: LocationSearchEntry
+  let locationSearchEntry: Place
   let location: CLLocationCoordinate2D
 }
 
 struct Predictions {
-  let predictions: [LocationSearchEntry]
+  let predictions: [Place]
 }
 
 struct Term {
