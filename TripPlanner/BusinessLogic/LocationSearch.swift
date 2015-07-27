@@ -23,7 +23,7 @@ enum PlacesDetailsResult {
 
 struct LocationSearch {
   
-  let apiKey = "AIzaSyD5SSXNsZGmYd3gW76c1tB_EUryBZhFZq8"
+  let apiKey = ""
   let urlSession: NSURLSession
   
   init(urlSession: NSURLSession = NSURLSession.sharedSession()) {
@@ -64,7 +64,7 @@ struct LocationSearch {
     
     let client = HTTPClient()
   
-    client.apiRequest(resource: resource, failure: { (reason: Reason, data: NSData?) -> () in
+    client.apiRequest(self.urlSession, resource: resource, failure: { (reason: Reason, data: NSData?) -> () in
       
       }) { (details: PlaceDetails) in
         dispatch_async(dispatch_get_main_queue()) {

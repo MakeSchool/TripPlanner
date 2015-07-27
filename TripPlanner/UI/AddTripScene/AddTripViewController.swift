@@ -50,7 +50,7 @@ class AddTripViewController: UIViewController {
   
   override func viewWillAppear(animated: Bool) {
     session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
-    LocationSearch().findPlaces("St") { result in
+    LocationSearch(urlSession: session).findPlaces("St") { result in
       switch result {
       case let .Success(predictions):
         self.locations = predictions.predictions
@@ -76,12 +76,12 @@ extension AddTripViewController: UITableViewDataSource {
 
 extension AddTripViewController: UITableViewDelegate {
   
-  func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-    LocationSearch().detailsForPlace(arrayDataSource.array[indexPath.row]) { result in
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
+    LocationSearch(urlSession: session).detailsForPlace(arrayDataSource.array[indexPath.row]) { result in
       print(result)
     }
-    
-//    mapViewDecorator.displayedLocation = arrayDataSource.array[indexPath.row]
   }
   
+//    mapViewDecorator.displayedLocation = arrayDataSource.array[indexPath.row]
 }
