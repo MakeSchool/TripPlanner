@@ -79,9 +79,13 @@ extension AddTripViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
     LocationSearch(urlSession: session).detailsForPlace(arrayDataSource.array[indexPath.row]) { result in
-      print(result)
+      switch result {
+      case let .Success(place):
+        self.mapViewDecorator.displayedLocation = place
+      case let .Error(error):
+        print(error)
+      }
     }
   }
   
-//    mapViewDecorator.displayedLocation = arrayDataSource.array[indexPath.row]
 }

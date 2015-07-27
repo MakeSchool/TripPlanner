@@ -9,20 +9,3 @@
 import Foundation
 import MapKit
 
-//extension LocationSearchEntry: MKAnnotation {
-//  
-//  var coordinate: CLLocationCoordinate2D {
-//    get {
-//      
-//    }
-//  }
-//  
-//  var title: String? {
-//    get {
-//      ", ".join(terms.map{$0.value})
-//    }
-//  }
-//
-////  optional var subtitle: String? { get }
-//  
-//}

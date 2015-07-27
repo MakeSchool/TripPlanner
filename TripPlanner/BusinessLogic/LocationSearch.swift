@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 typealias LocationSearchCallback = LocationSearchResult -> Void
 typealias PlacesDetailsCallback = PlacesDetailsResult -> Void
@@ -17,7 +18,7 @@ enum LocationSearchResult {
 }
 
 enum PlacesDetailsResult {
-  case Success(PlaceDetails)
+  case Success(PlaceWithLocation)
   case Error(NSError)
 }
 
@@ -68,7 +69,12 @@ struct LocationSearch {
       
       }) { (details: PlaceDetails) in
         dispatch_async(dispatch_get_main_queue()) {
-          callback(.Success(details))
+          let latitude = details.result.geometry.location.latitude;
+          let longitude = details.result.geometry.location.longitude;
+          let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+
+          let placeWithLocation = PlaceWithLocation(locationSearchEntry: place, location: location)
+          callback(.Success(placeWithLocation))
         }
     }
   }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct LocationSearchEntry {
   let description: String
@@ -16,6 +17,11 @@ struct LocationSearchEntry {
   let reference: String
   let terms: [Term]
   let types: [String]
+}
+
+struct PlaceWithLocation {
+  let locationSearchEntry: LocationSearchEntry
+  let location: CLLocationCoordinate2D
 }
 
 struct Predictions {

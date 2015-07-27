@@ -12,9 +12,19 @@ import MapKit
 class LocationSearchMapViewDecorator {
   
   let mapView: MKMapView
-  var displayedLocation: LocationSearchEntry? {
+  var currentAnnotation: PlaceWithLocationAnnotation?
+  
+  var displayedLocation: PlaceWithLocation? {
     didSet {
-      
+      if let displayedLocation = displayedLocation {
+        currentAnnotation = PlaceWithLocationAnnotation(placeWithLocation: displayedLocation)
+        mapView.addAnnotation(currentAnnotation!)
+        
+        let span = MKCoordinateSpanMake(0.02, 0.02)
+        let region = MKCoordinateRegion(center: displayedLocation.location, span: span)
+
+        mapView.setRegion(region, animated: true)
+      }
     }
   }
   
