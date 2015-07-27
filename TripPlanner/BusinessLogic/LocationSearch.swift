@@ -11,7 +11,7 @@ import Foundation
 typealias LocationSearchCallback = LocationSearchResult -> Void
 
 enum LocationSearchResult {
-  case Success([AnyObject!])
+  case Success(Predictions)
   case Error(NSError)
 }
 
@@ -40,7 +40,7 @@ struct LocationSearch {
     client.apiRequest(self.urlSession, resource: resource, failure: { (reason: Reason, data: NSData?) -> () in
       
     }) { (predictions: Predictions) in
-      print(predictions)
+      callback(.Success(predictions))
     }
   }
   
