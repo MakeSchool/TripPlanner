@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  TripPlanner
+
+  Created by Benjamin Encz on 7/27/15.
+  Copyright © 2015 Make School. All rights reserved.
+*/
+
+/* Error message: cannot retrieve information for this place, please choose another one. */
+"add_trip.cannot_retrieve_place_details" = "Leider ist mit diesm Ort etwas schiefgelaufen. Bitte wähle einen anderen Ort!";
