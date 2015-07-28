@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DefaultErrorHandler {
+class DefaultErrorHandler {
   
   func handleError(error: ErrorType, displayToUser: Bool) {
     print(error)

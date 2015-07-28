@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import UIKit
+import Result
 
 @testable import TripPlanner
 
@@ -64,6 +65,37 @@ class AddTripViewControllerSpec: QuickSpec {
           
           expect(locationSearchMock.called).to(beFalse())
           expect(addTripViewController.locations).to(beEmpty())
+        }
+      }
+      
+      describe("handleSearchResult") {
+        it("stores the location results upon successful request") {
+          let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])
+          let predictions = Predictions(predictions: [place])
+          let result: Result<Predictions, Reason> = .Success(predictions)
+          
+          addTripViewController.handleSearchResult(result)
+          
+          expect(addTripViewController.locations[0].placeId).to(equal("1"))
+        }
+        
+        it("invokes the error handler upon a failed request") {
+          let result: Result<Predictions, Reason> = .Failure(.NoSuccessStatusCode(statusCode: 404))
+          
+          class MockErrorHandler: DefaultErrorHandler {
+            var called = false;
+            
+            override func displayErrorMessage(message: String) {
+              called = true
+            }
+          }
+          
+          let mockErrorHandler = MockErrorHandler()
+          
+          addTripViewController.errorHandler = mockErrorHandler
+          addTripViewController.handleSearchResult(result)
+          
+          expect(mockErrorHandler.called).to(beTrue())
         }
       }
 
