@@ -11,7 +11,7 @@ import CoreLocation
 import Result
 
 typealias LocationSearchCallback = Result<Predictions, NSError> -> Void
-typealias PlacesDetailsCallback = Result<PlaceWithLocation, NSError> -> Void
+typealias PlacesDetailsCallback = Result<PlaceWithLocation, Reason> -> Void
 
 struct LocationSearch {
   
@@ -35,10 +35,11 @@ struct LocationSearch {
     
     let client = HTTPClient()
     client.apiRequest(self.urlSession, resource: resource, failure: { (reason: Reason, data: NSData?) -> () in
-      
+      dispatch_async(dispatch_get_main_queue()) {
+      }
     }) { (predictions: Predictions) in
       dispatch_async(dispatch_get_main_queue()) {
-        callback(.Success(predictions))
+        callback(Result.Success(predictions))
       }
     }
   }
@@ -57,16 +58,18 @@ struct LocationSearch {
     let client = HTTPClient()
   
     client.apiRequest(self.urlSession, resource: resource, failure: { (reason: Reason, data: NSData?) -> () in
-      
-      }) { (details: PlaceDetails) in
-        dispatch_async(dispatch_get_main_queue()) {
-          let latitude = details.result.geometry.location.latitude;
-          let longitude = details.result.geometry.location.longitude;
-          let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+      dispatch_async(dispatch_get_main_queue()) {
+        callback(.Failure(reason))
+      }
+    }) { (details: PlaceDetails) in
+      dispatch_async(dispatch_get_main_queue()) {
+        let latitude = details.result.geometry.location.latitude;
+        let longitude = details.result.geometry.location.longitude;
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
 
-          let placeWithLocation = PlaceWithLocation(locationSearchEntry: place, location: location)
-          callback(.Success(placeWithLocation))
-        }
+        let placeWithLocation = PlaceWithLocation(locationSearchEntry: place, location: location)
+        callback(.Success(placeWithLocation))
+      }
     }
   }
   

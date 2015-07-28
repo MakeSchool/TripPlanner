@@ -26,6 +26,7 @@ class LocationResulTableViewCell: UITableViewCell, TableViewCellProtocol {
 
 class AddTripViewController: UIViewController {
   
+  var errorHandler = DefaultErrorHandler()
   var session: Session!
   var locations: [Place] = [] {
     didSet {
@@ -55,9 +56,11 @@ class AddTripViewController: UIViewController {
       case let .Success(predictions):
         self.locations = predictions.predictions
       case let .Failure(error):
-        print(error)
+        self.errorHandler.handleError(error, displayToUser: false)
       }
     }
+    
+    UIAlertView(title: "Error", message: NSLocalizedString("add_trip.cannot_retrieve_place_details", comment: "Error message: cannot retrieve information for this place, please choose another one."), delegate: nil, cancelButtonTitle: "OK").show()
   }
   
 }
@@ -82,8 +85,10 @@ extension AddTripViewController: UITableViewDelegate {
       switch result {
       case let .Success(place):
         self.mapViewDecorator.displayedLocation = place
-      case let .Failure(error):
-        print(error)
+      case .Failure(_):
+        self.errorHandler.displayErrorMessage(
+          NSLocalizedString("add_trip.cannot_retrieve_place_details", comment: "Error message: cannot retrieve information for this place, please choose another one.")
+        )
       }
     }
   }
