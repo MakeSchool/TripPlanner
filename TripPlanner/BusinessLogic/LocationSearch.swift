@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 import Result
 
-typealias LocationSearchCallback = Result<Predictions, NSError> -> Void
+typealias LocationSearchCallback = Result<Predictions, Reason> -> Void
 typealias PlacesDetailsCallback = Result<PlaceWithLocation, Reason> -> Void
 
 struct LocationSearch {
@@ -37,10 +37,11 @@ struct LocationSearch {
     let client = HTTPClient()
     client.apiRequest(self.urlSession, resource: resource, failure: { (reason: Reason, data: NSData?) -> () in
       dispatch_async(dispatch_get_main_queue()) {
+        callback(.Failure(reason))
       }
     }) { (predictions: Predictions) in
       dispatch_async(dispatch_get_main_queue()) {
-        callback(Result.Success(predictions))
+        callback(.Success(predictions))
       }
     }
   }

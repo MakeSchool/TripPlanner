@@ -54,8 +54,8 @@ class AddTripViewController: UIViewController {
       switch result {
       case let .Success(predictions):
         self.locations = predictions.predictions
-      case let .Failure(error):
-        self.errorHandler.handleError(error, displayToUser: false)
+      case let .Failure(error): break
+//        self.errorHandler.handleError(error, displayToUser: false)
       }
     }
   }

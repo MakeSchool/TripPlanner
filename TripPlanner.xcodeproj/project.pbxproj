@@ -35,6 +35,7 @@
 		62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */; };
 		62A2C8EF1B61A228008CF3B1 /* CoreDataClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2C8EE1B61A228008CF3B1 /* CoreDataClientSpec.swift */; };
 		62AA57D91B671496007DA8A4 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; };
+		62AA58001B67E1C8007DA8A4 /* google_maps_api_404.json in Resources */ = {isa = PBXBuildFile; fileRef = 62AA57FF1B67E1C8007DA8A4 /* google_maps_api_404.json */; };
 		62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62B82AB11B604A5200F919DA /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB01B604A5200F919DA /* AddTripViewController.swift */; };
 		62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */; };
@@ -389,6 +390,7 @@
 		62A2C8DA1B6188A4008CF3B1 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Modules/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
 		62A2C8EE1B61A228008CF3B1 /* CoreDataClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataClientSpec.swift; sourceTree = "<group>"; };
+		62AA57FF1B67E1C8007DA8A4 /* google_maps_api_404.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = google_maps_api_404.json; sourceTree = "<group>"; };
 		62B82AAC1B60348800F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		62B82AAD1B6045B700F919DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		62B82AAE1B6045BA00F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -659,6 +661,7 @@
 		628234511B6313E900FA098A /* DVRRecordings */ = {
 			isa = PBXGroup;
 			children = (
+				62AA57FF1B67E1C8007DA8A4 /* google_maps_api_404.json */,
 				628234531B6313E900FA098A /* google_maps_api.json */,
 			);
 			path = DVRRecordings;
@@ -1201,6 +1204,7 @@
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,
 				628234551B6313E900FA098A /* google_maps_api.json in Resources */,
 				62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */,
+				62AA58001B67E1C8007DA8A4 /* google_maps_api_404.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
