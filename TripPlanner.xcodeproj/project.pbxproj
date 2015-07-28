@@ -36,6 +36,7 @@
 		62A2C8EF1B61A228008CF3B1 /* CoreDataClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2C8EE1B61A228008CF3B1 /* CoreDataClientSpec.swift */; };
 		62AA57D91B671496007DA8A4 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; };
 		62AA58001B67E1C8007DA8A4 /* google_maps_api_404.json in Resources */ = {isa = PBXBuildFile; fileRef = 62AA57FF1B67E1C8007DA8A4 /* google_maps_api_404.json */; };
+		62AA58251B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA58241B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift */; };
 		62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62B82AB11B604A5200F919DA /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB01B604A5200F919DA /* AddTripViewController.swift */; };
 		62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */; };
@@ -391,6 +392,7 @@
 		62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
 		62A2C8EE1B61A228008CF3B1 /* CoreDataClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataClientSpec.swift; sourceTree = "<group>"; };
 		62AA57FF1B67E1C8007DA8A4 /* google_maps_api_404.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = google_maps_api_404.json; sourceTree = "<group>"; };
+		62AA58241B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchMapViewDecoratorSpec.swift; sourceTree = "<group>"; };
 		62B82AAC1B60348800F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		62B82AAD1B6045B700F919DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		62B82AAE1B6045BA00F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -534,6 +536,7 @@
 		623E47651B5EC590009F2863 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				62AA58231B67F1C0007DA8A4 /* LocationSearch */,
 				62A2C8EB1B619586008CF3B1 /* AppDelegate */,
 				623E47661B5EC590009F2863 /* MainScene */,
 			);
@@ -697,6 +700,14 @@
 				62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */,
 			);
 			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		62AA58231B67F1C0007DA8A4 /* LocationSearch */ = {
+			isa = PBXGroup;
+			children = (
+				62AA58241B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift */,
+			);
+			path = LocationSearch;
 			sourceTree = "<group>";
 		};
 		62B82AAF1B604A1700F919DA /* AddTripScene */ = {
@@ -1310,6 +1321,7 @@
 				6204483B1B5DBD0800219CD4 /* CoreDataStackSpec.swift in Sources */,
 				623E47C21B5F095B009F2863 /* MainViewControllerSpec.swift in Sources */,
 				62E4503B1B6706B8004C6CA3 /* LocationSearchSpec.swift in Sources */,
+				62AA58251B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift in Sources */,
 				62A2C8EF1B61A228008CF3B1 /* CoreDataClientSpec.swift in Sources */,
 				62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */,
 			);

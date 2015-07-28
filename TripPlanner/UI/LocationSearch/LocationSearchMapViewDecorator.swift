@@ -11,8 +11,8 @@ import MapKit
 
 class LocationSearchMapViewDecorator {
   
-  let mapView: MKMapView
-  var currentAnnotation: PlaceWithLocationAnnotation?
+  private let mapView: MKMapView
+  private var currentAnnotation: PlaceWithLocationAnnotation?
   
   var displayedLocation: PlaceWithLocation? {
     didSet {
