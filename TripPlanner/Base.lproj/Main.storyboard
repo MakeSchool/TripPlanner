@@ -57,7 +57,7 @@
         <!--Add Trip-->
         <scene sceneID="hD2-2m-m7Q">
             <objects>
-                <viewController id="fWi-4J-gYd" customClass="AddTripViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTripViewController" id="fWi-4J-gYd" customClass="AddTripViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hhN-i9-pv1"/>
                         <viewControllerLayoutGuide type="bottom" id="gOD-2T-WKU"/>

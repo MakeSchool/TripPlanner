@@ -13,7 +13,7 @@ import Result
 typealias LocationSearchCallback = Result<Predictions, Reason> -> Void
 typealias PlacesDetailsCallback = Result<PlaceWithLocation, Reason> -> Void
 
-struct LocationSearch {
+class LocationSearch {
   
   private var apiKey = ""
   let urlSession: NSURLSession

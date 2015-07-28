@@ -32,9 +32,17 @@ class AddTripViewController: UIViewController {
   
   // MARK: Properties and Property Observers
   var errorHandler = DefaultErrorHandler()
-  var session: Session!
+  var session: Session
   var arrayDataSource: ArrayDataSource<LocationResultTableViewCell, Place>!
   var mapViewDecorator: LocationSearchMapViewDecorator!
+  var locationSearch: LocationSearch
+  
+  required init?(coder aDecoder: NSCoder) {
+    session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
+    locationSearch = LocationSearch(urlSession: session)
+    
+    super.init(coder: aDecoder)
+  }
   
   var locations: [Place] = [] {
     didSet {
@@ -46,10 +54,9 @@ class AddTripViewController: UIViewController {
   var searchTerm: String? {
     didSet {
       if let searchTerm = searchTerm where !searchTerm.isEmpty {
-        session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
-        LocationSearch(urlSession: session).findPlaces(searchTerm, callback: handleSearchResult)
+        locationSearch.findPlaces(searchTerm, callback: handleSearchResult)
       } else {
-        self.locations = []
+        locations = []
       }
     }
   }
@@ -113,8 +120,7 @@ extension AddTripViewController: UITableViewDataSource {
 extension AddTripViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
-    LocationSearch(urlSession: session).detailsForPlace(arrayDataSource.array[indexPath.row], callback: handleLocationDetailResult)
+    locationSearch.detailsForPlace(arrayDataSource.array[indexPath.row], callback: handleLocationDetailResult)
   }
   
 }
