@@ -9,25 +9,6 @@
 import Foundation
 import Argo
 
-func parse<T: Decodable where T == T.DecodedType>(data: NSData) -> T? {
-  let json: AnyObject? = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-  if let j: AnyObject = json {
-    let predictionsDecoded: Decoded<T> = decode(j)
-    
-    switch predictionsDecoded {
-    case let .Success(value): return value
-    case let .TypeMismatch(error):
-      assertionFailure(error)
-      return nil
-    case let .MissingKey(error):
-      assertionFailure(error)
-      return nil
-    }
-  } else {
-    return nil
-  }
-}
-
 extension Predictions: Decodable {
   static func create(predictions: [Place]) -> Predictions {
     return Predictions(predictions: predictions)
