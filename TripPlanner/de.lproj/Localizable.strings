@@ -7,4 +7,7 @@
 */
 
 /* Error message: cannot retrieve information for this place, please choose another one. */
-"add_trip.cannot_retrieve_place_details" = "Leider ist mit diesm Ort etwas schiefgelaufen. Bitte wähle einen anderen Ort!";
+"add_trip.cannot_retrieve_place_details" = "Leider ist mit diesem Ort etwas schiefgelaufen. Bitte wähle einen anderen Ort!";
+
+/* Error message: the search returned an error, sorry! Please try again later */
+"add_trip.cannot_complete_search" = "Leider ist ein Fehler mit dieser Suche aufgetreten.";

@@ -8,3 +8,6 @@
 
 /* Error message: cannot retrieve information for this place, please choose another one. */
 "add_trip.cannot_retrieve_place_details" = "Sorry, something wen't wrong with this location. Please choose another one.";
+
+/* Error message: the search returned an error, sorry! Please try again later */
+"add_trip.cannot_complete_search" = "Sorry, the search could not be completed.";

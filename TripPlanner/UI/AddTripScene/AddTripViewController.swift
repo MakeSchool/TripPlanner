@@ -11,6 +11,7 @@ import GoogleMaps
 import DVR
 import ListKit
 import MapKit
+import Result
 
 //TODO: Show google logo as part of search
 class LocationResultTableViewCell: UITableViewCell, TableViewCellProtocol {
@@ -25,20 +26,35 @@ class LocationResultTableViewCell: UITableViewCell, TableViewCellProtocol {
 
 class AddTripViewController: UIViewController {
   
+  // MARK: IBOutlets
+  @IBOutlet var tableView: UITableView!
+  @IBOutlet var mapView: MKMapView!
+  
+  // MARK: Properties and Property Observers
   var errorHandler = DefaultErrorHandler()
   var session: Session!
+  var arrayDataSource: ArrayDataSource<LocationResultTableViewCell, Place>!
+  var mapViewDecorator: LocationSearchMapViewDecorator!
+  
   var locations: [Place] = [] {
     didSet {
       arrayDataSource.array = locations
       tableView.reloadData()
     }
   }
+
+  var searchTerm: String? {
+    didSet {
+      if let searchTerm = searchTerm where !searchTerm.isEmpty {
+        session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
+        LocationSearch(urlSession: session).findPlaces(searchTerm, callback: handleSearchResult)
+      } else {
+        self.locations = []
+      }
+    }
+  }
   
-  var arrayDataSource: ArrayDataSource<LocationResultTableViewCell, Place>!
-  var mapViewDecorator: LocationSearchMapViewDecorator!
-  
-  @IBOutlet var tableView: UITableView!
-  @IBOutlet var mapView: MKMapView!
+  // MARK: View Lifecycle
   
   override func viewDidLoad() {
     arrayDataSource = ArrayDataSource(array: locations, cellType:LocationResultTableViewCell.self)
@@ -48,19 +64,37 @@ class AddTripViewController: UIViewController {
     mapViewDecorator = LocationSearchMapViewDecorator(mapView: mapView)
   }
   
-  override func viewWillAppear(animated: Bool) {
-    session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
-    LocationSearch(urlSession: session).findPlaces("St") { result in
-      switch result {
-      case let .Success(predictions):
-        self.locations = predictions.predictions
-      case let .Failure(error): break
-//        self.errorHandler.handleError(error, displayToUser: false)
+  // MARK: API Callbacks
+  
+  func handleSearchResult(result: Result<Predictions, Reason>) -> Void {
+    switch result {
+    case let .Success(predictions):
+      self.locations = predictions.predictions
+    case .Failure(_):
+      self.errorHandler.displayErrorMessage(
+        NSLocalizedString("add_trip.cannot_complete_search", comment: "Error message: the search returned an error, sorry! Please try again later")
+      )
+    }
+  }
+  
+  func handleLocationDetailResult(result: Result<PlaceWithLocation, Reason>) -> Void {
+    switch result {
+    case let .Success(place):
+      self.mapViewDecorator.displayedLocation = place
+    case .Failure(_):
+      self.errorHandler.displayErrorMessage(
+        NSLocalizedString("add_trip.cannot_retrieve_place_details", comment: "Error message: cannot retrieve information for this place, please choose another one.")
+      )
+      
+      if let indexPath = tableView.indexPathForSelectedRow {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
       }
     }
   }
   
 }
+
+// MARK: TableViewDataSource
 
 extension AddTripViewController: UITableViewDataSource {
   
@@ -74,21 +108,23 @@ extension AddTripViewController: UITableViewDataSource {
   
 }
 
+// MARK: TableViewDelegate
+
 extension AddTripViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
-    LocationSearch(urlSession: session).detailsForPlace(arrayDataSource.array[indexPath.row]) { result in
-      switch result {
-      case let .Success(place):
-        self.mapViewDecorator.displayedLocation = place
-      case .Failure(_):
-        self.errorHandler.displayErrorMessage(
-          NSLocalizedString("add_trip.cannot_retrieve_place_details", comment: "Error message: cannot retrieve information for this place, please choose another one.")
-        )
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-      }
-    }
+    LocationSearch(urlSession: session).detailsForPlace(arrayDataSource.array[indexPath.row], callback: handleLocationDetailResult)
+  }
+  
+}
+
+// MARK: SearchBarDelegate
+
+extension AddTripViewController: UISearchBarDelegate {
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    searchTerm = searchText
   }
   
 }
