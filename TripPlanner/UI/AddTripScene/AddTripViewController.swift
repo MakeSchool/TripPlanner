@@ -8,13 +8,12 @@
 
 import UIKit
 import GoogleMaps
-import HNKGooglePlacesAutocomplete
 import DVR
 import ListKit
 import MapKit
 
 //TODO: Show google logo as part of search
-class LocationResulTableViewCell: UITableViewCell, TableViewCellProtocol {
+class LocationResultTableViewCell: UITableViewCell, TableViewCellProtocol {
   var model: Place? {
     didSet {
       if let model = model {
@@ -35,14 +34,14 @@ class AddTripViewController: UIViewController {
     }
   }
   
-  var arrayDataSource: ArrayDataSource<LocationResulTableViewCell, Place>!
+  var arrayDataSource: ArrayDataSource<LocationResultTableViewCell, Place>!
   var mapViewDecorator: LocationSearchMapViewDecorator!
   
   @IBOutlet var tableView: UITableView!
   @IBOutlet var mapView: MKMapView!
   
   override func viewDidLoad() {
-    arrayDataSource = ArrayDataSource(array: locations, cellType:LocationResulTableViewCell.self)
+    arrayDataSource = ArrayDataSource(array: locations, cellType:LocationResultTableViewCell.self)
     tableView.dataSource = arrayDataSource
     tableView.delegate = self
     
@@ -59,8 +58,6 @@ class AddTripViewController: UIViewController {
         self.errorHandler.handleError(error, displayToUser: false)
       }
     }
-    
-    UIAlertView(title: "Error", message: NSLocalizedString("add_trip.cannot_retrieve_place_details", comment: "Error message: cannot retrieve information for this place, please choose another one."), delegate: nil, cancelButtonTitle: "OK").show()
   }
   
 }
@@ -89,6 +86,7 @@ extension AddTripViewController: UITableViewDelegate {
         self.errorHandler.displayErrorMessage(
           NSLocalizedString("add_trip.cannot_retrieve_place_details", comment: "Error message: cannot retrieve information for this place, please choose another one.")
         )
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
       }
     }
   }

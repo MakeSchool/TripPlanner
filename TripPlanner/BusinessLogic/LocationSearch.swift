@@ -15,11 +15,12 @@ typealias PlacesDetailsCallback = Result<PlaceWithLocation, Reason> -> Void
 
 struct LocationSearch {
   
-  let apiKey = ""
+  private var apiKey = ""
   let urlSession: NSURLSession
   
-  init(urlSession: NSURLSession = NSURLSession.sharedSession()) {
+  init(urlSession: NSURLSession = NSURLSession.sharedSession(), apiKey: String = "") {
     self.urlSession = urlSession
+    self.apiKey = apiKey
   }
     
   func findPlaces(searchString: String, callback: LocationSearchCallback) {
