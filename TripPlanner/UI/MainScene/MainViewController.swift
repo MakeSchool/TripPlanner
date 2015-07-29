@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
 
   var coreDataClient: CoreDataClient!
   var currentTrip: Trip?
+  var detailViewTrip: Trip?
   var temporaryContext: NSManagedObjectContext?
   
   private var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>?
@@ -46,13 +47,8 @@ class MainViewController: UIViewController {
       currentTrip = newTrip
       temporaryContext = newContext
     } else if (segue.identifier == "ShowTripDetails") {
-      let row = tableView.indexPathsForSelectedRows?[0].row
-  
-      if let row = row, trips = trips {
-        let trip = trips[row]
-        let tripDetailViewController = segue.destinationViewController as? TripDetailViewController
-        tripDetailViewController?.trip = trip
-      }
+      let tripDetailViewController = segue.destinationViewController as? TripDetailViewController
+      tripDetailViewController?.trip = detailViewTrip
     }
   }
   
@@ -70,6 +66,9 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    guard let trips = trips else { return }
+    
+    detailViewTrip = trips[indexPath.row]
     performSegueWithIdentifier("ShowTripDetails", sender: self)
   }
   

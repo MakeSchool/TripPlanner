@@ -10,4 +10,8 @@ import UIKit
 
 class AddTripViewController: UIViewController {
   
+  @IBAction func saveTripShowDetail(segue:UIStoryboardSegue) {
+
+  }
+  
 }

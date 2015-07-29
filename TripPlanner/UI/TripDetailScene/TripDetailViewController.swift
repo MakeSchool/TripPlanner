@@ -12,10 +12,24 @@ class TripDetailViewController: UIViewController {
  
   var trip: Trip?
   
+  @IBOutlet var noWayPointsView: UIView!
+  @IBOutlet var someWayPointsView: UIView!
+  var activeView: UIView!
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
     navigationItem.title = trip?.locationDescription
+    
+    activeView = noWayPointsView
+    view.addSubview(activeView)
+    activeView.frame = view.frame
+  }
+  
+  override func viewDidDisappear(animated: Bool) {
+    super.viewDidDisappear(animated)
+    
+    activeView.removeFromSuperview()
   }
   
 }
