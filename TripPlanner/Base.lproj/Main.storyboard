@@ -21,6 +21,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ILI-iv-ndj">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4rl-oU-8Et"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -58,7 +61,7 @@
         <!--Your Trip: San Francisco-->
         <scene sceneID="y3w-mH-u7L">
             <objects>
-                <viewController id="FGq-Co-pkz" sceneMemberID="viewController">
+                <viewController id="FGq-Co-pkz" customClass="TripDetailViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jhw-hh-4FS"/>
                         <viewControllerLayoutGuide type="bottom" id="hbE-ZV-pOu"/>

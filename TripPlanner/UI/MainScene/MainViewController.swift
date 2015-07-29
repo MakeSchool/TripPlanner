@@ -42,8 +42,17 @@ class MainViewController: UIViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == "AddNewTrip") {
       let (newTrip, newContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
+      newTrip.locationDescription = "Trip to San Francisco"
       currentTrip = newTrip
       temporaryContext = newContext
+    } else if (segue.identifier == "ShowTripDetails") {
+      let row = tableView.indexPathsForSelectedRows?[0].row
+  
+      if let row = row, trips = trips {
+        let trip = trips[row]
+        let tripDetailViewController = segue.destinationViewController as? TripDetailViewController
+        tripDetailViewController?.trip = trip
+      }
     }
   }
   
@@ -54,6 +63,14 @@ class MainViewController: UIViewController {
   
   @IBAction func cancelTripCreation(segue:UIStoryboardSegue) {
     temporaryContext = nil
+  }
+  
+}
+
+extension MainViewController: UITableViewDelegate {
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    performSegueWithIdentifier("ShowTripDetails", sender: self)
   }
   
 }
