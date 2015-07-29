@@ -10,6 +10,7 @@ import Quick
 import Nimble
 import UIKit
 import Result
+import CoreLocation
 
 @testable import TripPlanner
 
@@ -94,6 +95,50 @@ class AddTripViewControllerSpec: QuickSpec {
           
           addTripViewController.errorHandler = mockErrorHandler
           addTripViewController.handleSearchResult(result)
+          
+          expect(mockErrorHandler.called).to(beTrue())
+        }
+      }
+      
+      describe("handleLocationDetailResult") {
+        it("highlights the location on the map upon a successful request") {
+          class LocationSearchMapViewDecoratorMock: LocationSearchMapViewDecorator {
+            var setPlace: Place?
+            
+            override var displayedLocation: PlaceWithLocation? {
+              didSet {
+                setPlace = displayedLocation?.locationSearchEntry
+              }
+            }
+          }
+          
+          let locationSearchMapViewDecoratorMock = LocationSearchMapViewDecoratorMock(mapView: addTripViewController.mapView)
+          addTripViewController.mapViewDecorator = locationSearchMapViewDecoratorMock
+          
+          let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])
+          let placeWithLocation = PlaceWithLocation(locationSearchEntry: place, location: CLLocationCoordinate2D(latitude: 10, longitude: 10))
+          let result: Result<PlaceWithLocation, Reason> = .Success(placeWithLocation)
+          
+          addTripViewController.handleLocationDetailResult(result)
+          
+          expect(locationSearchMapViewDecoratorMock.setPlace).to(equal(place))
+        }
+        
+        it("displays an error message and deselects the table view row upon a failed request") {
+          let result: Result<PlaceWithLocation, Reason> = .Failure(.NoSuccessStatusCode(statusCode: 404))
+          
+          class MockErrorHandler: DefaultErrorHandler {
+            var called = false;
+            
+            override func displayErrorMessage(message: String) {
+              called = true
+            }
+          }
+          
+          let mockErrorHandler = MockErrorHandler()
+          
+          addTripViewController.errorHandler = mockErrorHandler
+          addTripViewController.handleLocationDetailResult(result)
           
           expect(mockErrorHandler.called).to(beTrue())
         }
