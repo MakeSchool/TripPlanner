@@ -37,3 +37,34 @@ struct SubstringMatch {
   let length: Int
   let offset: Int
 }
+
+// MARK: Equatable implementations
+
+extension Place: Equatable {}
+
+func ==(lhs: Place, rhs: Place) -> Bool {
+	 return
+    lhs.description == rhs.description &&
+      lhs.id == rhs.id &&
+      lhs.matchedSubstrings == rhs.matchedSubstrings &&
+      lhs.placeId == rhs.placeId &&
+      lhs.reference == rhs.reference &&
+      lhs.terms == rhs.terms &&
+      lhs.types == rhs.types
+}
+
+extension SubstringMatch: Equatable {}
+
+func ==(lhs: SubstringMatch, rhs: SubstringMatch) -> Bool {
+  return
+    lhs.length == rhs.length &&
+    lhs.offset == rhs.offset
+}
+
+extension Term: Equatable {}
+
+func ==(lhs: Term, rhs: Term) -> Bool {
+  return
+    lhs.offset == rhs.offset &&
+    lhs.value == rhs.value
+}

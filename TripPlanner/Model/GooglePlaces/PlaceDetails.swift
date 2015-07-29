@@ -24,3 +24,36 @@ struct PlaceDetailsResultLocation {
   let latitude: Double
   let longitude: Double
 }
+
+//MARK: Equatable Implementations
+
+extension PlaceDetails: Equatable {}
+
+func ==(lhs: PlaceDetails, rhs: PlaceDetails) -> Bool {
+  return
+    lhs.result == rhs.result
+}
+
+extension PlaceDetailsResult: Equatable {}
+
+func ==(lhs: PlaceDetailsResult, rhs: PlaceDetailsResult) -> Bool {
+  return
+    lhs.geometry == rhs.geometry
+}
+
+extension PlaceDetailsResultGeometry: Equatable {}
+
+func ==(lhs: PlaceDetailsResultGeometry, rhs: PlaceDetailsResultGeometry) -> Bool {
+  return
+    lhs.location == rhs.location
+}
+
+extension PlaceDetailsResultLocation: Equatable {}
+
+func ==(lhs: PlaceDetailsResultLocation, rhs: PlaceDetailsResultLocation) -> Bool {
+  return
+    lhs.latitude == rhs.latitude &&
+      lhs.longitude == rhs.longitude
+}
+
+
