@@ -39,7 +39,7 @@
 		62AA58251B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA58241B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift */; };
 		62AA58281B6826AF007DA8A4 /* AddTripViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA58271B6826AF007DA8A4 /* AddTripViewControllerSpec.swift */; };
 		62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		62B82AB11B604A5200F919DA /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB01B604A5200F919DA /* AddTripViewController.swift */; };
+		62B82AB11B604A5200F919DA /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB01B604A5200F919DA /* AddWaypointViewController.swift */; };
 		62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */; };
 		62DA35631B62F73C0041048D /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35541B62F70C0041048D /* Argo.framework */; };
 		62DA35711B62F7420041048D /* Argo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35541B62F70C0041048D /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -398,7 +398,7 @@
 		62B82AAC1B60348800F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		62B82AAD1B6045B700F919DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		62B82AAE1B6045BA00F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
-		62B82AB01B604A5200F919DA /* AddTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
+		62B82AB01B604A5200F919DA /* AddWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerManagedObject.swift; sourceTree = "<group>"; };
 		62DA354C1B62F70C0041048D /* Argo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Argo.xcodeproj; path = Carthage/Checkouts/Argo/Argo.xcodeproj; sourceTree = "<group>"; };
 		62DA35761B62FE1F0041048D /* Runes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Runes.xcodeproj; path = Carthage/Checkouts/Runes/Runes.xcodeproj; sourceTree = "<group>"; };
@@ -538,7 +538,7 @@
 		623E47651B5EC590009F2863 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				62AA58261B6826A3007DA8A4 /* AddTripScene */,
+				62AA58261B6826A3007DA8A4 /* AddWaypointScene */,
 				62AA58231B67F1C0007DA8A4 /* LocationSearch */,
 				62A2C8EB1B619586008CF3B1 /* AppDelegate */,
 				623E47661B5EC590009F2863 /* MainScene */,
@@ -569,7 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				62E44FF51B66BA11004C6CA3 /* LocationSearch */,
-				62B82AAF1B604A1700F919DA /* AddTripScene */,
+				62B82AAF1B604A1700F919DA /* AddWaypointScene */,
 				623E47B81B5EF921009F2863 /* Trips */,
 				623E47B51B5EF900009F2863 /* MainScene */,
 			);
@@ -713,19 +713,21 @@
 			path = LocationSearch;
 			sourceTree = "<group>";
 		};
-		62AA58261B6826A3007DA8A4 /* AddTripScene */ = {
+		62AA58261B6826A3007DA8A4 /* AddWaypointScene */ = {
 			isa = PBXGroup;
 			children = (
 				62AA58271B6826AF007DA8A4 /* AddTripViewControllerSpec.swift */,
 			);
+			name = AddWaypointScene;
 			path = AddTripScene;
 			sourceTree = "<group>";
 		};
-		62B82AAF1B604A1700F919DA /* AddTripScene */ = {
+		62B82AAF1B604A1700F919DA /* AddWaypointScene */ = {
 			isa = PBXGroup;
 			children = (
-				62B82AB01B604A5200F919DA /* AddTripViewController.swift */,
+				62B82AB01B604A5200F919DA /* AddWaypointViewController.swift */,
 			);
+			name = AddWaypointScene;
 			path = AddTripScene;
 			sourceTree = "<group>";
 		};
@@ -1309,7 +1311,7 @@
 				620448401B5DBF0D00219CD4 /* CoreDataStack.swift in Sources */,
 				62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */,
 				623E47B71B5EF900009F2863 /* MainViewController.swift in Sources */,
-				62B82AB11B604A5200F919DA /* AddTripViewController.swift in Sources */,
+				62B82AB11B604A5200F919DA /* AddWaypointViewController.swift in Sources */,
 				62E450161B66EE73004C6CA3 /* PlaceDetails+JSON.swift in Sources */,
 				62E450181B66EF98004C6CA3 /* JSONParsing.swift in Sources */,
 				62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */,

@@ -34,7 +34,7 @@
                     <navigationItem key="navigationItem" title="Planned Trips" id="b3x-I5-U0Z">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="j45-Jp-Vbf">
                             <connections>
-                                <segue destination="fWi-4J-gYd" kind="presentation" identifier="AddNewTrip" id="D5V-sj-fxN"/>
+                                <segue destination="OWH-bZ-7TQ" kind="presentation" identifier="AddNewTrip" id="0Ft-T9-v52"/>
                             </connections>
                         </barButtonItem>
                         <attributedString key="userComments">
@@ -48,16 +48,36 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ILI-iv-ndj" id="vmG-sw-aRw"/>
+                        <segue destination="FGq-Co-pkz" kind="show" identifier="ShowTripDetails" id="xCS-bI-Bry"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="606" y="351"/>
         </scene>
+        <!--Your Trip: San Francisco-->
+        <scene sceneID="y3w-mH-u7L">
+            <objects>
+                <viewController id="FGq-Co-pkz" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jhw-hh-4FS"/>
+                        <viewControllerLayoutGuide type="bottom" id="hbE-ZV-pOu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GvE-op-mXU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Your Trip: San Francisco" id="aKU-6K-ipn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsb-iH-hEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1315" y="1118"/>
+        </scene>
         <!--Add Trip-->
         <scene sceneID="hD2-2m-m7Q">
             <objects>
-                <viewController storyboardIdentifier="AddTripViewController" id="fWi-4J-gYd" customClass="AddTripViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddWaypointViewController" id="fWi-4J-gYd" customClass="AddWaypointViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hhN-i9-pv1"/>
                         <viewControllerLayoutGuide type="bottom" id="gOD-2T-WKU"/>
@@ -104,7 +124,7 @@
                                     <constraint firstAttribute="height" constant="64" id="6eY-hw-oMy"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Add Trip" id="iPW-Rf-FAN">
+                                    <navigationItem title="Add Waypoint" id="iPW-Rf-FAN">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="rgl-M5-iKu">
                                             <connections>
                                                 <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="cancelTripCreation:" id="k15-Kg-sHX"/>
@@ -185,7 +205,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3F8-Mk-0nX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bmg-R8-rdV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1287" y="351"/>
+            <point key="canvasLocation" x="2068" y="351"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JzZ-ur-rxz">
+            <objects>
+                <viewController id="OWH-bZ-7TQ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bSM-ib-3qR"/>
+                        <viewControllerLayoutGuide type="bottom" id="w6r-m0-spf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IJn-Up-tSW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgt-eg-hrl">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="AOe-ja-248"/>
+                                    <constraint firstAttribute="height" constant="44" id="XQY-gS-WHL"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Add Trip" id="zTh-fm-czs">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="xJv-0t-xNm">
+                                            <connections>
+                                                <segue destination="dLN-Jn-0Ft" kind="unwind" unwindAction="cancelTripCreation:" id="ncF-kC-LCI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="wAC-j7-ItB">
+                                            <connections>
+                                                <segue destination="dLN-Jn-0Ft" kind="unwind" unwindAction="saveTrip:" id="pDy-Rh-V6X"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AOe-ja-248"/>
+                                    </mask>
+                                </variation>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gFu-3Z-2gH">
+                                <rect key="frame" x="90" y="285" width="420" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-Bk-pLD">
+                                <rect key="frame" x="219" y="256" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fgt-eg-hrl" firstAttribute="leading" secondItem="IJn-Up-tSW" secondAttribute="leading" id="0td-jI-0KG"/>
+                            <constraint firstItem="gFu-3Z-2gH" firstAttribute="centerX" secondItem="IJn-Up-tSW" secondAttribute="centerX" id="FVm-BX-WwL"/>
+                            <constraint firstItem="gFu-3Z-2gH" firstAttribute="top" secondItem="rlc-Bk-pLD" secondAttribute="bottom" constant="8" id="NUx-RM-bfK"/>
+                            <constraint firstItem="gFu-3Z-2gH" firstAttribute="width" secondItem="IJn-Up-tSW" secondAttribute="width" multiplier="0.7" id="WBO-1L-meI"/>
+                            <constraint firstItem="rlc-Bk-pLD" firstAttribute="centerX" secondItem="gFu-3Z-2gH" secondAttribute="centerX" id="XJE-nV-8iZ"/>
+                            <constraint firstAttribute="trailing" secondItem="fgt-eg-hrl" secondAttribute="trailing" id="XRy-oh-Apm"/>
+                            <constraint firstItem="gFu-3Z-2gH" firstAttribute="centerY" secondItem="IJn-Up-tSW" secondAttribute="centerY" id="cXB-Ls-RCO"/>
+                            <constraint firstItem="fgt-eg-hrl" firstAttribute="top" secondItem="bSM-ib-3qR" secondAttribute="bottom" id="mPd-f7-eCB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JZz-wh-Imb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dLN-Jn-0Ft" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1309" y="351"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2nV-MO-SzW">

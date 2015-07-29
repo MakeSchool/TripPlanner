@@ -14,23 +14,23 @@ import CoreLocation
 
 @testable import TripPlanner
 
-class AddTripViewControllerSpec: QuickSpec {
+class addWaypointViewControllerSpec: QuickSpec {
   
   override func spec() {
     
-    describe("AddTripViewController") {
-      var addTripViewController: AddTripViewController!
+    describe("addWaypointViewController") {
+      var addWaypointViewController: AddWaypointViewController!
       
       beforeEach {
-        addTripViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AddTripViewController") as! AddTripViewController
+        addWaypointViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("AddWaypointViewController") as! AddWaypointViewController
         // force view to be loaded, so we can check for outlets
-        let _ = addTripViewController.view
+        let _ = addWaypointViewController.view
       }
       
       describe("after loading") {
         it("has outlets set up correctly") {
-          expect(addTripViewController.tableView).notTo(beNil())
-          expect(addTripViewController.mapView).notTo(beNil())
+          expect(addWaypointViewController.tableView).notTo(beNil())
+          expect(addWaypointViewController.mapView).notTo(beNil())
         }
       }
       
@@ -45,8 +45,8 @@ class AddTripViewControllerSpec: QuickSpec {
           }
           
           let locationSearchMock = LocationSearchMock()
-          addTripViewController.locationSearch = locationSearchMock
-          addTripViewController.searchBar(UISearchBar(), textDidChange: "Stuttgart")
+          addWaypointViewController.locationSearch = locationSearchMock
+          addWaypointViewController.searchBar(UISearchBar(), textDidChange: "Stuttgart")
           
           expect(locationSearchMock.searchedTerm!).to(equal("Stuttgart"))
         }
@@ -61,11 +61,11 @@ class AddTripViewControllerSpec: QuickSpec {
           }
           
           let locationSearchMock = LocationSearchMock()
-          addTripViewController.locationSearch = locationSearchMock
-          addTripViewController.searchBar(UISearchBar(), textDidChange: "")
+          addWaypointViewController.locationSearch = locationSearchMock
+          addWaypointViewController.searchBar(UISearchBar(), textDidChange: "")
           
           expect(locationSearchMock.called).to(beFalse())
-          expect(addTripViewController.locations).to(beEmpty())
+          expect(addWaypointViewController.locations).to(beEmpty())
         }
       }
       
@@ -75,9 +75,9 @@ class AddTripViewControllerSpec: QuickSpec {
           let predictions = Predictions(predictions: [place])
           let result: Result<Predictions, Reason> = .Success(predictions)
           
-          addTripViewController.handleSearchResult(result)
+          addWaypointViewController.handleSearchResult(result)
           
-          expect(addTripViewController.locations[0].placeId).to(equal("1"))
+          expect(addWaypointViewController.locations[0].placeId).to(equal("1"))
         }
         
         it("invokes the error handler upon a failed request") {
@@ -93,8 +93,8 @@ class AddTripViewControllerSpec: QuickSpec {
           
           let mockErrorHandler = MockErrorHandler()
           
-          addTripViewController.errorHandler = mockErrorHandler
-          addTripViewController.handleSearchResult(result)
+          addWaypointViewController.errorHandler = mockErrorHandler
+          addWaypointViewController.handleSearchResult(result)
           
           expect(mockErrorHandler.called).to(beTrue())
         }
@@ -112,14 +112,14 @@ class AddTripViewControllerSpec: QuickSpec {
             }
           }
           
-          let locationSearchMapViewDecoratorMock = LocationSearchMapViewDecoratorMock(mapView: addTripViewController.mapView)
-          addTripViewController.mapViewDecorator = locationSearchMapViewDecoratorMock
+          let locationSearchMapViewDecoratorMock = LocationSearchMapViewDecoratorMock(mapView: addWaypointViewController.mapView)
+          addWaypointViewController.mapViewDecorator = locationSearchMapViewDecoratorMock
           
           let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])
           let placeWithLocation = PlaceWithLocation(locationSearchEntry: place, location: CLLocationCoordinate2D(latitude: 10, longitude: 10))
           let result: Result<PlaceWithLocation, Reason> = .Success(placeWithLocation)
           
-          addTripViewController.handleLocationDetailResult(result)
+          addWaypointViewController.handleLocationDetailResult(result)
           
           expect(locationSearchMapViewDecoratorMock.setPlace).to(equal(place))
         }
@@ -137,8 +137,8 @@ class AddTripViewControllerSpec: QuickSpec {
           
           let mockErrorHandler = MockErrorHandler()
           
-          addTripViewController.errorHandler = mockErrorHandler
-          addTripViewController.handleLocationDetailResult(result)
+          addWaypointViewController.errorHandler = mockErrorHandler
+          addWaypointViewController.handleLocationDetailResult(result)
           
           expect(mockErrorHandler.called).to(beTrue())
         }
@@ -148,7 +148,7 @@ class AddTripViewControllerSpec: QuickSpec {
         it("requests location details for the selected location") {
           let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])
           let predictions = Predictions(predictions: [place])
-          addTripViewController.locations = predictions.predictions
+          addWaypointViewController.locations = predictions.predictions
           
           class MockLocationSearch: LocationSearch {
             var calledWithPlace :Place?
@@ -159,10 +159,10 @@ class AddTripViewControllerSpec: QuickSpec {
           }
           
           let mockLocationSearch = MockLocationSearch()
-          addTripViewController.locationSearch = mockLocationSearch
+          addWaypointViewController.locationSearch = mockLocationSearch
           
-          let tableView = addTripViewController.tableView
-          addTripViewController.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+          let tableView = addWaypointViewController.tableView
+          addWaypointViewController.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
           
           expect(mockLocationSearch.calledWithPlace?.placeId).to(equal("1"))
         }
@@ -172,10 +172,10 @@ class AddTripViewControllerSpec: QuickSpec {
         it("show results from location search") {
           let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])
           let predictions = Predictions(predictions: [place])
-          addTripViewController.locations = predictions.predictions
+          addWaypointViewController.locations = predictions.predictions
           
-          let rows = addTripViewController.tableView(addTripViewController.tableView, numberOfRowsInSection: 0)
-          let cell = addTripViewController.tableView(addTripViewController.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! LocationResultTableViewCell
+          let rows = addWaypointViewController.tableView(addWaypointViewController.tableView, numberOfRowsInSection: 0)
+          let cell = addWaypointViewController.tableView(addWaypointViewController.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! LocationResultTableViewCell
           
           expect(rows).to(equal(1))
           expect(cell.model).to(equal(place))

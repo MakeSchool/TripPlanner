@@ -24,7 +24,7 @@ class LocationResultTableViewCell: UITableViewCell, TableViewCellProtocol {
   }
 }
 
-class AddTripViewController: UIViewController {
+class AddWaypointViewController: UIViewController {
   
   // MARK: IBOutlets
   @IBOutlet var tableView: UITableView!
@@ -103,7 +103,7 @@ class AddTripViewController: UIViewController {
 
 // MARK: TableViewDataSource
 
-extension AddTripViewController: UITableViewDataSource {
+extension AddWaypointViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return arrayDataSource.tableView(tableView, numberOfRowsInSection: section)
@@ -117,7 +117,7 @@ extension AddTripViewController: UITableViewDataSource {
 
 // MARK: TableViewDelegate
 
-extension AddTripViewController: UITableViewDelegate {
+extension AddWaypointViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     locationSearch.detailsForPlace(arrayDataSource.array[indexPath.row], callback: handleLocationDetailResult)
@@ -127,7 +127,7 @@ extension AddTripViewController: UITableViewDelegate {
 
 // MARK: SearchBarDelegate
 
-extension AddTripViewController: UISearchBarDelegate {
+extension AddWaypointViewController: UISearchBarDelegate {
   
   func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
     searchTerm = searchText
