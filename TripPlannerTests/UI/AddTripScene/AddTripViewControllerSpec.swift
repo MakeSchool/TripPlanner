@@ -98,6 +98,44 @@ class AddTripViewControllerSpec: QuickSpec {
           expect(mockErrorHandler.called).to(beTrue())
         }
       }
+      
+      describe("tableViewDidSelectRowAtIndexPath") {
+        it("requests location details for the selected location") {
+          let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])
+          let predictions = Predictions(predictions: [place])
+          addTripViewController.locations = predictions.predictions
+          
+          class MockLocationSearch: LocationSearch {
+            var calledWithPlace :Place?
+            
+            override func detailsForPlace(place: Place, callback: PlacesDetailsCallback) {
+              calledWithPlace = place;
+            }
+          }
+          
+          let mockLocationSearch = MockLocationSearch()
+          addTripViewController.locationSearch = mockLocationSearch
+          
+          let tableView = addTripViewController.tableView
+          addTripViewController.tableView(tableView, didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+          
+          expect(mockLocationSearch.calledWithPlace?.placeId).to(equal("1"))
+        }
+      }
+      
+      describe("tableView rows and sections") {
+        it("show results from location search") {
+          let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])
+          let predictions = Predictions(predictions: [place])
+          addTripViewController.locations = predictions.predictions
+          
+          let rows = addTripViewController.tableView(addTripViewController.tableView, numberOfRowsInSection: 0)
+          let cell = addTripViewController.tableView(addTripViewController.tableView, cellForRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0)) as! LocationResultTableViewCell
+          
+          expect(rows).to(equal(1))
+          expect(cell.model).to(equal(place))
+        }
+      }
 
     }
   }
