@@ -32,4 +32,12 @@ class TripDetailViewController: UIViewController {
     activeView.removeFromSuperview()
   }
   
+  @IBAction func saveWaypoint(segue:UIStoryboardSegue) {
+    
+  }
+  
+  @IBAction func cancelWaypointCreation(segue:UIStoryboardSegue) {
+    
+  }
+  
 }

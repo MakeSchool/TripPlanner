@@ -91,6 +91,9 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqj-Qc-Y0Q">
                             <rect key="frame" x="210" y="235" width="80" height="30"/>
                             <state key="normal" title="Get Started"/>
+                            <connections>
+                                <segue destination="fWi-4J-gYd" kind="presentation" id="iRi-42-kvG"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -109,10 +112,10 @@
             </objects>
             <point key="canvasLocation" x="1462" y="1856"/>
         </scene>
-        <!--Add Trip-->
+        <!--AddWaypoint-->
         <scene sceneID="hD2-2m-m7Q">
             <objects>
-                <viewController storyboardIdentifier="AddWaypointViewController" id="fWi-4J-gYd" customClass="AddWaypointViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddWaypointViewController" id="fWi-4J-gYd" userLabel="AddWaypoint" customClass="AddWaypointViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hhN-i9-pv1"/>
                         <viewControllerLayoutGuide type="bottom" id="gOD-2T-WKU"/>
@@ -162,12 +165,12 @@
                                     <navigationItem title="Add Waypoint" id="iPW-Rf-FAN">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="rgl-M5-iKu">
                                             <connections>
-                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="cancelTripCreation:" id="k15-Kg-sHX"/>
+                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="cancelWaypointCreation:" id="CJQ-7y-vql"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="jCV-kJ-DYo">
                                             <connections>
-                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="saveTrip:" id="zCN-eU-Jhb"/>
+                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="saveWaypoint:" id="j2p-6c-tvx"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -240,7 +243,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3F8-Mk-0nX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bmg-R8-rdV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="351"/>
+            <point key="canvasLocation" x="2404" y="1856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JzZ-ur-rxz">
