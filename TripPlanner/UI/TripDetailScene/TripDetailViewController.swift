@@ -11,6 +11,7 @@ import UIKit
 class TripDetailViewController: UIViewController {
  
   var trip: Trip?
+  var coreDataClient: CoreDataClient!
   
   @IBOutlet var noWayPointsView: UIView!
   @IBOutlet var someWayPointsView: UIView!

@@ -56,6 +56,7 @@ class MainViewController: UIViewController {
   
   func prepareTripDetailPresentation(tripDetailVC: TripDetailViewController) {
     tripDetailVC.trip = detailViewTrip
+    tripDetailVC.coreDataClient = coreDataClient
   }
   
   // MARK: Unwind Segues

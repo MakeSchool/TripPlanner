@@ -185,7 +185,26 @@ class MainViewControllerSpec: QuickSpec {
       describe("prepareTripDetailPresentation") {
         
         it("it assigns trip and core data client to detail view controlller") {
+          // prepare detail view controller
           let tripDetailViewController = UIStoryboard(name: Storyboard.Main.name, bundle: nil).instantiateViewControllerWithIdentifier(Storyboard.Main.TripDetailViewController.name) as! TripDetailViewController
+          
+          // inject stack
+          let coreDataClient = CoreDataClient(stack: stack)
+          mainViewController.coreDataClient = coreDataClient
+          
+          // create trip
+          let trip = Trip(context: coreDataClient.context)
+          trip.locationDescription = "San Francisco"
+          stack.save()
+          
+          mainViewController.viewWillAppear(false)
+
+          // inject selected trip
+          mainViewController.detailViewTrip = trip
+          mainViewController.prepareTripDetailPresentation(tripDetailViewController)
+          
+          expect(tripDetailViewController.trip).to(equal(trip))
+          expect(tripDetailViewController.coreDataClient).to(beIdenticalTo(mainViewController.coreDataClient))
         }
         
       }
