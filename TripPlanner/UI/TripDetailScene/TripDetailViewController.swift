@@ -50,6 +50,7 @@ class TripDetailViewController: UIViewController {
   @IBAction func saveWaypoint(segue:UIStoryboardSegue) {
     if let currentWaypoint = currentWaypoint, let currentContext = currentContext, let trip = trip {
       // refetch the trip in the current context
+      // TODO: refactor
       let tripInCurrentContext = currentContext.objectWithID(trip.objectID)
       tripInCurrentContext.addObject(currentWaypoint, forKey:"waypoints")
       try! currentContext.save()
@@ -58,7 +59,8 @@ class TripDetailViewController: UIViewController {
   }
   
   @IBAction func cancelWaypointCreation(segue:UIStoryboardSegue) {
-    
+    // discard temporary context
+    currentContext = nil
   }
   
 }
