@@ -33,6 +33,14 @@ class TripDetailViewController: UIViewController {
     activeView.removeFromSuperview()
   }
   
+  // MARK: Segues
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if (segue.identifier == Storyboard.Main.TripDetailViewController.Segues.AddWaypointSegue) {
+      let waypoint = coreDataClient.createObjectInTemporaryContext(Waypoint.self)
+    }
+  }
+  
   @IBAction func saveWaypoint(segue:UIStoryboardSegue) {
     
   }

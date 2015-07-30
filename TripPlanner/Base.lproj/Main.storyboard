@@ -92,7 +92,7 @@
                             <rect key="frame" x="210" y="235" width="80" height="30"/>
                             <state key="normal" title="Get Started"/>
                             <connections>
-                                <segue destination="fWi-4J-gYd" kind="presentation" id="iRi-42-kvG"/>
+                                <segue destination="fWi-4J-gYd" kind="presentation" identifier="AddWaypointSegue" id="iRi-42-kvG"/>
                             </connections>
                         </button>
                     </subviews>
@@ -267,12 +267,12 @@
                                     <navigationItem title="Add Trip" id="zTh-fm-czs">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="xJv-0t-xNm">
                                             <connections>
-                                                <segue destination="dLN-Jn-0Ft" kind="unwind" unwindAction="cancelTripCreation:" id="ncF-kC-LCI"/>
+                                                <segue destination="dLN-Jn-0Ft" kind="unwind" identifier="ExitCancelTripSegue" unwindAction="cancelTripCreation:" id="ncF-kC-LCI"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="wAC-j7-ItB">
                                             <connections>
-                                                <segue destination="dLN-Jn-0Ft" kind="unwind" unwindAction="saveTrip:" id="m1o-pH-Eb8"/>
+                                                <segue destination="dLN-Jn-0Ft" kind="unwind" identifier="ExitSaveTripSegue" unwindAction="saveTrip:" id="m1o-pH-Eb8"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

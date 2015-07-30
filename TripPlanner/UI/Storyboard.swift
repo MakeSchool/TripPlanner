@@ -10,7 +10,8 @@ import Foundation
 
 struct Storyboard {
   struct UnwindSegues {
-    static let ExitSegue = "ExitSegue"
+    static let ExitSaveTripSegue = "ExitSaveTripSegue"
+    static let ExitCancelTripSegue = "ExitCancelTripSegue"
   }
   
   struct Main {
@@ -20,13 +21,17 @@ struct Storyboard {
       static var name = "MainViewController"
       
       struct Segues {
-          static let AddNewTripSegue = "AddNewTrip"
+        static let AddNewTripSegue = "AddNewTrip"
       }
     }
     
     struct TripDetailViewController {
       static var name = "TripDetailViewController"
-
+      
+      struct Segues {
+        static let AddWaypointSegue = "AddWaypointSegue"
+      }
     }
+    
   }
 }

@@ -62,12 +62,16 @@ class MainViewController: UIViewController {
   // MARK: Unwind Segues
   
   @IBAction func saveTrip(segue:UIStoryboardSegue) {
-    try! temporaryContext?.save()
-    coreDataClient.saveStack()
+    if (segue.identifier == Storyboard.UnwindSegues.ExitSaveTripSegue) {
+      try! temporaryContext?.save()
+      coreDataClient.saveStack()
+    }
   }
   
   @IBAction func cancelTripCreation(segue:UIStoryboardSegue) {
-    temporaryContext = nil
+    if (segue.identifier == Storyboard.UnwindSegues.ExitCancelTripSegue) {
+      temporaryContext = nil
+    }
   }
   
 }

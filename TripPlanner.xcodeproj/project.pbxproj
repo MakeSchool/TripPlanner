@@ -63,6 +63,8 @@
 		62E931971B6A85EC00738950 /* AddWaypointViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931951B6A85EC00738950 /* AddWaypointViewControllerSpec.swift */; };
 		62E9319A1B6A87EE00738950 /* TripDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931991B6A87EE00738950 /* TripDetailViewControllerSpec.swift */; };
 		62E9319E1B6A91D600738950 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E9319D1B6A91D600738950 /* Storyboard.swift */; };
+		62E931B41B6AD2E500738950 /* Waypoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931B21B6AD2E500738950 /* Waypoint+CoreDataProperties.swift */; };
+		62E931B51B6AD2E500738950 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931B31B6AD2E500738950 /* Waypoint.swift */; };
 		62EB5CB41B69743700801ABB /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB31B69743700801ABB /* AddWaypointViewController.swift */; };
 		62EB5CB61B69744D00801ABB /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB51B69744D00801ABB /* AddTripViewController.swift */; };
 		62EB5CB91B697A4400801ABB /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB81B697A4400801ABB /* TripDetailViewController.swift */; };
@@ -425,6 +427,8 @@
 		62E931951B6A85EC00738950 /* AddWaypointViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaypointViewControllerSpec.swift; sourceTree = "<group>"; };
 		62E931991B6A87EE00738950 /* TripDetailViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewControllerSpec.swift; sourceTree = "<group>"; };
 		62E9319D1B6A91D600738950 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		62E931B21B6AD2E500738950 /* Waypoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Waypoint+CoreDataProperties.swift"; path = "TripPlanner/Model/Waypoint+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		62E931B31B6AD2E500738950 /* Waypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Waypoint.swift; path = TripPlanner/Model/Waypoint.swift; sourceTree = SOURCE_ROOT; };
 		62EB5CB31B69743700801ABB /* AddWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		62EB5CB51B69744D00801ABB /* AddTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
 		62EB5CB81B697A4400801ABB /* TripDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
@@ -529,6 +533,8 @@
 				6226F8D01B5EB1F700B8BFEF /* Trip+CoreDataProperties.swift */,
 				6226F8D11B5EB1F700B8BFEF /* Trip.swift */,
 				62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */,
+				62E931B21B6AD2E500738950 /* Waypoint+CoreDataProperties.swift */,
+				62E931B31B6AD2E500738950 /* Waypoint.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1350,6 +1356,7 @@
 				62E450121B66EC90004C6CA3 /* LocationSearchResult+JSON.swift in Sources */,
 				6226F8D31B5EB1F700B8BFEF /* Trip.swift in Sources */,
 				623E47BE1B5F0686009F2863 /* CoreDataClient.swift in Sources */,
+				62E931B41B6AD2E500738950 /* Waypoint+CoreDataProperties.swift in Sources */,
 				62E450131B66EC90004C6CA3 /* LocationSearchResult.swift in Sources */,
 				62E44FF01B66931C004C6CA3 /* HTTPClient.swift in Sources */,
 				62EB5CB61B69744D00801ABB /* AddTripViewController.swift in Sources */,
@@ -1362,6 +1369,7 @@
 				62E450161B66EE73004C6CA3 /* PlaceDetails+JSON.swift in Sources */,
 				62E450181B66EF98004C6CA3 /* JSONParsing.swift in Sources */,
 				62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */,
+				62E931B51B6AD2E500738950 /* Waypoint.swift in Sources */,
 				62E44FF71B66BA29004C6CA3 /* LocationSearchMapViewDecorator.swift in Sources */,
 				6226F8D21B5EB1F700B8BFEF /* Trip+CoreDataProperties.swift in Sources */,
 				626671281B61B200006A1A2B /* LocationSearch.swift in Sources */,
