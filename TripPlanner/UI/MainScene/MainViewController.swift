@@ -48,9 +48,17 @@ class MainViewController: UIViewController {
       temporaryContext = newContext
     } else if (segue.identifier == "ShowTripDetails") {
       let tripDetailViewController = segue.destinationViewController as? TripDetailViewController
-      tripDetailViewController?.trip = detailViewTrip
+      if let tripDetailViewController = tripDetailViewController {
+        prepareTripDetailPresentation(tripDetailViewController)
+      }
     }
   }
+  
+  func prepareTripDetailPresentation(tripDetailVC: TripDetailViewController) {
+    tripDetailVC.trip = detailViewTrip
+  }
+  
+  // MARK: Unwind Segues
   
   @IBAction func saveTrip(segue:UIStoryboardSegue) {
     try! temporaryContext?.save()

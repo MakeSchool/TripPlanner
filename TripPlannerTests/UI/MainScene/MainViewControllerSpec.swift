@@ -29,12 +29,16 @@ class MainViewControllerSpec: QuickSpec {
         
         stack = CoreDataStack(stackType: .InMemory)
       }
+
+      //MARK: After Loading
       
       describe("after loading") {
         it("has outlets set up correctly") {
           expect(mainViewController.tableView).notTo(beNil())
         }
       }
+      
+      //MARK: View Appears
       
       describe("when its view appears") {
         
@@ -82,6 +86,8 @@ class MainViewControllerSpec: QuickSpec {
         }
       }
       
+      //MARK: Add Trip Button is Tapped
+      
       describe("when add trip button is tapped") {
         
         it("creates a new trip in a temporary core data context") {
@@ -104,12 +110,14 @@ class MainViewControllerSpec: QuickSpec {
           
           mainViewController.viewWillAppear(false)
           
-          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
+          mainViewController.performSegueWithIdentifier(Storyboard.Main.MainViewController.Segues.AddNewTripSegue, sender: self)
           
           expect(coreDataClientMock.called).to(beTrue())
         }
         
       }
+      
+      //MARK: Save Trip Exit Segue
       
       describe("when save trip exit segue is triggered after add button is tapped") {
         
@@ -119,8 +127,8 @@ class MainViewControllerSpec: QuickSpec {
 
           mainViewController.viewWillAppear(false)
           
-          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
-          mainViewController.saveTrip(UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController()))
+          mainViewController.performSegueWithIdentifier(Storyboard.Main.MainViewController.Segues.AddNewTripSegue, sender: self)
+          mainViewController.saveTrip(UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSegue, source: UIViewController(), destination: UIViewController()))
           
           expect(coreDataClient.allTrips().count).to(equal(1))
         }
@@ -131,8 +139,8 @@ class MainViewControllerSpec: QuickSpec {
           
           mainViewController.viewWillAppear(false)
           
-          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
-          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController())))
+          mainViewController.performSegueWithIdentifier(Storyboard.Main.MainViewController.Segues.AddNewTripSegue, sender: self)
+          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSegue, source: UIViewController(), destination: UIViewController())))
           
           expect(coreDataClient.allTrips().count).to(equal(0))
         }
@@ -144,12 +152,12 @@ class MainViewControllerSpec: QuickSpec {
           mainViewController.viewWillAppear(false)
           
           // one trip is discarded
-          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
-          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController())))
+          mainViewController.performSegueWithIdentifier(Storyboard.Main.MainViewController.Segues.AddNewTripSegue, sender: self)
+          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSegue, source: UIViewController(), destination: UIViewController())))
           
           // the other trip is saved
-          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
-          mainViewController.saveTrip(UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController()))
+          mainViewController.performSegueWithIdentifier(Storyboard.Main.MainViewController.Segues.AddNewTripSegue, sender: self)
+          mainViewController.saveTrip(UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSegue, source: UIViewController(), destination: UIViewController()))
           
           expect(coreDataClient.allTrips().count).to(equal(1))
         }
@@ -161,16 +169,27 @@ class MainViewControllerSpec: QuickSpec {
           mainViewController.viewWillAppear(false)
           
           // one trip is discarded
-          mainViewController.performSegueWithIdentifier("AddNewTrip", sender: self)
-          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController())))
+          mainViewController.performSegueWithIdentifier(Storyboard.Main.MainViewController.Segues.AddNewTripSegue, sender: self)
+          mainViewController.cancelTripCreation((UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSegue, source: UIViewController(), destination: UIViewController())))
           
           // save exit segue is called immediately afterwards (technically not possible with current UI setup)
-          mainViewController.saveTrip(UIStoryboardSegue(identifier: "ExitSegue", source: UIViewController(), destination: UIViewController()))
+          mainViewController.saveTrip(UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSegue, source: UIViewController(), destination: UIViewController()))
           
           expect(coreDataClient.allTrips().count).to(equal(0))
         }
         
       }
+      
+      //MARK: Prepare Trip Detail Presentation
+      
+      describe("prepareTripDetailPresentation") {
+        
+        it("it assigns trip and core data client to detail view controlller") {
+          let tripDetailViewController = UIStoryboard(name: Storyboard.Main.name, bundle: nil).instantiateViewControllerWithIdentifier(Storyboard.Main.TripDetailViewController.name) as! TripDetailViewController
+        }
+        
+      }
+
 
     }
     

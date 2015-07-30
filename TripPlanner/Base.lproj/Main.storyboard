@@ -61,7 +61,7 @@
         <!--Your Trip: San Francisco-->
         <scene sceneID="y3w-mH-u7L">
             <objects>
-                <viewController id="FGq-Co-pkz" customClass="TripDetailViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TripDetailViewController" id="FGq-Co-pkz" customClass="TripDetailViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jhw-hh-4FS"/>
                         <viewControllerLayoutGuide type="bottom" id="hbE-ZV-pOu"/>
@@ -245,10 +245,10 @@
             </objects>
             <point key="canvasLocation" x="2404" y="1856"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Trip View Controller-->
         <scene sceneID="JzZ-ur-rxz">
             <objects>
-                <viewController id="OWH-bZ-7TQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddTripViewController" id="OWH-bZ-7TQ" customClass="AddTripViewController" customModule="TripPlanner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bSM-ib-3qR"/>
                         <viewControllerLayoutGuide type="bottom" id="w6r-m0-spf"/>
