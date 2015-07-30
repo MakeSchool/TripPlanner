@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-@objc(Waypoint)
 final class Waypoint: NSManagedObject, TripPlannerManagedObject {
 
   convenience init(context: NSManagedObjectContext) {

@@ -12,6 +12,8 @@ struct Storyboard {
   struct UnwindSegues {
     static let ExitSaveTripSegue = "ExitSaveTripSegue"
     static let ExitCancelTripSegue = "ExitCancelTripSegue"
+    static let ExitSaveWaypointSegue = "ExitSaveWaypointSegue"
+    static let ExitCancelWaypointSegue = "ExitCancelWaypointSegue"
   }
   
   struct Main {

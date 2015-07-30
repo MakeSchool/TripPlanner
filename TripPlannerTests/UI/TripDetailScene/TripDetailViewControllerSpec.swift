@@ -65,15 +65,22 @@ class TripDetailViewControllerSpec: QuickSpec {
       describe("when save waypoint exit segue is triggered after add button is tapped") {
         
         it("persists the newly created waypoint") {
-//          let coreDataClient = CoreDataClient(stack: stack)
-//          tripDetailViewController.coreDataClient = coreDataClient
-//          
-//          tripDetailViewController.viewWillAppear(false)
-//          
-//          tripDetailViewController.performSegueWithIdentifier(Storyboard.Main.TripDetailViewController.Segues.AddWaypointSegue, sender: self)
-//          tripDetailViewController.saveTrip(UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSegue, source: UIViewController(), destination: UIViewController()))
-//          
-//          expect(coreDataClient.allTrips().count).to(equal(1))
+          let coreDataClient = CoreDataClient(stack: stack)
+          tripDetailViewController.coreDataClient = coreDataClient
+          
+          // create trip
+          let trip = Trip(context: coreDataClient.context)
+          trip.locationDescription = "San Francisco"
+          stack.save()
+          tripDetailViewController.trip = trip
+          
+          tripDetailViewController.viewWillAppear(false)
+          
+          tripDetailViewController.performSegueWithIdentifier(Storyboard.Main.TripDetailViewController.Segues.AddWaypointSegue, sender: self)
+          tripDetailViewController.saveWaypoint(UIStoryboardSegue(identifier: Storyboard.UnwindSegues.ExitSaveWaypointSegue, source: UIViewController(), destination: UIViewController()))
+          
+          let waypointForTrips = tripDetailViewController.trip!.waypoints!.count
+          expect(waypointForTrips).to(equal(1))
         }
         
       }

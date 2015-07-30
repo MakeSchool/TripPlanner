@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TripDetailViewController: UIViewController {
  
@@ -16,6 +17,9 @@ class TripDetailViewController: UIViewController {
   @IBOutlet var noWayPointsView: UIView!
   @IBOutlet var someWayPointsView: UIView!
   var activeView: UIView!
+  
+  var currentWaypoint: Waypoint?
+  var currentContext: NSManagedObjectContext?
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -37,12 +41,20 @@ class TripDetailViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == Storyboard.Main.TripDetailViewController.Segues.AddWaypointSegue) {
-      let waypoint = coreDataClient.createObjectInTemporaryContext(Waypoint.self)
+      let (newWaypoint, temporaryContext) = coreDataClient.createObjectInTemporaryContext(Waypoint.self)
+      currentWaypoint = newWaypoint
+      currentContext = temporaryContext
     }
   }
   
   @IBAction func saveWaypoint(segue:UIStoryboardSegue) {
-    
+    if let currentWaypoint = currentWaypoint, let currentContext = currentContext, let trip = trip {
+      // refetch the trip in the current context
+      let tripInCurrentContext = currentContext.objectWithID(trip.objectID)
+      tripInCurrentContext.addObject(currentWaypoint, forKey:"waypoints")
+      try! currentContext.save()
+      coreDataClient.saveStack()
+    }
   }
   
   @IBAction func cancelWaypointCreation(segue:UIStoryboardSegue) {

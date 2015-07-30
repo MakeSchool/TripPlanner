@@ -165,12 +165,12 @@
                                     <navigationItem title="Add Waypoint" id="iPW-Rf-FAN">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="rgl-M5-iKu">
                                             <connections>
-                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="cancelWaypointCreation:" id="CJQ-7y-vql"/>
+                                                <segue destination="bmg-R8-rdV" kind="unwind" identifier="ExitCancelWaypointSegue" unwindAction="cancelWaypointCreation:" id="CJQ-7y-vql"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Save" id="jCV-kJ-DYo">
                                             <connections>
-                                                <segue destination="bmg-R8-rdV" kind="unwind" unwindAction="saveWaypoint:" id="j2p-6c-tvx"/>
+                                                <segue destination="bmg-R8-rdV" kind="unwind" identifier="ExitSaveWaypointSegue" unwindAction="saveWaypoint:" id="j2p-6c-tvx"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
