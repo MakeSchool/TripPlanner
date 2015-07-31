@@ -21,6 +21,8 @@ class TripDetailViewController: UIViewController {
   var currentWaypoint: Waypoint?
   var currentContext: NSManagedObjectContext?
   
+  // MARK: View Lifecycle
+  
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
@@ -31,11 +33,9 @@ class TripDetailViewController: UIViewController {
     if (selectedTrip.waypoints?.count == 0) {
       activeView = noWayPointsView
       view.addSubview(activeView)
-      activeView.frame = view.frame
     } else {
       activeView = someWayPointsView
       view.addSubview(activeView)
-      activeView.frame = view.frame
     }
   
   }
@@ -44,6 +44,16 @@ class TripDetailViewController: UIViewController {
     super.viewDidDisappear(animated)
     
     activeView.removeFromSuperview()
+  }
+  
+  // MARK: Subview Layout
+  
+  func frameBelowNavigationBar() -> CGRect {
+    return CGRect(x: 0, y: topLayoutGuide.length, width: view.bounds.size.width, height: view.bounds.size.height - topLayoutGuide.length)
+  }
+  
+  override func viewDidLayoutSubviews() {
+    activeView.frame = frameBelowNavigationBar()
   }
   
   // MARK: Segues
@@ -55,6 +65,8 @@ class TripDetailViewController: UIViewController {
       currentContext = temporaryContext
     }
   }
+  
+  // MARK: Exit Segues
   
   @IBAction func saveWaypoint(segue:UIStoryboardSegue) {
     if let currentWaypoint = currentWaypoint, let currentContext = currentContext, let trip = trip {
