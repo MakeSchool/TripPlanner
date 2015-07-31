@@ -18,7 +18,7 @@ class LocationResultTableViewCell: UITableViewCell, TableViewCellProtocol {
   var model: Place? {
     didSet {
       if let model = model {
-        self.textLabel!.text = ", ".join(model.terms.map{$0.value})
+        self.textLabel!.text = model.placeDescription
       }
     }
   }
@@ -36,6 +36,14 @@ class AddWaypointViewController: UIViewController {
   var arrayDataSource: ArrayDataSource<LocationResultTableViewCell, Place>!
   var mapViewDecorator: LocationSearchMapViewDecorator!
   var locationSearch: LocationSearch
+  var waypoint: Waypoint?
+  
+  var displayedLocation: PlaceWithLocation? {
+    didSet {
+      mapViewDecorator.displayedLocation = displayedLocation
+      waypoint?.name = displayedLocation?.locationSearchEntry.placeDescription
+    }
+  }
   
   required init?(coder aDecoder: NSCoder) {
     session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
@@ -87,7 +95,7 @@ class AddWaypointViewController: UIViewController {
   func handleLocationDetailResult(result: Result<PlaceWithLocation, Reason>) -> Void {
     switch result {
     case let .Success(place):
-      self.mapViewDecorator.displayedLocation = place
+      displayedLocation = place
     case .Failure(_):
       self.errorHandler.displayErrorMessage(
         NSLocalizedString("add_trip.cannot_retrieve_place_details", comment: "Error message: cannot retrieve information for this place, please choose another one.")

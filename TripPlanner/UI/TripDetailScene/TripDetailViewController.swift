@@ -61,10 +61,18 @@ class TripDetailViewController: UIViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == Storyboard.Main.TripDetailViewController.Segues.AddWaypointSegue) {
-      let (newWaypoint, temporaryContext) = coreDataClient.createObjectInTemporaryContext(Waypoint.self)
-      currentWaypoint = newWaypoint
-      currentContext = temporaryContext
+      let addWayPointViewController = segue.destinationViewController as? AddWaypointViewController
+      if let addWayPointViewController = addWayPointViewController {
+        prepareNewWayPointPresentation(addWayPointViewController)
+      }
     }
+  }
+  
+  func prepareNewWayPointPresentation(addWaypointViewController: AddWaypointViewController) {
+    let (newWaypoint, temporaryContext) = coreDataClient.createObjectInTemporaryContext(Waypoint.self)
+    currentWaypoint = newWaypoint
+    currentContext = temporaryContext
+    addWaypointViewController.waypoint = newWaypoint
   }
   
   // MARK: Exit Segues

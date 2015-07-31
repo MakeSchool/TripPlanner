@@ -144,6 +144,24 @@ class AddWaypointViewControllerSpec: QuickSpec {
         }
       }
       
+      describe("displayedLocation") {
+        context("when displayedLocation is set") {
+          it("populates the waypoint that is being added with the location information") {
+            let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [Term(offset: 0, value: "Stockton"), Term(offset: 0, value: "SF")], types: [])
+            let placeWithLocation = PlaceWithLocation(locationSearchEntry: place, location: CLLocationCoordinate2D(latitude: 10, longitude: 10))
+            
+            let stack = CoreDataStack(stackType: .InMemory)
+            let client = CoreDataClient(stack: stack)
+            let (waypoint, _) = client.createObjectInTemporaryContext(Waypoint.self)
+
+            addWaypointViewController.waypoint = waypoint
+            addWaypointViewController.displayedLocation = placeWithLocation
+            
+            expect(waypoint.name).to(equal("Stockton, SF"))
+          }
+        }
+      }
+      
       describe("tableViewDidSelectRowAtIndexPath") {
         it("requests location details for the selected location") {
           let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "1", reference: "", terms: [], types: [])

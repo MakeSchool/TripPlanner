@@ -17,6 +17,13 @@ struct Place {
   let reference: String
   let terms: [Term]
   let types: [String]
+  
+  // TODO: consider renaming 'Place.description' to make this type CustomStringConvertible
+  var placeDescription: String {
+    get {
+       return ", ".join(terms.map{$0.value})
+    }
+  }
 }
 
 struct PlaceWithLocation {
