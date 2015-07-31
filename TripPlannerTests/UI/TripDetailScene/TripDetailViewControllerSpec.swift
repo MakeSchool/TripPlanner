@@ -31,6 +31,51 @@ class TripDetailViewControllerSpec: QuickSpec {
         stack = CoreDataStack(stackType: .InMemory)
       }
       
+      // MARK: Main View
+      
+      describe("Main view") {
+        
+        var trip: Trip!
+        var coreDataClient: CoreDataClient!
+        
+        beforeEach {
+          coreDataClient = CoreDataClient(stack: stack)
+          tripDetailViewController.coreDataClient = coreDataClient
+          
+          // create trip
+          trip = Trip(context: coreDataClient.context)
+          trip.locationDescription = "San Francisco"
+          stack.save()
+          tripDetailViewController.trip = trip
+        }
+        
+        context("when a trip has no waypoints") {
+          
+          it("displays the 'No Waypoints' view") {
+            tripDetailViewController.viewWillAppear(false)
+            
+            expect(tripDetailViewController.view.subviews.contains(tripDetailViewController.noWayPointsView)).to(beTrue())
+          }
+          
+        }
+        
+        context("when a trip has waypoints") {
+          
+          it("displays the 'list of waypoints' view") {
+            // create waypoint
+            let waypoint = Waypoint(context: coreDataClient.context)
+            trip.addObject(waypoint, forKey: "waypoints")
+            stack.save()
+            
+            tripDetailViewController.viewWillAppear(false)
+            
+            expect(tripDetailViewController.view.subviews.contains(tripDetailViewController.someWayPointsView)).to(beTrue())
+          }
+          
+        }
+        
+      }
+      
       //MARK: Add Trip Button is Tapped
       
       describe("when add waypoint button is tapped") {

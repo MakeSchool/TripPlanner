@@ -24,11 +24,20 @@ class TripDetailViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    navigationItem.title = trip?.locationDescription
+    guard let selectedTrip = trip else { return }
     
-    activeView = noWayPointsView
-    view.addSubview(activeView)
-    activeView.frame = view.frame
+    navigationItem.title = selectedTrip.locationDescription
+    
+    if (selectedTrip.waypoints?.count == 0) {
+      activeView = noWayPointsView
+      view.addSubview(activeView)
+      activeView.frame = view.frame
+    } else {
+      activeView = someWayPointsView
+      view.addSubview(activeView)
+      activeView.frame = view.frame
+    }
+  
   }
   
   override func viewDidDisappear(animated: Bool) {
