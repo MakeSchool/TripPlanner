@@ -39,16 +39,16 @@ class CircularImageView: UIView {
     
     addSubview(imageView)
   }
-
+  
   override func layoutSubviews() {
     imageView.frame = CGRectMake(0, 0, bounds.width-strokeWidth*2, bounds.height-strokeWidth*2)
-    imageView.center = center
+    imageView.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
     imageView.layer.cornerRadius = imageView.bounds.size.width / 2
   }
   
   override func drawRect(rect: CGRect) {
     let context = UIGraphicsGetCurrentContext()
-    var frame = bounds
+    var frame = rect
     CGContextSetLineWidth(context, strokeWidth)
     frame = CGRectInset(frame, strokeWidth, strokeWidth)
     borderColor.set()
