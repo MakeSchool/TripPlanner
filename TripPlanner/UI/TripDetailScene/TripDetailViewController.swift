@@ -15,7 +15,7 @@ class TripDetailViewController: UIViewController {
   var coreDataClient: CoreDataClient!
   
   @IBOutlet var noWayPointsView: UIView!
-  @IBOutlet var someWayPointsView: UIView!
+  @IBOutlet var someWayPointsView: TripDetailView!
   var activeView: UIView!
   
   var currentWaypoint: Waypoint?
@@ -34,6 +34,7 @@ class TripDetailViewController: UIViewController {
       activeView = noWayPointsView
       view.addSubview(activeView)
     } else {
+      someWayPointsView.trip = trip
       activeView = someWayPointsView
       view.addSubview(activeView)
     }

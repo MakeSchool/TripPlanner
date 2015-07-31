@@ -9,7 +9,19 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CircularImageView" customModule="TripPlanner" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="460" height="456"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DI-gM-2si">
+                    <rect key="frame" x="134" y="181" width="194" height="96"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="80"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7DI-gM-2si" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Mtx-Kf-Hhq"/>
+                <constraint firstItem="7DI-gM-2si" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="biW-RO-HBR"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">

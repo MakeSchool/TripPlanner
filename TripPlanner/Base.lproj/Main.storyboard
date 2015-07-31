@@ -43,7 +43,7 @@
                         <attributedString key="userComments">
                             <fragment content="aasdsa asdd sadsd  adsda adsd adas">
                                 <attributes>
-                                    <font key="NSFont" metaFont="controlContent" size="11"/>
+                                    <font key="NSFont" metaFont="menu" size="11"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                 </attributes>
                             </fragment>
@@ -85,7 +85,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't added any waypoints to your trip!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjX-ih-6RE">
                             <rect key="frame" x="76" y="184" width="348" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqj-Qc-Y0Q">
@@ -104,10 +104,44 @@
                         <constraint firstItem="pqj-Qc-Y0Q" firstAttribute="centerY" secondItem="3t9-rM-gFj" secondAttribute="centerY" id="Jmc-uT-fiP"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" id="TsT-by-Whc">
+                <view contentMode="scaleToFill" id="TsT-by-Whc" customClass="TripDetailView" customModule="TripPlanner" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFx-yf-FCU" customClass="CircularImageView" customModule="TripPlanner" customModuleProvider="target">
+                            <rect key="frame" x="10" y="10" width="100" height="100"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="ET1-dY-uW2"/>
+                                <constraint firstAttribute="width" constant="100" id="dcz-me-ups"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="stuttgart.jpg"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="1" green="0.74208596370000002" blue="0.2526351698" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-1e-9RY">
+                            <rect key="frame" x="0.0" y="118" width="500" height="382"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="jFx-yf-FCU" firstAttribute="top" secondItem="TsT-by-Whc" secondAttribute="top" constant="10" id="4g2-Jw-jAI"/>
+                        <constraint firstItem="jFx-yf-FCU" firstAttribute="leading" secondItem="TsT-by-Whc" secondAttribute="leading" constant="10" id="5fC-ED-hgO"/>
+                        <constraint firstAttribute="bottom" secondItem="SHa-1e-9RY" secondAttribute="bottom" id="KEa-Ub-cD8"/>
+                        <constraint firstAttribute="trailing" secondItem="SHa-1e-9RY" secondAttribute="trailing" id="goe-24-iV6"/>
+                        <constraint firstItem="SHa-1e-9RY" firstAttribute="top" secondItem="jFx-yf-FCU" secondAttribute="bottom" constant="8" id="kca-YA-3lz"/>
+                        <constraint firstItem="SHa-1e-9RY" firstAttribute="leading" secondItem="TsT-by-Whc" secondAttribute="leading" id="pg7-vR-KhQ"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="tableView" destination="SHa-1e-9RY" id="3fW-XS-b3r"/>
+                    </connections>
                 </view>
             </objects>
             <point key="canvasLocation" x="1462" y="1856"/>
@@ -291,7 +325,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-Bk-pLD">
                                 <rect key="frame" x="219" y="256" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -332,4 +366,7 @@
             <point key="canvasLocation" x="-79" y="351"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="stuttgart.jpg" width="275" height="183"/>
+    </resources>
 </document>
