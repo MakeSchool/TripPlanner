@@ -66,8 +66,8 @@
 		62E931BC1B6ADE3600738950 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931BA1B6ADE3600738950 /* Trip+CoreDataProperties.swift */; };
 		62E931BD1B6ADE3600738950 /* Waypoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931BB1B6ADE3600738950 /* Waypoint+CoreDataProperties.swift */; };
 		62E931BF1B6AE4B800738950 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931BE1B6AE4B800738950 /* CoreDataExtensions.swift */; };
-		62E931C21B6C066300738950 /* TripDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931C11B6C066300738950 /* TripDetailInfo.swift */; };
-		62E931C41B6C067A00738950 /* TripDetailInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62E931C31B6C067A00738950 /* TripDetailInfo.xib */; };
+		62E931C21B6C066300738950 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931C11B6C066300738950 /* CircularImageView.swift */; };
+		62E931C41B6C067A00738950 /* CircularImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62E931C31B6C067A00738950 /* CircularImageView.xib */; };
 		62E931C71B6C0DEA00738950 /* stuttgart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62E931C61B6C0DEA00738950 /* stuttgart.jpg */; };
 		62EB5CB41B69743700801ABB /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB31B69743700801ABB /* AddWaypointViewController.swift */; };
 		62EB5CB61B69744D00801ABB /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB51B69744D00801ABB /* AddTripViewController.swift */; };
@@ -434,8 +434,8 @@
 		62E931BA1B6ADE3600738950 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62E931BB1B6ADE3600738950 /* Waypoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Waypoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62E931BE1B6AE4B800738950 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
-		62E931C11B6C066300738950 /* TripDetailInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailInfo.swift; sourceTree = "<group>"; };
-		62E931C31B6C067A00738950 /* TripDetailInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripDetailInfo.xib; sourceTree = "<group>"; };
+		62E931C11B6C066300738950 /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
+		62E931C31B6C067A00738950 /* CircularImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CircularImageView.xib; sourceTree = "<group>"; };
 		62E931C61B6C0DEA00738950 /* stuttgart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stuttgart.jpg; sourceTree = "<group>"; };
 		62EB5CB31B69743700801ABB /* AddWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		62EB5CB51B69744D00801ABB /* AddTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
@@ -869,8 +869,8 @@
 		62E931C01B6C065800738950 /* TripDetailInfo */ = {
 			isa = PBXGroup;
 			children = (
-				62E931C11B6C066300738950 /* TripDetailInfo.swift */,
-				62E931C31B6C067A00738950 /* TripDetailInfo.xib */,
+				62E931C11B6C066300738950 /* CircularImageView.swift */,
+				62E931C31B6C067A00738950 /* CircularImageView.xib */,
 			);
 			path = TripDetailInfo;
 			sourceTree = "<group>";
@@ -1303,7 +1303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */,
-				62E931C41B6C067A00738950 /* TripDetailInfo.xib in Resources */,
+				62E931C41B6C067A00738950 /* CircularImageView.xib in Resources */,
 				62E450321B66FDC8004C6CA3 /* Localizable.strings in Resources */,
 				623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */,
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,
@@ -1389,7 +1389,7 @@
 				623E47BE1B5F0686009F2863 /* CoreDataClient.swift in Sources */,
 				62E450131B66EC90004C6CA3 /* LocationSearchResult.swift in Sources */,
 				62E44FF01B66931C004C6CA3 /* HTTPClient.swift in Sources */,
-				62E931C21B6C066300738950 /* TripDetailInfo.swift in Sources */,
+				62E931C21B6C066300738950 /* CircularImageView.swift in Sources */,
 				62EB5CB61B69744D00801ABB /* AddTripViewController.swift in Sources */,
 				62EB5CB41B69743700801ABB /* AddWaypointViewController.swift in Sources */,
 				62E450141B66EC90004C6CA3 /* PlaceDetails.swift in Sources */,
