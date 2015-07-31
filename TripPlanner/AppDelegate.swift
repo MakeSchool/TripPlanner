@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var coreDataClient: CoreDataClient?
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {    
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     let coreDataStack = CoreDataStack(stackType: .SQLite)
     coreDataClient = CoreDataClient(stack: coreDataStack)
 

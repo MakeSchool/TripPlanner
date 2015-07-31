@@ -66,6 +66,9 @@
 		62E931BC1B6ADE3600738950 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931BA1B6ADE3600738950 /* Trip+CoreDataProperties.swift */; };
 		62E931BD1B6ADE3600738950 /* Waypoint+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931BB1B6ADE3600738950 /* Waypoint+CoreDataProperties.swift */; };
 		62E931BF1B6AE4B800738950 /* CoreDataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931BE1B6AE4B800738950 /* CoreDataExtensions.swift */; };
+		62E931C21B6C066300738950 /* TripDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E931C11B6C066300738950 /* TripDetailInfo.swift */; };
+		62E931C41B6C067A00738950 /* TripDetailInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 62E931C31B6C067A00738950 /* TripDetailInfo.xib */; };
+		62E931C71B6C0DEA00738950 /* stuttgart.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62E931C61B6C0DEA00738950 /* stuttgart.jpg */; };
 		62EB5CB41B69743700801ABB /* AddWaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB31B69743700801ABB /* AddWaypointViewController.swift */; };
 		62EB5CB61B69744D00801ABB /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB51B69744D00801ABB /* AddTripViewController.swift */; };
 		62EB5CB91B697A4400801ABB /* TripDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB5CB81B697A4400801ABB /* TripDetailViewController.swift */; };
@@ -431,6 +434,9 @@
 		62E931BA1B6ADE3600738950 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62E931BB1B6ADE3600738950 /* Waypoint+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Waypoint+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62E931BE1B6AE4B800738950 /* CoreDataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataExtensions.swift; sourceTree = "<group>"; };
+		62E931C11B6C066300738950 /* TripDetailInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailInfo.swift; sourceTree = "<group>"; };
+		62E931C31B6C067A00738950 /* TripDetailInfo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripDetailInfo.xib; sourceTree = "<group>"; };
+		62E931C61B6C0DEA00738950 /* stuttgart.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stuttgart.jpg; sourceTree = "<group>"; };
 		62EB5CB31B69743700801ABB /* AddWaypointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddWaypointViewController.swift; sourceTree = "<group>"; };
 		62EB5CB51B69744D00801ABB /* AddTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
 		62EB5CB81B697A4400801ABB /* TripDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailViewController.swift; sourceTree = "<group>"; };
@@ -620,6 +626,7 @@
 		62549B8C1B5D9FC000C148C4 = {
 			isa = PBXGroup;
 			children = (
+				62E931C51B6C0DB900738950 /* Resources */,
 				6204482C1B5DA52700219CD4 /* Frameworks */,
 				62549B971B5D9FC000C148C4 /* TripPlanner */,
 				62549BAF1B5D9FC000C148C4 /* TripPlannerTests */,
@@ -859,6 +866,24 @@
 			path = TripDetailScene;
 			sourceTree = "<group>";
 		};
+		62E931C01B6C065800738950 /* TripDetailInfo */ = {
+			isa = PBXGroup;
+			children = (
+				62E931C11B6C066300738950 /* TripDetailInfo.swift */,
+				62E931C31B6C067A00738950 /* TripDetailInfo.xib */,
+			);
+			path = TripDetailInfo;
+			sourceTree = "<group>";
+		};
+		62E931C51B6C0DB900738950 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				62E931C61B6C0DEA00738950 /* stuttgart.jpg */,
+			);
+			name = Resources;
+			path = TripPlanner/Resources;
+			sourceTree = "<group>";
+		};
 		62EB5CB11B69743700801ABB /* AddTripScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -878,6 +903,7 @@
 		62EB5CB71B697A3900801ABB /* TripDetailScene */ = {
 			isa = PBXGroup;
 			children = (
+				62E931C01B6C065800738950 /* TripDetailInfo */,
 				62EB5CB81B697A4400801ABB /* TripDetailViewController.swift */,
 			);
 			path = TripDetailScene;
@@ -1277,10 +1303,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */,
+				62E931C41B6C067A00738950 /* TripDetailInfo.xib in Resources */,
 				62E450321B66FDC8004C6CA3 /* Localizable.strings in Resources */,
 				623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */,
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,
 				628234551B6313E900FA098A /* google_maps_api.json in Resources */,
+				62E931C71B6C0DEA00738950 /* stuttgart.jpg in Resources */,
 				62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */,
 				62AA58001B67E1C8007DA8A4 /* google_maps_api_404.json in Resources */,
 			);
@@ -1361,6 +1389,7 @@
 				623E47BE1B5F0686009F2863 /* CoreDataClient.swift in Sources */,
 				62E450131B66EC90004C6CA3 /* LocationSearchResult.swift in Sources */,
 				62E44FF01B66931C004C6CA3 /* HTTPClient.swift in Sources */,
+				62E931C21B6C066300738950 /* TripDetailInfo.swift in Sources */,
 				62EB5CB61B69744D00801ABB /* AddTripViewController.swift in Sources */,
 				62EB5CB41B69743700801ABB /* AddWaypointViewController.swift in Sources */,
 				62E450141B66EC90004C6CA3 /* PlaceDetails.swift in Sources */,
