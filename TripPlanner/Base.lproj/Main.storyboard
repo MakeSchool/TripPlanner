@@ -126,19 +126,34 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-1e-9RY">
-                            <rect key="frame" x="0.0" y="118" width="500" height="382"/>
+                            <rect key="frame" x="0.0" y="144" width="500" height="356"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8o2-pt-XXz">
+                            <rect key="frame" x="180" y="106" width="140" height="30"/>
+                            <state key="normal" title="Add more waypoints"/>
+                            <connections>
+                                <segue destination="fWi-4J-gYd" kind="presentation" identifier="AddWaypointSegue" id="HeX-Li-29K"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="jFx-yf-FCU" firstAttribute="top" secondItem="TsT-by-Whc" secondAttribute="top" constant="10" id="4g2-Jw-jAI"/>
                         <constraint firstItem="jFx-yf-FCU" firstAttribute="leading" secondItem="TsT-by-Whc" secondAttribute="leading" constant="10" id="5fC-ED-hgO"/>
+                        <constraint firstItem="8o2-pt-XXz" firstAttribute="top" secondItem="jFx-yf-FCU" secondAttribute="bottom" constant="-4" id="HDb-7u-Y1f"/>
+                        <constraint firstItem="8o2-pt-XXz" firstAttribute="centerX" secondItem="TsT-by-Whc" secondAttribute="centerX" id="IJe-x9-qjn"/>
                         <constraint firstAttribute="bottom" secondItem="SHa-1e-9RY" secondAttribute="bottom" id="KEa-Ub-cD8"/>
                         <constraint firstAttribute="trailing" secondItem="SHa-1e-9RY" secondAttribute="trailing" id="goe-24-iV6"/>
-                        <constraint firstItem="SHa-1e-9RY" firstAttribute="top" secondItem="jFx-yf-FCU" secondAttribute="bottom" constant="8" id="kca-YA-3lz"/>
+                        <constraint firstItem="SHa-1e-9RY" firstAttribute="top" secondItem="jFx-yf-FCU" secondAttribute="bottom" constant="34" id="kca-YA-3lz"/>
                         <constraint firstItem="SHa-1e-9RY" firstAttribute="leading" secondItem="TsT-by-Whc" secondAttribute="leading" id="pg7-vR-KhQ"/>
+                        <constraint firstItem="SHa-1e-9RY" firstAttribute="top" secondItem="8o2-pt-XXz" secondAttribute="bottom" constant="8" id="ulp-5M-snr"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ulp-5M-snr"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <outlet property="tableView" destination="SHa-1e-9RY" id="3fW-XS-b3r"/>
                     </connections>
@@ -369,4 +384,7 @@
     <resources>
         <image name="stuttgart.jpg" width="275" height="183"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iRi-42-kvG"/>
+    </inferredMetricsTieBreakers>
 </document>

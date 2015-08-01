@@ -13,7 +13,7 @@ class WaypointTableViewCell: UITableViewCell, TableViewCellProtocol {
   var model: Waypoint? {
     didSet {
       if let model = model {
-        self.textLabel!.text = "Test Entry"
+        self.textLabel!.text = model.name
       }
     }
   }
