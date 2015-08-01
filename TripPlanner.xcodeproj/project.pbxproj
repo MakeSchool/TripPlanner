@@ -39,6 +39,7 @@
 		62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */; };
 		62C5876C1B6C29B200C28E2F /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C5876B1B6C29B200C28E2F /* TripDetailView.swift */; };
+		62C587911B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C587901B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift */; };
 		62DA35631B62F73C0041048D /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35541B62F70C0041048D /* Argo.framework */; };
 		62DA35711B62F7420041048D /* Argo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35541B62F70C0041048D /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62DA35961B62FE2D0041048D /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA358F1B62FE1F0041048D /* Runes.framework */; };
@@ -410,6 +411,7 @@
 		62B82AAE1B6045BA00F919DA /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerManagedObject.swift; sourceTree = "<group>"; };
 		62C5876B1B6C29B200C28E2F /* TripDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		62C587901B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
 		62DA354C1B62F70C0041048D /* Argo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Argo.xcodeproj; path = Carthage/Checkouts/Argo/Argo.xcodeproj; sourceTree = "<group>"; };
 		62DA35761B62FE1F0041048D /* Runes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Runes.xcodeproj; path = Carthage/Checkouts/Runes/Runes.xcodeproj; sourceTree = "<group>"; };
 		62DA35981B62FE830041048D /* Box.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Box.xcodeproj; path = Carthage/Checkouts/Box/Box.xcodeproj; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 		62549B971B5D9FC000C148C4 /* TripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				62C5878F1B6C447B00C28E2F /* SwiftExtensions */,
 				62E4501E1B66FCBC004C6CA3 /* Localization */,
 				62E450191B66F107004C6CA3 /* ErrorHandling */,
 				62E44FEE1B6692FB004C6CA3 /* HTTPClient */,
@@ -744,6 +747,14 @@
 				62AA58241B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift */,
 			);
 			path = LocationSearch;
+			sourceTree = "<group>";
+		};
+		62C5878F1B6C447B00C28E2F /* SwiftExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				62C587901B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift */,
+			);
+			path = SwiftExtensions;
 			sourceTree = "<group>";
 		};
 		62DA354D1B62F70C0041048D /* Products */ = {
@@ -1412,6 +1423,7 @@
 				62C5876C1B6C29B200C28E2F /* TripDetailView.swift in Sources */,
 				62E4501D1B66F708004C6CA3 /* UserPresentableError.swift in Sources */,
 				62E4501B1B66F11F004C6CA3 /* DefaultErrorHandler.swift in Sources */,
+				62C587911B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift in Sources */,
 				62E9319E1B6A91D600738950 /* Storyboard.swift in Sources */,
 				623E47BA1B5EF935009F2863 /* TripMainTableViewCell.swift in Sources */,
 				62549B991B5D9FC000C148C4 /* AppDelegate.swift in Sources */,

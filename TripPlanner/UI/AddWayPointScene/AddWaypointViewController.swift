@@ -42,6 +42,7 @@ class AddWaypointViewController: UIViewController {
     didSet {
       mapViewDecorator.displayedLocation = displayedLocation
       waypoint?.name = displayedLocation?.locationSearchEntry.placeDescription
+      waypoint?.location = displayedLocation?.location
     }
   }
   

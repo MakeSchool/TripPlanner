@@ -152,12 +152,13 @@ class AddWaypointViewControllerSpec: QuickSpec {
             
             let stack = CoreDataStack(stackType: .InMemory)
             let client = CoreDataClient(stack: stack)
-            let (waypoint, _) = client.createObjectInTemporaryContext(Waypoint.self)
+            let (waypoint, temporaryContext) = client.createObjectInTemporaryContext(Waypoint.self)
 
             addWaypointViewController.waypoint = waypoint
             addWaypointViewController.displayedLocation = placeWithLocation
             
             expect(waypoint.name).to(equal("Stockton, SF"))
+            expect(waypoint.location).to(equal(placeWithLocation.location))
           }
         }
       }

@@ -27,9 +27,12 @@ final class Waypoint: NSManagedObject, TripPlannerManagedObject {
     }
     
     set {
-      if let location = location {
+      if let location = newValue {
         self.latitude = location.latitude
         self.longitude = location.longitude
+      } else {
+        self.latitude = nil
+        self.longitude = nil
       }
     }
   }
