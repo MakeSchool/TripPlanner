@@ -27,6 +27,8 @@
 		62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62549BA21B5D9FC000C148C4 /* Assets.xcassets */; };
 		62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549BA41B5D9FC000C148C4 /* LaunchScreen.storyboard */; };
 		62549BBC1B5D9FC000C148C4 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */; };
+		6263CC431B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6263CC421B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift */; };
+		6263CC461B754D54003BA0FF /* WaypointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6263CC451B754D54003BA0FF /* WaypointDetailViewController.swift */; };
 		626671281B61B200006A1A2B /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626671271B61B200006A1A2B /* LocationSearch.swift */; };
 		628234551B6313E900FA098A /* google_maps_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 628234531B6313E900FA098A /* google_maps_api.json */; };
 		62A2C8E91B6188EE008CF3B1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8D51B61889B008CF3B1 /* Quick.framework */; };
@@ -398,6 +400,8 @@
 		62549BB71B5D9FC000C148C4 /* TripPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62549BBB1B5D9FC000C148C4 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		62549BBD1B5D9FC000C148C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6263CC421B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointDetailViewControllerSpec.swift; sourceTree = "<group>"; };
+		6263CC451B754D54003BA0FF /* WaypointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointDetailViewController.swift; sourceTree = "<group>"; };
 		626671271B61B200006A1A2B /* LocationSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
 		628234531B6313E900FA098A /* google_maps_api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = google_maps_api.json; sourceTree = "<group>"; };
 		62A2C8C51B61889B008CF3B1 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
@@ -567,6 +571,7 @@
 		623E47651B5EC590009F2863 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6263CC1F1B754CAE003BA0FF /* WaypointDetailScene */,
 				62E931981B6A87C100738950 /* TripDetailScene */,
 				62E931921B6A85EC00738950 /* AddTripScene */,
 				62E931941B6A85EC00738950 /* AddWaypoint */,
@@ -599,6 +604,7 @@
 		623E47B41B5EF900009F2863 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6263CC441B754D48003BA0FF /* WaypointDetailViewControllerScene */,
 				62E9319D1B6A91D600738950 /* Storyboard.swift */,
 				62EB5CB71B697A3900801ABB /* TripDetailScene */,
 				62EB5CB11B69743700801ABB /* AddTripScene */,
@@ -690,6 +696,22 @@
 				62549BBD1B5D9FC000C148C4 /* Info.plist */,
 			);
 			path = TripPlannerUITests;
+			sourceTree = "<group>";
+		};
+		6263CC1F1B754CAE003BA0FF /* WaypointDetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				6263CC421B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift */,
+			);
+			path = WaypointDetailScene;
+			sourceTree = "<group>";
+		};
+		6263CC441B754D48003BA0FF /* WaypointDetailViewControllerScene */ = {
+			isa = PBXGroup;
+			children = (
+				6263CC451B754D54003BA0FF /* WaypointDetailViewController.swift */,
+			);
+			path = WaypointDetailViewControllerScene;
 			sourceTree = "<group>";
 		};
 		626671191B61B1F5006A1A2B /* BusinessLogic */ = {
@@ -1420,6 +1442,7 @@
 				62E44FF71B66BA29004C6CA3 /* LocationSearchMapViewDecorator.swift in Sources */,
 				626671281B61B200006A1A2B /* LocationSearch.swift in Sources */,
 				62E44FFD1B66E515004C6CA3 /* PlaceWithLocation+MKAnnotation.swift in Sources */,
+				6263CC461B754D54003BA0FF /* WaypointDetailViewController.swift in Sources */,
 				62C5876C1B6C29B200C28E2F /* TripDetailView.swift in Sources */,
 				62E4501D1B66F708004C6CA3 /* UserPresentableError.swift in Sources */,
 				62E4501B1B66F11F004C6CA3 /* DefaultErrorHandler.swift in Sources */,
@@ -1444,6 +1467,7 @@
 				62AA58251B67F1D0007DA8A4 /* LocationSearchMapViewDecoratorSpec.swift in Sources */,
 				62E9319A1B6A87EE00738950 /* TripDetailViewControllerSpec.swift in Sources */,
 				62A2C8EF1B61A228008CF3B1 /* CoreDataClientSpec.swift in Sources */,
+				6263CC431B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift in Sources */,
 				62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
