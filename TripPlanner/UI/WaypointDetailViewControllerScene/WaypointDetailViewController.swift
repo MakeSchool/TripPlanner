@@ -7,7 +7,23 @@
 //
 
 import UIKit
+import MapKit
 
 class WaypointDetailViewController: UIViewController {
+  
+  @IBOutlet var mapView: MKMapView!
+  
+  var waypoint: Waypoint?
+  
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    guard let selectedWaypoint = waypoint else {
+      assertionFailure("WaypointDetailViewController needs trip assigned before viewWillAppear is called")
+      return
+    }
+    
+    navigationItem.title = selectedWaypoint.name
+  }
   
 }

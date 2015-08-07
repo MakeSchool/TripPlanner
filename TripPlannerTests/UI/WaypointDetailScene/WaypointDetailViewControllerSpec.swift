@@ -11,6 +11,7 @@ import Foundation
 import Quick
 import Nimble
 import UIKit
+import CoreData
 
 @testable import TripPlanner
 
@@ -20,22 +21,38 @@ class WaypointDetailViewControllerSpec: QuickSpec {
     
     describe("WaypointDetailViewController") {
       var waypointDetailViewController: WaypointDetailViewController!
+      var stack: CoreDataStack!
       
       beforeEach {
         waypointDetailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("WaypointDetailViewController") as! WaypointDetailViewController
         // force view to be loaded, so we can check for outlets
         let _ = waypointDetailViewController.view
+        
+        stack = CoreDataStack(stackType: .InMemory)
       }
       
+      describe("IBOutlets") {
+        
+        it("has a MapView") {
+          expect(waypointDetailViewController.mapView).notTo(beNil())
+        }
+        
+      }
       
       describe("viewWillAppear") {
         
-        beforeEach {
+        it("updates the naviation item to reflect the selected location") {
+          let waypoint = Waypoint(context: stack.managedObjectContext)
+          waypoint.name = "Market Street, San Francisco"
+          
+          waypointDetailViewController.waypoint = waypoint
           waypointDetailViewController.viewWillAppear(false)
+          
+          expect(waypointDetailViewController.navigationItem.title).to(equal(waypoint.name))
         }
         
-        it("updates the naviation item to reflect the selected location") {
-          expect(waypointDetailViewController.navigationItem.title).to(equal(""))
+        it("highlights the selected location on the map") {
+          
         }
         
       }
