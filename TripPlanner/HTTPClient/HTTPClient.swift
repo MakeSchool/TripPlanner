@@ -60,7 +60,7 @@ struct HTTPClient {
       }
     }
     
-    let task = session.dataTaskWithRequest(request){ (data, response, error) -> Void in
+    let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
       if let httpResponse = response as? NSHTTPURLResponse {
         if httpResponse.statusCode == 200 {
           if let responseData = data {
