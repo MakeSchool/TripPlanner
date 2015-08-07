@@ -26,7 +26,10 @@ class TripDetailViewController: UIViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     
-    guard let selectedTrip = trip else { return }
+    guard let selectedTrip = trip else {
+      assertionFailure("TripDetailViewControllerneeds trip assigned before viewWillAppear is called")
+      return
+    }
     
     navigationItem.title = selectedTrip.locationDescription
     

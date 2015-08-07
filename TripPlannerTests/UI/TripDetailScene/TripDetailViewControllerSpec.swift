@@ -97,6 +97,7 @@ class TripDetailViewControllerSpec: QuickSpec {
           
           let coreDataClientMock = CoreDataClientMock(stack: stack)
           tripDetailViewController.coreDataClient = coreDataClientMock
+          tripDetailViewController.trip = Trip(context: stack.managedObjectContext)
           
           tripDetailViewController.viewWillAppear(false)
           //TODO: look into getting segue from Storyboard instead of instantiating it here
