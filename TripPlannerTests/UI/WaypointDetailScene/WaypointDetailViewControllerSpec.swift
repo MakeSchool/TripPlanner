@@ -39,6 +39,14 @@ class WaypointDetailViewControllerSpec: QuickSpec {
         
       }
       
+      describe("viewDidLoad") {
+        
+        it("sets up a MapViewDecorator") {
+          expect(waypointDetailViewController.mapViewDecorator).notTo(beNil())
+        }
+        
+      }
+      
       describe("viewWillAppear") {
         
         it("updates the naviation item to reflect the selected location") {

@@ -12,8 +12,15 @@ import MapKit
 class WaypointDetailViewController: UIViewController {
   
   @IBOutlet var mapView: MKMapView!
+  var mapViewDecorator: LocationSearchMapViewDecorator!
   
   var waypoint: Waypoint?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    mapViewDecorator = LocationSearchMapViewDecorator(mapView: mapView)
+  }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)

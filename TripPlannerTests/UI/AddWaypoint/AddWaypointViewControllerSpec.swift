@@ -31,6 +31,7 @@ class AddWaypointViewControllerSpec: QuickSpec {
         it("has outlets set up correctly") {
           expect(addWaypointViewController.tableView).notTo(beNil())
           expect(addWaypointViewController.mapView).notTo(beNil())
+          expect(addWaypointViewController.mapViewDecorator).notTo(beNil())
         }
       }
       
