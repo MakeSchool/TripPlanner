@@ -31,6 +31,7 @@ class WaypointDetailViewController: UIViewController {
     }
     
     navigationItem.title = selectedWaypoint.name
+    mapViewDecorator.displayedWaypoint = waypoint
   }
   
 }

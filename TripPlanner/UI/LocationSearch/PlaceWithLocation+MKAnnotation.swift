@@ -30,6 +30,4 @@ class PlaceWithLocationAnnotation: NSObject, MKAnnotation {
     }
   }
 
-//  optional var subtitle: String? { get }
-
 }

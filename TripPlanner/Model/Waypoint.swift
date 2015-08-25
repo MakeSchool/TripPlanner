@@ -9,8 +9,9 @@
 import Foundation
 import CoreData
 import CoreLocation
+import MapKit
 
-final class Waypoint: NSManagedObject, TripPlannerManagedObject {
+final class Waypoint: NSManagedObject, TripPlannerManagedObject, MKAnnotation {
 
   convenience init(context: NSManagedObjectContext) {
     let entityDescription = NSEntityDescription.entityForName("Waypoint", inManagedObjectContext: context)!
@@ -36,5 +37,20 @@ final class Waypoint: NSManagedObject, TripPlannerManagedObject {
       }
     }
   }
+  
+  //MARK: MKAnnotation
+  
+  var coordinate: CLLocationCoordinate2D {
+    get {
+      return location!
+    }
+  }
+  
+  var title: String? {
+    get {
+      return name
+    }
+  }
 
 }
+

@@ -60,7 +60,28 @@ class WaypointDetailViewControllerSpec: QuickSpec {
         }
         
         it("highlights the selected location on the map") {
+          class LocationSearchMapViewDecoratorMock: LocationSearchMapViewDecorator {
+            var setWaypoint: Waypoint?
+            
+            override var displayedWaypoint: Waypoint? {
+              didSet {
+                setWaypoint = displayedWaypoint
+              }
+            }
+          }
           
+          let waypoint = Waypoint(context: stack.managedObjectContext)
+          waypoint.name = "Market Street, San Francisco"
+          waypoint.longitude = 10
+          waypoint.latitude = 10
+          
+          let mockMapViewDecorator = LocationSearchMapViewDecoratorMock(mapView: waypointDetailViewController.mapView)
+          
+          waypointDetailViewController.mapViewDecorator = mockMapViewDecorator
+          waypointDetailViewController.waypoint = waypoint
+          waypointDetailViewController.viewWillAppear(false)
+
+          expect(mockMapViewDecorator.setWaypoint).to(equal(waypoint))
         }
         
       }
