@@ -19,10 +19,17 @@ class WaypointTableViewCell: UITableViewCell, TableViewCellProtocol {
   }
 }
 
+protocol TripDetailViewDelegate: class {
+  
+  func tripDetailView(tripDetailView: TripDetailView, selectedWaypoint: Waypoint)
+  
+}
+
 class TripDetailView: UIView {
   
   @IBOutlet var tableView: UITableView!
   var arrayDataSource: ArrayDataSource<WaypointTableViewCell, Waypoint>!
+  weak var delegate: TripDetailViewDelegate?
   
   var trip: Trip? {
     didSet {
@@ -33,10 +40,19 @@ class TripDetailView: UIView {
         if let waypointsArray = waypointsArray {
           arrayDataSource = ArrayDataSource(array: waypointsArray, cellType:WaypointTableViewCell.self)
           tableView.dataSource = arrayDataSource
+          tableView.delegate = self
         }
       }
     }
   }
+}
 
+extension TripDetailView: UITableViewDelegate {
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    let selectedWaypoint = arrayDataSource.array[indexPath.row]
+    delegate?.tripDetailView(self, selectedWaypoint: selectedWaypoint)
+  }
+  
 }
 

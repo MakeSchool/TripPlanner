@@ -97,3 +97,11 @@ class TripDetailViewController: UIViewController {
   }
   
 }
+
+extension TripDetailViewController: TripDetailViewDelegate {
+  
+  func tripDetailView(tripDetailView: TripDetailView, selectedWaypoint: Waypoint) {
+    performSegueWithIdentifier("ShowWaypointDetails", sender: self)
+  }
+  
+}

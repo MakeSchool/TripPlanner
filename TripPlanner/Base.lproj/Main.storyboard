@@ -75,6 +75,7 @@
                     <connections>
                         <outlet property="noWayPointsView" destination="3t9-rM-gFj" id="l0m-7F-ZIo"/>
                         <outlet property="someWayPointsView" destination="TsT-by-Whc" id="8Ti-ju-Dmx"/>
+                        <segue destination="rOD-TK-du5" kind="show" identifier="ShowWaypointDetails" id="So9-Wz-VKi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vsb-iH-hEy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,7 +333,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4LO-SX-zaj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1936" y="1986"/>
+            <point key="canvasLocation" x="1464" y="2038"/>
         </scene>
         <!--Add Trip View Controller-->
         <scene sceneID="JzZ-ur-rxz">
