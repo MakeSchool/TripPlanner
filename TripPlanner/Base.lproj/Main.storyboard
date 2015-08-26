@@ -310,25 +310,38 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4jX-Jz-Yfn">
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMI-Hg-oA7">
+                                <rect key="frame" x="279" y="109" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4jX-Jz-Yfn" firstAttribute="leading" secondItem="BTy-va-6U5" secondAttribute="leading" id="0ey-wf-Mow"/>
+                            <constraint firstItem="bMI-Hg-oA7" firstAttribute="top" secondItem="g47-VB-frM" secondAttribute="bottom" constant="45" id="3Md-uw-3Xt"/>
+                            <constraint firstItem="bMI-Hg-oA7" firstAttribute="centerX" secondItem="BTy-va-6U5" secondAttribute="centerX" id="KyW-oU-Onm"/>
+                            <constraint firstItem="bMI-Hg-oA7" firstAttribute="top" secondItem="g47-VB-frM" secondAttribute="bottom" constant="109" id="Ncf-L5-9Ml"/>
                             <constraint firstItem="4jX-Jz-Yfn" firstAttribute="leading" secondItem="BTy-va-6U5" secondAttribute="leadingMargin" id="RHQ-2k-oZf"/>
                             <constraint firstItem="7Yt-cF-SQj" firstAttribute="top" secondItem="4jX-Jz-Yfn" secondAttribute="bottom" id="iMG-wx-INa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4jX-Jz-Yfn" secondAttribute="trailing" id="qHT-tC-RD1"/>
+                            <constraint firstItem="4jX-Jz-Yfn" firstAttribute="top" secondItem="bMI-Hg-oA7" secondAttribute="bottom" constant="106" id="uAO-p6-1VW"/>
                             <constraint firstAttribute="trailing" secondItem="4jX-Jz-Yfn" secondAttribute="trailing" id="uVu-0F-kvA"/>
                             <constraint firstItem="4jX-Jz-Yfn" firstAttribute="height" secondItem="BTy-va-6U5" secondAttribute="height" multiplier="0.5" id="uom-Ny-dk5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Ncf-L5-9Ml"/>
                                 <exclude reference="RHQ-2k-oZf"/>
                                 <exclude reference="qHT-tC-RD1"/>
+                                <exclude reference="uAO-p6-1VW"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="4jX-Jz-Yfn" id="5N9-X3-rb1"/>
+                        <outlet property="waypointDescriptionLabel" destination="bMI-Hg-oA7" id="bw5-me-Mqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4LO-SX-zaj" userLabel="First Responder" sceneMemberID="firstResponder"/>

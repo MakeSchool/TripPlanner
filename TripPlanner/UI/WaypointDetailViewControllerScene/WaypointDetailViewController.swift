@@ -14,6 +14,7 @@ class WaypointDetailViewController: UIViewController {
   @IBOutlet var mapView: MKMapView!
   var mapViewDecorator: LocationSearchMapViewDecorator!
   
+  @IBOutlet var waypointDescriptionLabel: UILabel!
   var waypoint: Waypoint?
   
   override func viewDidLoad() {
@@ -31,6 +32,7 @@ class WaypointDetailViewController: UIViewController {
     }
     
     navigationItem.title = selectedWaypoint.name
+    waypointDescriptionLabel.text = selectedWaypoint.name
     mapViewDecorator.displayedWaypoint = waypoint
   }
   

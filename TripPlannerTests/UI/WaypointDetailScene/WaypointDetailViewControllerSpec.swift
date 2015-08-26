@@ -37,6 +37,10 @@ class WaypointDetailViewControllerSpec: QuickSpec {
           expect(waypointDetailViewController.mapView).notTo(beNil())
         }
         
+        it("has a WaypointDescriptionLabel") {
+          expect(waypointDetailViewController.waypointDescriptionLabel).notTo(beNil())
+        }
+        
       }
       
       describe("viewDidLoad") {
@@ -57,6 +61,16 @@ class WaypointDetailViewControllerSpec: QuickSpec {
           waypointDetailViewController.viewWillAppear(false)
           
           expect(waypointDetailViewController.navigationItem.title).to(equal(waypoint.name))
+        }
+        
+        it("updates the WaypointDescriptionLabel to reflect the selected location") {
+          let waypoint = Waypoint(context: stack.managedObjectContext)
+          waypoint.name = "Market Street, San Francisco"
+          
+          waypointDetailViewController.waypoint = waypoint
+          waypointDetailViewController.viewWillAppear(false)
+          
+          expect(waypointDetailViewController.waypointDescriptionLabel.text).to(equal(waypoint.name))
         }
         
         it("highlights the selected location on the map") {

@@ -110,7 +110,7 @@ class TripDetailViewControllerSpec: QuickSpec {
             
             tripDetailViewController.tripDetailView(tripDetailView, selectedWaypoint: waypoint)
             
-            expect(tripDetailView.)
+//            expect(tripDetailView.)
           }
           
         }
