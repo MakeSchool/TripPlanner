@@ -72,7 +72,7 @@ class TripDetailViewControllerSpec: QuickSpec {
             expect(tripDetailViewController.view.subviews.contains(tripDetailViewController.someWayPointsView)).to(beTrue())
           }
           
-          it("pushes WaypointDetailViewController when a waypoint is selected") {
+          it("triggers segue when a waypoint is selected") {
             // create waypoint
             let waypoint = Waypoint(context: coreDataClient.context)
             trip.addObject(waypoint, forKey: "waypoints")
@@ -93,9 +93,24 @@ class TripDetailViewControllerSpec: QuickSpec {
             tripDetailView.tableView = UITableView()
             mockTripDetailViewController.someWayPointsView = tripDetailView
             mockTripDetailViewController.viewWillAppear(false)
-            mockTripDetailViewController.tripDetailView(TripDetailView(), selectedWaypoint: waypoint)
+            mockTripDetailViewController.tripDetailView(tripDetailView, selectedWaypoint: waypoint)
             
             expect(mockTripDetailViewController.segueIdentifier).to(equal("ShowWaypointDetails"))
+          }
+          
+          it("assigns a waypoint to the TripDetailView when detail segue is trigerred") {
+            // create waypoint
+            let waypoint = Waypoint(context: coreDataClient.context)
+            trip.addObject(waypoint, forKey: "waypoints")
+            stack.save()
+            
+            let tripDetailView = TripDetailView()
+            tripDetailViewController.activeView = tripDetailView
+            tripDetailView.delegate = tripDetailViewController
+            
+            tripDetailViewController.tripDetailView(tripDetailView, selectedWaypoint: waypoint)
+            
+            expect(tripDetailView.)
           }
           
         }

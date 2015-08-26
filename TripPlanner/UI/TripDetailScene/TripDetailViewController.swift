@@ -39,6 +39,7 @@ class TripDetailViewController: UIViewController {
     } else {
       someWayPointsView.trip = trip
       activeView = someWayPointsView
+      (activeView as? TripDetailView)?.delegate = self
       view.addSubview(activeView)
     }
   
@@ -67,6 +68,11 @@ class TripDetailViewController: UIViewController {
       let addWayPointViewController = segue.destinationViewController as? AddWaypointViewController
       if let addWayPointViewController = addWayPointViewController {
         prepareNewWayPointPresentation(addWayPointViewController)
+      }
+    } else if (segue.identifier == Storyboard.Main.TripDetailViewController.Segues.ShowWaypointDetails) {
+      let waypointDetailViewController = segue.destinationViewController as? WaypointDetailViewController
+      if let waypointDetailViewController = waypointDetailViewController {
+        waypointDetailViewController.waypoint = currentWaypoint
       }
     }
   }
@@ -101,7 +107,9 @@ class TripDetailViewController: UIViewController {
 extension TripDetailViewController: TripDetailViewDelegate {
   
   func tripDetailView(tripDetailView: TripDetailView, selectedWaypoint: Waypoint) {
-    performSegueWithIdentifier("ShowWaypointDetails", sender: self)
+    currentWaypoint = selectedWaypoint
+
+    performSegueWithIdentifier(Storyboard.Main.TripDetailViewController.Segues.ShowWaypointDetails, sender: self)
   }
   
 }

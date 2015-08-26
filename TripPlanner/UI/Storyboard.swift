@@ -32,6 +32,7 @@ struct Storyboard {
       
       struct Segues {
         static let AddWaypointSegue = "AddWaypointSegue"
+        static let ShowWaypointDetails = "ShowWaypointDetails"
       }
     }
     
