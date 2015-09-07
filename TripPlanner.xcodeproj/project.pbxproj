@@ -44,8 +44,6 @@
 		62C587911B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C587901B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift */; };
 		62DA35631B62F73C0041048D /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35541B62F70C0041048D /* Argo.framework */; };
 		62DA35711B62F7420041048D /* Argo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35541B62F70C0041048D /* Argo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		62DA35961B62FE2D0041048D /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA358F1B62FE1F0041048D /* Runes.framework */; };
-		62DA35971B62FE340041048D /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA358F1B62FE1F0041048D /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62DA35A71B62FE8E0041048D /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35A41B62FE840041048D /* Box.framework */; };
 		62DA35A91B62FE9B0041048D /* Box.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62DA35A41B62FE840041048D /* Box.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62E44FF01B66931C004C6CA3 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E44FEF1B66931C004C6CA3 /* HTTPClient.swift */; };
@@ -80,6 +78,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		622CB3851B9E45BF0072E8AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62DA354C1B62F70C0041048D /* Argo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0592EB61B77DD7800EFEF39;
+			remoteInfo = "Argo-watchOS";
+		};
 		623DA89A1B630B4B00D8BF61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */;
@@ -262,34 +267,6 @@
 			remoteGlobalIDString = F893355E1A4CE83000B88685;
 			remoteInfo = "Argo-MacTests";
 		};
-		62DA358E1B62FE1F0041048D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62DA35761B62FE1F0041048D /* Runes.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F802D4D21A5F218E005E236C;
-			remoteInfo = "Runes-iOS";
-		};
-		62DA35901B62FE1F0041048D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62DA35761B62FE1F0041048D /* Runes.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F86B2E0B1A5F2B8D00C3B8BD;
-			remoteInfo = "Runes-Mac";
-		};
-		62DA35921B62FE1F0041048D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62DA35761B62FE1F0041048D /* Runes.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8624C261A645A9600C883B3;
-			remoteInfo = "Runes-iOS Tests";
-		};
-		62DA35941B62FE1F0041048D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 62DA35761B62FE1F0041048D /* Runes.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8624C451A645C9500C883B3;
-			remoteInfo = "Runes-Mac Tests";
-		};
 		62DA359F1B62FE840041048D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 62DA35981B62FE830041048D /* Box.xcodeproj */;
@@ -366,7 +343,6 @@
 			files = (
 				623DA8B61B630B6600D8BF61 /* DVR.framework in Embed Frameworks */,
 				62DA35A91B62FE9B0041048D /* Box.framework in Embed Frameworks */,
-				62DA35971B62FE340041048D /* Runes.framework in Embed Frameworks */,
 				62DA35711B62F7420041048D /* Argo.framework in Embed Frameworks */,
 				62B82AA31B6020EE00F919DA /* ListKit.framework in Embed Frameworks */,
 			);
@@ -417,7 +393,6 @@
 		62C5876B1B6C29B200C28E2F /* TripDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		62C587901B6C449400C28E2F /* CLLocationCoordinate2D+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Equatable.swift"; sourceTree = "<group>"; };
 		62DA354C1B62F70C0041048D /* Argo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Argo.xcodeproj; path = Carthage/Checkouts/Argo/Argo.xcodeproj; sourceTree = "<group>"; };
-		62DA35761B62FE1F0041048D /* Runes.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Runes.xcodeproj; path = Carthage/Checkouts/Runes/Runes.xcodeproj; sourceTree = "<group>"; };
 		62DA35981B62FE830041048D /* Box.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Box.xcodeproj; path = Carthage/Checkouts/Box/Box.xcodeproj; sourceTree = "<group>"; };
 		62E44FEF1B66931C004C6CA3 /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		62E44FF31B66B783004C6CA3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -461,7 +436,6 @@
 				62E44FF41B66B783004C6CA3 /* MapKit.framework in Frameworks */,
 				623DA8B51B630B5E00D8BF61 /* DVR.framework in Frameworks */,
 				62DA35A71B62FE8E0041048D /* Box.framework in Frameworks */,
-				62DA35961B62FE2D0041048D /* Runes.framework in Frameworks */,
 				62DA35631B62F73C0041048D /* Argo.framework in Frameworks */,
 				623E47B31B5EF860009F2863 /* ListKit.framework in Frameworks */,
 				D267FD7370398E8909A2DA7F /* Pods.framework in Frameworks */,
@@ -505,7 +479,6 @@
 				62E44FF31B66B783004C6CA3 /* MapKit.framework */,
 				623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */,
 				62DA35981B62FE830041048D /* Box.xcodeproj */,
-				62DA35761B62FE1F0041048D /* Runes.xcodeproj */,
 				62DA354C1B62F70C0041048D /* Argo.xcodeproj */,
 				62A2C8DA1B6188A4008CF3B1 /* Nimble.xcodeproj */,
 				62A2C8C51B61889B008CF3B1 /* Quick.xcodeproj */,
@@ -786,17 +759,7 @@
 				62DA35561B62F70C0041048D /* ArgoTests.xctest */,
 				62DA35581B62F70C0041048D /* Argo.framework */,
 				62DA355A1B62F70C0041048D /* Argo-MacTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		62DA35771B62FE1F0041048D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				62DA358F1B62FE1F0041048D /* Runes.framework */,
-				62DA35911B62FE1F0041048D /* Runes.framework */,
-				62DA35931B62FE1F0041048D /* Runes-iOS Tests.xctest */,
-				62DA35951B62FE1F0041048D /* Runes-Mac Tests.xctest */,
+				622CB3861B9E45BF0072E8AC /* Argo.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1071,10 +1034,6 @@
 					ProductGroup = 62E44FFF1B66EB25004C6CA3 /* Products */;
 					ProjectRef = 62E44FFE1B66EB25004C6CA3 /* Result.xcodeproj */;
 				},
-				{
-					ProductGroup = 62DA35771B62FE1F0041048D /* Products */;
-					ProjectRef = 62DA35761B62FE1F0041048D /* Runes.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1086,6 +1045,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		622CB3861B9E45BF0072E8AC /* Argo.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Argo.framework;
+			remoteRef = 622CB3851B9E45BF0072E8AC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		623DA89B1B630B4B00D8BF61 /* DVR.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1245,34 +1211,6 @@
 			fileType = wrapper.cfbundle;
 			path = "Argo-MacTests.xctest";
 			remoteRef = 62DA35591B62F70C0041048D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		62DA358F1B62FE1F0041048D /* Runes.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Runes.framework;
-			remoteRef = 62DA358E1B62FE1F0041048D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		62DA35911B62FE1F0041048D /* Runes.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Runes.framework;
-			remoteRef = 62DA35901B62FE1F0041048D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		62DA35931B62FE1F0041048D /* Runes-iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Runes-iOS Tests.xctest";
-			remoteRef = 62DA35921B62FE1F0041048D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		62DA35951B62FE1F0041048D /* Runes-Mac Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Runes-Mac Tests.xctest";
-			remoteRef = 62DA35941B62FE1F0041048D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		62DA35A01B62FE840041048D /* Box.framework */ = {

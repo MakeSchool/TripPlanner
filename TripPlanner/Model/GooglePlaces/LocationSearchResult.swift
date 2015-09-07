@@ -21,7 +21,7 @@ struct Place {
   // TODO: consider renaming 'Place.description' to make this type CustomStringConvertible
   var placeDescription: String {
     get {
-       return ", ".join(terms.map{$0.value})
+       return terms.map{$0.value}.joinWithSeparator(", ")
     }
   }
 }

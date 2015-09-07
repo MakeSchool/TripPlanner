@@ -14,59 +14,30 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5A5D117B19473F2100F6D13D"
-               BuildableName = "Quick.framework"
-               BlueprintName = "Quick-iOS"
-               ReferencedContainer = "container:Quick.xcodeproj">
+               BlueprintIdentifier = "D0592EB51B77DD7800EFEF39"
+               BuildableName = "Argo.framework"
+               BlueprintName = "Argo-watchOS"
+               ReferencedContainer = "container:Argo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5A5D118519473F2100F6D13D"
-               BuildableName = "Quick-iOSTests.xctest"
-               BlueprintName = "Quick-iOSTests"
-               ReferencedContainer = "container:Quick.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DA9876B11A4C70EB0004AA17"
-               BuildableName = "QuickFocused-iOSTests.xctest"
-               BlueprintName = "QuickFocused-iOSTests"
-               ReferencedContainer = "container:Quick.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5A5D117B19473F2100F6D13D"
-            BuildableName = "Quick.framework"
-            BlueprintName = "Quick-iOS"
-            ReferencedContainer = "container:Quick.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
@@ -74,28 +45,28 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5A5D117B19473F2100F6D13D"
-            BuildableName = "Quick.framework"
-            BlueprintName = "Quick-iOS"
-            ReferencedContainer = "container:Quick.xcodeproj">
+            BlueprintIdentifier = "D0592EB51B77DD7800EFEF39"
+            BuildableName = "Argo.framework"
+            BlueprintName = "Argo-watchOS"
+            ReferencedContainer = "container:Argo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5A5D117B19473F2100F6D13D"
-            BuildableName = "Quick.framework"
-            BlueprintName = "Quick-iOS"
-            ReferencedContainer = "container:Quick.xcodeproj">
+            BlueprintIdentifier = "D0592EB51B77DD7800EFEF39"
+            BuildableName = "Argo.framework"
+            BlueprintName = "Argo-watchOS"
+            ReferencedContainer = "container:Argo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

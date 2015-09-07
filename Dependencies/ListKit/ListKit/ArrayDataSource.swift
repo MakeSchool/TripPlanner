@@ -40,7 +40,7 @@ public class ArrayDataSource<U, T where U:TableViewCellProtocol, U:UITableViewCe
   public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! U?
     
-    if let cell = cell {
+    if var cell = cell {
       cell.model = array[indexPath.row]
     } else {
       if let nib = nib {

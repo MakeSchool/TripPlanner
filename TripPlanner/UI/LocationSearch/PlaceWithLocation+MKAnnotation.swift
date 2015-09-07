@@ -26,7 +26,7 @@ class PlaceWithLocationAnnotation: NSObject, MKAnnotation {
 
   @objc var title: String? {
     get {
-      return ", ".join(placeWithLocation.locationSearchEntry.terms.map{$0.value})
+      return placeWithLocation.locationSearchEntry.terms.map{$0.value}.joinWithSeparator(", ")
     }
   }
 
