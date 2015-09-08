@@ -4,7 +4,16 @@
       "recorded_at" : 1441692888.491589,
       "response" : {
         "body" : [
-
+           {
+           "description": "Stuttgart",
+           "waypoints": [
+                         {
+                         "longitude": 48.77855,
+                         "latitude": 9.1799111,
+                         "name": "Schlossplatz"
+                         }
+                         ]
+           }
         ],
         "status" : 200,
         "url" : "http:\/\/127.0.0.1:5000\/trip\/",
