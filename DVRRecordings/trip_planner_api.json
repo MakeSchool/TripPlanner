@@ -1,0 +1,28 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1441692888.491589,
+      "response" : {
+        "body" : [
+
+        ],
+        "status" : 200,
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/",
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "Content-Length" : "2",
+          "Server" : "Werkzeug\/0.10.4 Python\/3.5.0rc2",
+          "Date" : "Tue, 08 Sep 2015 06:14:48 GMT"
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/",
+        "headers" : {
+          "Authorization" : "Basic dXNlcjpwYXNzd29yZA=="
+        }
+      }
+    }
+  ],
+  "name" : "trip_planner_api"
+}

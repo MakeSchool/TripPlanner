@@ -22,7 +22,7 @@ class TripPlannerClientSpec: QuickSpec {
       context("successful API requests") {
         beforeEach {
           let session = Session(cassetteName: "trip_planner_api", testBundle: NSBundle.mainBundle())
-          tripPlannerClient = TripPlannerClient(urlSession: session, apiKey: "")
+          tripPlannerClient = TripPlannerClient(urlSession: session)
         }
         
         describe("fetchTrips") {
@@ -30,7 +30,9 @@ class TripPlannerClientSpec: QuickSpec {
             waitUntil {done in
               tripPlannerClient.fetchTrips { result in
                 if case let .Success(trips) = result {
-                  done()
+                  if (trips[0].locationDescription == "Stuttgart") {
+                    done()
+                  }
                 }
               }
             }

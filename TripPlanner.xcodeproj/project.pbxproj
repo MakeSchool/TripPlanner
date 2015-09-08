@@ -18,6 +18,8 @@
 		622CB3B31B9E9D9F0072E8AC /* TripPlannerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B21B9E9D9F0072E8AC /* TripPlannerClient.swift */; settings = {ASSET_TAGS = (); }; };
 		622CB3B61B9EA05B0072E8AC /* JSONTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */; settings = {ASSET_TAGS = (); }; };
 		622CB3B81B9EA1160072E8AC /* JSONWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */; settings = {ASSET_TAGS = (); }; };
+		622CB3BB1B9EB1BC0072E8AC /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3BA1B9EB1BC0072E8AC /* BasicAuth.swift */; settings = {ASSET_TAGS = (); }; };
+		622CB3BD1B9EB4940072E8AC /* trip_planner_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 622CB3BC1B9EB4940072E8AC /* trip_planner_api.json */; settings = {ASSET_TAGS = (); }; };
 		623DA8B51B630B5E00D8BF61 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; };
 		623DA8B61B630B6600D8BF61 /* DVR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		623E47B21B5EF85A009F2863 /* ListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; };
@@ -368,6 +370,8 @@
 		622CB3B21B9E9D9F0072E8AC /* TripPlannerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerClient.swift; sourceTree = "<group>"; };
 		622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTrip.swift; sourceTree = "<group>"; };
 		622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWaypoint.swift; sourceTree = "<group>"; };
+		622CB3BA1B9EB1BC0072E8AC /* BasicAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
+		622CB3BC1B9EB4940072E8AC /* trip_planner_api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trip_planner_api.json; sourceTree = "<group>"; };
 		623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DVR.xcodeproj; path = Carthage/Checkouts/DVR/DVR.xcodeproj; sourceTree = "<group>"; };
 		623E479F1B5EF7CD009F2863 /* ListKitDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ListKitDemo.xcodeproj; path = Dependencies/ListKit/ListKitDemo.xcodeproj; sourceTree = "<group>"; };
 		623E47B61B5EF900009F2863 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -541,6 +545,7 @@
 		622CB3A61B9E8F7B0072E8AC /* API Clients */ = {
 			isa = PBXGroup;
 			children = (
+				622CB3B91B9EB1B10072E8AC /* Authentication */,
 				622CB3A71B9E8F7B0072E8AC /* LocationSearch.swift */,
 				622CB3B21B9E9D9F0072E8AC /* TripPlannerClient.swift */,
 			);
@@ -563,6 +568,14 @@
 				622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */,
 			);
 			path = TripPlannerAPI;
+			sourceTree = "<group>";
+		};
+		622CB3B91B9EB1B10072E8AC /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				622CB3BA1B9EB1BC0072E8AC /* BasicAuth.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		623DA88B1B630B4B00D8BF61 /* Products */ = {
@@ -726,6 +739,7 @@
 		628234511B6313E900FA098A /* DVRRecordings */ = {
 			isa = PBXGroup;
 			children = (
+				622CB3BC1B9EB4940072E8AC /* trip_planner_api.json */,
 				622CB3A31B9E77880072E8AC /* google_maps_api.json */,
 				62AA57FF1B67E1C8007DA8A4 /* google_maps_api_404.json */,
 			);
@@ -1296,6 +1310,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				622CB3BD1B9EB4940072E8AC /* trip_planner_api.json in Resources */,
 				62549BA61B5D9FC000C148C4 /* LaunchScreen.storyboard in Resources */,
 				62E931C41B6C067A00738950 /* CircularImageView.xib in Resources */,
 				62E450321B66FDC8004C6CA3 /* Localizable.strings in Resources */,
@@ -1403,6 +1418,7 @@
 				62E44FF71B66BA29004C6CA3 /* LocationSearchMapViewDecorator.swift in Sources */,
 				62E44FFD1B66E515004C6CA3 /* PlaceWithLocation+MKAnnotation.swift in Sources */,
 				6263CC461B754D54003BA0FF /* WaypointDetailViewController.swift in Sources */,
+				622CB3BB1B9EB1BC0072E8AC /* BasicAuth.swift in Sources */,
 				62C5876C1B6C29B200C28E2F /* TripDetailView.swift in Sources */,
 				62E4501D1B66F708004C6CA3 /* UserPresentableError.swift in Sources */,
 				62E4501B1B66F11F004C6CA3 /* DefaultErrorHandler.swift in Sources */,
