@@ -8,7 +8,7 @@
                     "url" : "https:\/\/maps.googleapis.com\/maps\/api\/place\/autocomplete\/json?input=S&key=",
                     "headers" : {
                     "Server" : "mafe",
-                    "Content-Type" : "application\/json; charset=UTF-8",
+                    "Content-Type" : "",
                     "Cache-Control" : "private, max-age=300",
                     "Accept-Ranges" : "none",
                     "x-frame-options" : "SAMEORIGIN",
@@ -35,7 +35,7 @@
         "url" : "https:\/\/maps.googleapis.com\/maps\/api\/place\/autocomplete\/json?input=St&key=",
         "headers" : {
           "Server" : "mafe",
-          "Content-Type" : "application\/json; charset=UTF-8",
+          "Content-Type" : "",
           "Cache-Control" : "private, max-age=300",
           "Accept-Ranges" : "none",
           "x-frame-options" : "SAMEORIGIN",
@@ -62,7 +62,7 @@
                     "url" : "https:\/\/maps.googleapis.com\/maps\/api\/place\/details\/json?placeid=EjFTdG9ja3RvbiBTdHJlZXQsIFNhbiBGcmFuY2lzY28sIENBLCBVbml0ZWQgU3RhdGVz&key=",
                     "headers" : {
                     "Server" : "mafe",
-                    "Content-Type" : "application\/json; charset=UTF-8",
+                    "Content-Type" : "",
                     "Vary" : "Accept-Language,Accept-Encoding",
                     "Date" : "Mon, 27 Jul 2015 21:47:36 GMT",
                     "Accept-Ranges" : "none",
@@ -89,7 +89,7 @@
                     "url" : "https:\/\/maps.googleapis.com\/maps\/api\/place\/details\/json?placeid=EjBTdGVpbmVyIFN0cmVldCwgU2FuIEZyYW5jaXNjbywgQ0EsIFVuaXRlZCBTdGF0ZXM&key=",
                     "headers" : {
                     "Server" : "mafe",
-                    "Content-Type" : "application\/json; charset=UTF-8",
+                    "Content-Type" : "",
                     "Cache-Control" : "public, max-age=300",
                     "Accept-Ranges" : "none",
                     "x-frame-options" : "SAMEORIGIN",

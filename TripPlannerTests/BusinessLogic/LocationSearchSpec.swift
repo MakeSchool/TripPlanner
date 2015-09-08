@@ -29,7 +29,7 @@ class LocationSearchSpec: QuickSpec {
         describe("findPlaces") {
           it("calls the callback with parsed data when the request is successful") {
             waitUntil {done in
-              locationSearchClient.findPlaces("S") { result in
+              locationSearchClient.findPlaces("s") { result in
                 if case let .Success(predictions) = result {
                   if (predictions.predictions[0].id == "1b9ea3c094d3ac23c9a3afa8cd4d8a41f05de50a") {
                     done()
@@ -43,9 +43,9 @@ class LocationSearchSpec: QuickSpec {
         describe("detailsForPlace") {
           it("calls the callback with parsed data when the request is successful") {
             waitUntil { done in
-              let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "EjBTdGVpbmVyIFN0cmVldCwgU2FuIEZyYW5jaXNjbywgQ0EsIFVuaXRlZCBTdGF0ZXM", reference: "", terms: [], types: [])
+              let place = Place(description: "", id: "", matchedSubstrings: [], placeId: "Ei9TdGVpbmVyIFN0cmVldCwgU2FuIEZyYW5jaXNjbywgS2FsaWZvcm5pZW4sIFVTQQ", reference: "", terms: [], types: [])
               locationSearchClient.detailsForPlace(place) { result in
-                let expectedLatitude = 37.784956600000001
+                let expectedLatitude = 37.7849566
                 let expectedLongitude = -122.4347061
                 
                 if case let .Success(placeDetails) = result

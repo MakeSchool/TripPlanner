@@ -11,6 +11,7 @@
 		6204483B1B5DBD0800219CD4 /* CoreDataStackSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483A1B5DBD0800219CD4 /* CoreDataStackSpec.swift */; };
 		620448401B5DBF0D00219CD4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */; };
 		6226F8D31B5EB1F700B8BFEF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226F8D11B5EB1F700B8BFEF /* Trip.swift */; };
+		622CB3A51B9E78F50072E8AC /* google_maps_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 622CB3A31B9E77880072E8AC /* google_maps_api.json */; settings = {ASSET_TAGS = (); }; };
 		623DA8B51B630B5E00D8BF61 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; };
 		623DA8B61B630B6600D8BF61 /* DVR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		623E47B21B5EF85A009F2863 /* ListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; };
@@ -30,7 +31,6 @@
 		6263CC431B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6263CC421B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift */; };
 		6263CC461B754D54003BA0FF /* WaypointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6263CC451B754D54003BA0FF /* WaypointDetailViewController.swift */; };
 		626671281B61B200006A1A2B /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626671271B61B200006A1A2B /* LocationSearch.swift */; };
-		628234551B6313E900FA098A /* google_maps_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 628234531B6313E900FA098A /* google_maps_api.json */; };
 		62A2C8E91B6188EE008CF3B1 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8D51B61889B008CF3B1 /* Quick.framework */; };
 		62A2C8EA1B6188F3008CF3B1 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62A2C8E21B6188A4008CF3B1 /* Nimble.framework */; };
 		62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */; };
@@ -357,6 +357,7 @@
 		6204483A1B5DBD0800219CD4 /* CoreDataStackSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackSpec.swift; sourceTree = "<group>"; };
 		6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		6226F8D11B5EB1F700B8BFEF /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		622CB3A31B9E77880072E8AC /* google_maps_api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = google_maps_api.json; sourceTree = "<group>"; };
 		623DA88A1B630B4B00D8BF61 /* DVR.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DVR.xcodeproj; path = Carthage/Checkouts/DVR/DVR.xcodeproj; sourceTree = "<group>"; };
 		623E479F1B5EF7CD009F2863 /* ListKitDemo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ListKitDemo.xcodeproj; path = Dependencies/ListKit/ListKitDemo.xcodeproj; sourceTree = "<group>"; };
 		623E47B61B5EF900009F2863 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -379,7 +380,6 @@
 		6263CC421B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointDetailViewControllerSpec.swift; sourceTree = "<group>"; };
 		6263CC451B754D54003BA0FF /* WaypointDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaypointDetailViewController.swift; sourceTree = "<group>"; };
 		626671271B61B200006A1A2B /* LocationSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
-		628234531B6313E900FA098A /* google_maps_api.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = google_maps_api.json; sourceTree = "<group>"; };
 		62A2C8C51B61889B008CF3B1 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Modules/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		62A2C8DA1B6188A4008CF3B1 /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Modules/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		62A2C8EC1B619590008CF3B1 /* AppDelegateSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegateSpec.swift; sourceTree = "<group>"; };
@@ -698,8 +698,8 @@
 		628234511B6313E900FA098A /* DVRRecordings */ = {
 			isa = PBXGroup;
 			children = (
+				622CB3A31B9E77880072E8AC /* google_maps_api.json */,
 				62AA57FF1B67E1C8007DA8A4 /* google_maps_api_404.json */,
-				628234531B6313E900FA098A /* google_maps_api.json */,
 			);
 			path = DVRRecordings;
 			sourceTree = SOURCE_ROOT;
@@ -1280,8 +1280,8 @@
 				62E931C41B6C067A00738950 /* CircularImageView.xib in Resources */,
 				62E450321B66FDC8004C6CA3 /* Localizable.strings in Resources */,
 				623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */,
+				622CB3A51B9E78F50072E8AC /* google_maps_api.json in Resources */,
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,
-				628234551B6313E900FA098A /* google_maps_api.json in Resources */,
 				62E931C71B6C0DEA00738950 /* stuttgart.jpg in Resources */,
 				62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */,
 				62AA58001B67E1C8007DA8A4 /* google_maps_api_404.json in Resources */,
