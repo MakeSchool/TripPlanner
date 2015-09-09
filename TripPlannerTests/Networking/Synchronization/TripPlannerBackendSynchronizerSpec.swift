@@ -13,59 +13,94 @@ import CoreLocation
 @testable import TripPlanner
 
 class TripPlannerBackendSynchronizerSpec: QuickSpec {
+  
+  override func spec() {
     
-    override func spec() {
-        
-        describe("TripPlannerBackendSynchronizer") {
-            var tripPlannerSynchronizer: TripPlannerBackendSynchronizer!
+    describe("TripPlannerBackendSynchronizer") {
+      var tripPlannerSynchronizer: TripPlannerBackendSynchronizer!
+      
+      context("downloadSync") {
+        it("calls the TripPlannerClient to trigger an API Request") {
+          let stack = CoreDataStack(stackType: .InMemory)
+          let client = CoreDataClient(stack: stack)
+          
+          class TripPlannerClientMock: TripPlannerClient {
+            var called = false
             
-            context("downloadSync") {
-                it("calls the TripPlannerClient to trigger an API Request") {
-                    let stack = CoreDataStack(stackType: .InMemory)
-                    let client = CoreDataClient(stack: stack)
-                    
-                    class TripPlannerClientMock: TripPlannerClient {
-                        var called = false
-                        
-                        override func fetchTrips(callback: FetchTripsCallback) {
-                            called = true
-                        }
-                    }
-                    
-                    let tripPlannerClientMock = TripPlannerClientMock()
-                    tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientMock, coreDataClient: client)
-                    tripPlannerSynchronizer.downloadSync()
-                    
-                    expect(tripPlannerClientMock.called).to(beTrue())
-                }
-                
-                it("persists the received trips") {
-                    let stack = CoreDataStack(stackType: .InMemory)
-                    let client = CoreDataClient(stack: stack)
-                    
-                    class TripPlannerClientStub: TripPlannerClient {
-                        override func fetchTrips(callback: FetchTripsCallback) {
-                            let waypoint = JSONWaypoint(location: CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111), name: "Schlossplatz")
-                            let trip = JSONTrip(location: nil, locationDescription: "Stuttgart", waypoints: [waypoint])
-                            let returnedTrips = [trip]
-                            
-                            callback(.Success(returnedTrips))
-                        }
-                    }
-                    
-                    let tripPlannerClientStub = TripPlannerClientStub()
-                    tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientStub, coreDataClient: client)
-                    
-                    tripPlannerSynchronizer.downloadSync()
-                    
-                    let allTrips = client.allTrips()
-                    
-                    expect(allTrips.count).to(equal(1))
-                    expect(allTrips[0].locationDescription).to(equal("Stuttgart"))
-                    expect((allTrips[0].waypoints?.anyObject() as! Waypoint).name).to(equal("Schlossplatz"))
-                }
+            override func fetchTrips(callback: FetchTripsCallback) {
+              called = true
             }
-            
+          }
+          
+          let tripPlannerClientMock = TripPlannerClientMock()
+          tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientMock, coreDataClient: client)
+          tripPlannerSynchronizer.downloadSync()
+          
+          expect(tripPlannerClientMock.called).to(beTrue())
         }
+        
+        it("persists the received trips") {
+          let stack = CoreDataStack(stackType: .InMemory)
+          let client = CoreDataClient(stack: stack)
+          
+          class TripPlannerClientStub: TripPlannerClient {
+            override func fetchTrips(callback: FetchTripsCallback) {
+              let waypoint = JSONWaypoint(location: CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111), name: "Schlossplatz")
+              let trip = JSONTrip(location: nil, locationDescription: "Stuttgart", waypoints: [waypoint])
+              let returnedTrips = [trip]
+              
+              callback(.Success(returnedTrips))
+            }
+          }
+          
+          let tripPlannerClientStub = TripPlannerClientStub()
+          tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientStub, coreDataClient: client)
+          
+          tripPlannerSynchronizer.downloadSync()
+          
+          let allTrips = client.allTrips()
+          
+          expect(allTrips.count).to(equal(1))
+          expect(allTrips[0].locationDescription).to(equal("Stuttgart"))
+          expect((allTrips[0].waypoints?.anyObject() as! Waypoint).name).to(equal("Schlossplatz"))
+        }
+        
+        it ("updates existing trips instead of creating new ones") {
+          let stack = CoreDataStack(stackType: .InMemory)
+          let client = CoreDataClient(stack: stack)
+          
+          let (tripToStuttgart, temporaryContext) = client.createObjectInTemporaryContext(Trip.self)
+          tripToStuttgart.locationDescription = "Stuttgart"
+          
+          let waypoint = Waypoint(context: temporaryContext)
+          waypoint.location = CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111)
+          waypoint.name = "Schlossplatz"
+        
+          try! temporaryContext.save()
+          client.saveStack()
+          
+          class TripPlannerClientStub: TripPlannerClient {
+            override func fetchTrips(callback: FetchTripsCallback) {
+              let waypoint = JSONWaypoint(location: CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111), name: "Schlossplatz")
+              let trip = JSONTrip(location: nil, locationDescription: "Stuttgart", waypoints: [waypoint])
+              let returnedTrips = [trip]
+              
+              callback(.Success(returnedTrips))
+            }
+          }
+          
+          let tripPlannerClientStub = TripPlannerClientStub()
+          tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientStub, coreDataClient: client)
+          
+          tripPlannerSynchronizer.downloadSync()
+          
+          let allTrips = client.allTrips()
+          expect(allTrips.count).to(equal(1))
+        }
+        
+        
+      }
+      
     }
+  }
 }
