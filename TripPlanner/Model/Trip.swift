@@ -18,13 +18,6 @@ final class Trip: NSManagedObject, TripPlannerManagedObject {
   
   func configureWithJSONTrip(jsonTrip: JSONTrip) {
     self.locationDescription = jsonTrip.locationDescription
-    
-    jsonTrip.waypoints.forEach {
-      let wayPoint = Waypoint(context: self.managedObjectContext!)
-      wayPoint.configureWithJSONWaypoint($0)
-      wayPoint.trip = self
-      try! self.managedObjectContext?.save()
-    }
   }
   
 }
