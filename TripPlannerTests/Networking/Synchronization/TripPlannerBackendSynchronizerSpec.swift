@@ -21,6 +21,9 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
             
             context("downloadSync") {
                 it("calls the TripPlannerClient to trigger an API Request") {
+                    let stack = CoreDataStack(stackType: .InMemory)
+                    let client = CoreDataClient(stack: stack)
+                    
                     class TripPlannerClientMock: TripPlannerClient {
                         var called = false
                         
@@ -30,13 +33,16 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
                     }
                     
                     let tripPlannerClientMock = TripPlannerClientMock()
-                    tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientMock)
+                    tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientMock, coreDataClient: client)
                     tripPlannerSynchronizer.downloadSync()
                     
                     expect(tripPlannerClientMock.called).to(beTrue())
                 }
                 
                 it("persists the received trips") {
+                    let stack = CoreDataStack(stackType: .InMemory)
+                    let client = CoreDataClient(stack: stack)
+                    
                     class TripPlannerClientStub: TripPlannerClient {
                         override func fetchTrips(callback: FetchTripsCallback) {
                             let waypoint = JSONWaypoint(location: CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111), name: "Schlossplatz")
@@ -48,7 +54,13 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
                     }
                     
                     let tripPlannerClientStub = TripPlannerClientStub()
-                    tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientStub)
+                    tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientStub, coreDataClient: client)
+                    
+                    tripPlannerSynchronizer.downloadSync()
+                    
+                    let allTrips = client.allTrips()
+                    
+                    expect(allTrips.count).to(equal(1))
                 }
             }
             

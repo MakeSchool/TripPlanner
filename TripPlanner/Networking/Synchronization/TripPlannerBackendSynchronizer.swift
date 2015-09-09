@@ -11,22 +11,29 @@ import Foundation
 struct TripPlannerBackendSynchronizer {
     
     var tripPlannerClient: TripPlannerClient
+    var coreDataClient: CoreDataClient
     
-    init(tripPlannerClient: TripPlannerClient) {
+    init(tripPlannerClient: TripPlannerClient = defaultTripPlannerClient(), coreDataClient: CoreDataClient) {
         self.tripPlannerClient = tripPlannerClient
+        self.coreDataClient = coreDataClient
     }
-    
-    init() {
-        let defaultTripPlannerClient = TripPlannerClient(urlSession: NSURLSession.sharedSession())
-        self.init(tripPlannerClient: defaultTripPlannerClient)
-    }
-    
+        
     func downloadSync() -> Void {
-        let allTrips = tripPlannerClient.fetchTrips { $0 }
+        let allTrips = tripPlannerClient.fetchTrips {
+            $0
+            let (newTrip, temporaryContext) = self.coreDataClient.createObjectInTemporaryContext(Trip.self)
+            newTrip.locationDescription = "Stuttgart"
+            try! temporaryContext.save()
+            self.coreDataClient.saveStack()
+        }
     }
     
     func uploadSync() -> Void {
         
     }
     
+}
+
+private func defaultTripPlannerClient() -> TripPlannerClient {
+    return TripPlannerClient(urlSession: NSURLSession.sharedSession())
 }
