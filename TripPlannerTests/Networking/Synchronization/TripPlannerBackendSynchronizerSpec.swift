@@ -61,6 +61,8 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
                     let allTrips = client.allTrips()
                     
                     expect(allTrips.count).to(equal(1))
+                    expect(allTrips[0].locationDescription).to(equal("Stuttgart"))
+                    expect((allTrips[0].waypoints?.anyObject() as! Waypoint).name).to(equal("Schlossplatz"))
                 }
             }
             

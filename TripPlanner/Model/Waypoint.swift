@@ -18,6 +18,11 @@ final class Waypoint: NSManagedObject, TripPlannerManagedObject, MKAnnotation {
     self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
   }
   
+  func configureWithJSONWaypoint(waypoint: JSONWaypoint) {
+    name = waypoint.name
+    location = waypoint.location
+  }
+  
   var location: CLLocationCoordinate2D? {
     get {
       if let latitude = latitude, let longitude = longitude {

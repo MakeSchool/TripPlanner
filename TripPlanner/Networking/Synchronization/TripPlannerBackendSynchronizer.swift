@@ -19,12 +19,15 @@ struct TripPlannerBackendSynchronizer {
     }
         
     func downloadSync() -> Void {
-        let allTrips = tripPlannerClient.fetchTrips {
-            $0
-            let (newTrip, temporaryContext) = self.coreDataClient.createObjectInTemporaryContext(Trip.self)
-            newTrip.locationDescription = "Stuttgart"
-            try! temporaryContext.save()
-            self.coreDataClient.saveStack()
+        tripPlannerClient.fetchTrips {
+            if case .Success(let trips) = $0 {
+                trips.forEach {
+                    let (newTrip, temporaryContext) = self.coreDataClient.createObjectInTemporaryContext(Trip.self)
+                    newTrip.configureWithJSONTrip($0)
+                    try! temporaryContext.save()
+                    self.coreDataClient.saveStack()
+                }
+            }
         }
     }
     
