@@ -39,6 +39,22 @@ class CoreDataClientSpec: QuickSpec {
         
       }
       
+      describe("tripWithServerID") {
+        
+        it("returns trips matching provided server identifier") {
+          let trip = Trip(context: coreDataClient.context)
+          trip.serverID = "0"
+          
+          coreDataClient.saveStack()
+
+          let receivedTrip = coreDataClient.tripWithServerID("0")
+          
+          expect(receivedTrip).toNot(beNil())
+          expect(receivedTrip!.serverID).to(equal(trip.serverID))
+        }
+        
+      }
+      
       describe("createObjectInTemporaryContext(_:)") {
         
         it("returns an instance that lives in a core data context that has a parent context") {
