@@ -22,17 +22,22 @@ struct TripPlannerBackendSynchronizer {
       tripPlannerClient.fetchTrips {
         if case .Success(let trips) = $0 {
             trips.forEach { jsonTrip in
-                let (newTrip, temporaryContext) = self.coreDataClient.createObjectInTemporaryContext(Trip.self)
-                newTrip.configureWithJSONTrip(jsonTrip)
-          
-                jsonTrip.waypoints.forEach {
-                    let wayPoint = Waypoint(context: temporaryContext)
-                    wayPoint.configureWithJSONWaypoint($0)
-                    wayPoint.trip = newTrip
-                  }
-              
-                try! temporaryContext.save()
-                self.coreDataClient.saveStack()
+              let existingTrip = self.coreDataClient.tripWithServerID(jsonTrip.serverID)
+              if (existingTrip != nil) {
+                return
+              }
+            
+              let (newTrip, temporaryContext) = self.coreDataClient.createObjectInTemporaryContext(Trip.self)
+              newTrip.configureWithJSONTrip(jsonTrip)
+        
+              jsonTrip.waypoints.forEach {
+                  let wayPoint = Waypoint(context: temporaryContext)
+                  wayPoint.configureWithJSONWaypoint($0)
+                  wayPoint.trip = newTrip
+                }
+            
+              try! temporaryContext.save()
+              self.coreDataClient.saveStack()
             }
          }
       }

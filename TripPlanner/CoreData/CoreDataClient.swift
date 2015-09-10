@@ -28,7 +28,12 @@ class CoreDataClient {
     fetchRequest.predicate = NSPredicate(format: "serverID = %@", serverID)
     let trips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
     
-    return trips[0]
+    if (trips.count > 0) {
+      return trips[0]
+    } else {
+      return nil
+    }
+
   }
   
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {
