@@ -46,7 +46,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
           class TripPlannerClientStub: TripPlannerClient {
             override func fetchTrips(callback: FetchTripsCallback) {
               let waypoint = JSONWaypoint(location: CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111), name: "Schlossplatz")
-              let trip = JSONTrip(location: nil, locationDescription: "Stuttgart", waypoints: [waypoint])
+              let trip = JSONTrip(location: nil, locationDescription: "Stuttgart", waypoints: [waypoint], serverID: "55f0cbb4236f44b7f0e3cb23")
               let returnedTrips = [trip]
               
               callback(.Success(returnedTrips))
@@ -71,6 +71,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
           
           let (tripToStuttgart, temporaryContext) = client.createObjectInTemporaryContext(Trip.self)
           tripToStuttgart.locationDescription = "Stuttgart"
+          tripToStuttgart.serverID = "55f0cbb4236f44b7f0e3cb23"
           
           let waypoint = Waypoint(context: temporaryContext)
           waypoint.location = CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111)
@@ -82,7 +83,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
           class TripPlannerClientStub: TripPlannerClient {
             override func fetchTrips(callback: FetchTripsCallback) {
               let waypoint = JSONWaypoint(location: CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111), name: "Schlossplatz")
-              let trip = JSONTrip(location: nil, locationDescription: "Stuttgart", waypoints: [waypoint])
+              let trip = JSONTrip(location: nil, locationDescription: "Stuttgart", waypoints: [waypoint], serverID: "55f0cbb4236f44b7f0e3cb23")
               let returnedTrips = [trip]
               
               callback(.Success(returnedTrips))

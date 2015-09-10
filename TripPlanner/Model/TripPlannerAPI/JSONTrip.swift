@@ -14,17 +14,18 @@ struct JSONTrip {
   let location: CLLocationCoordinate2D?
   let locationDescription: String
   let waypoints: [JSONWaypoint]
+  let serverID: String
 }
 
 extension JSONTrip: Decodable {
   
-  static func create(latitude: Double?)(longitude: Double?)(locationDescription: String)(waypoints: [JSONWaypoint]) -> JSONTrip {
+  static func create(latitude: Double?)(longitude: Double?)(locationDescription: String)(waypoints: [JSONWaypoint])(serverID: String) -> JSONTrip {
     var location: CLLocationCoordinate2D?
     
     if let longitude = longitude, latitude = latitude {
         location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
-    return JSONTrip(location: location, locationDescription: locationDescription, waypoints: waypoints)
+    return JSONTrip(location: location, locationDescription: locationDescription, waypoints: waypoints, serverID: serverID)
   }
   
   static func decode(j: JSON) -> Decoded<JSONTrip> {
@@ -33,6 +34,7 @@ extension JSONTrip: Decodable {
       <*> j <|? "latitude"
       <*> j <| "description"
       <*> j <|| "waypoints"
+      <*> j <| "_id"
   }
   
 }
