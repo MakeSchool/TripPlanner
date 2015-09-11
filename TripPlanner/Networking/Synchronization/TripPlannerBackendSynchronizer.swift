@@ -23,7 +23,13 @@ struct TripPlannerBackendSynchronizer {
         if case .Success(let trips) = $0 {
             trips.forEach { jsonTrip in
               let existingTrip = self.coreDataClient.tripWithServerID(jsonTrip.serverID)
+              
               if let existingTrip = existingTrip {
+                // check if server data is actually newer then local; if not return
+                if (existingTrip.lastUpdate!.doubleValue > jsonTrip.lastUpdate) {
+                  return
+                }
+                
                 // update existing trip
                 existingTrip.configureWithJSONTrip(jsonTrip)
                 
