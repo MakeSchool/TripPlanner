@@ -9,6 +9,7 @@
 import Foundation
 import Quick
 import Nimble
+import CoreData
 @testable import TripPlanner
 
 class TripSpec: QuickSpec {
@@ -25,15 +26,23 @@ class TripSpec: QuickSpec {
       
       describe("lastUpdated property") {
         
-        it("updates to current timestamp when a trip is changed & saved") {
-          let (trip, temporaryContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
+        var trip: Trip!
+        var temporaryContext: NSManagedObjectContext!
+        
+        beforeEach {
+          let (t, tempContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
+          trip = t
+          temporaryContext = tempContext
+          
           trip.parsing = true
           trip.locationDescription = "Test"
           trip.lastUpdate = 0
           try! temporaryContext.save()
           coreDataClient.saveStack()
-          
           trip.parsing = false
+        }
+        
+        it("updates to current timestamp when a trip is changed & saved") {
           // trigger a relevant update before saving
           trip.locationDescription = "Updated"
           try! temporaryContext.save()
@@ -43,14 +52,6 @@ class TripSpec: QuickSpec {
         }
         
         it("does not update the timestamp when a trip is saved but not changed") {
-          let (trip, temporaryContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
-          trip.parsing = true
-          trip.locationDescription = "Test"
-          trip.lastUpdate = 0
-          try! temporaryContext.save()
-          coreDataClient.saveStack()
-          
-          trip.parsing = false
           // do not trigger a relevant update before saving
           try! temporaryContext.save()
           coreDataClient.saveStack()
