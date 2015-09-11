@@ -80,6 +80,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
           tripToStuttgart.serverID = "55f0cbb4236f44b7f0e3cb23"
           
           let waypoint = Waypoint(context: temporaryContext)
+          waypoint.parsing = true
           waypoint.location = CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111)
           waypoint.name = "Schlossplatz"
           waypoint.trip = tripToStuttgart
@@ -88,6 +89,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
           try! temporaryContext.save()
           client.saveStack()
           tripToStuttgart.parsing = false
+          waypoint.parsing = false
           
           class TripPlannerClientStub: TripPlannerClient {
             override func fetchTrips(callback: FetchTripsCallback) {

@@ -18,6 +18,17 @@ final class Waypoint: NSManagedObject, TripPlannerManagedObject, MKAnnotation {
     self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
   }
   
+  override func willSave() {
+    var changes = changedValues()
+    changes.removeValueForKey("parsing")
+    // if there aren't any relevant changes; return
+    if changes.count == 0 { return }
+    // for changes during parsing we don't want to modify the 'lastUpdate' timestamp
+    if parsing?.boolValue == true { return }
+    
+    trip?.waypointUpdated()
+  }
+  
   func configureWithJSONWaypoint(waypoint: JSONWaypoint) {
     name = waypoint.name
     location = waypoint.location

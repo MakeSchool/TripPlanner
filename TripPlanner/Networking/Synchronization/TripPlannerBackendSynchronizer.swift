@@ -42,9 +42,13 @@ struct TripPlannerBackendSynchronizer {
                   
                   if let existingWaypoint = existingWaypoint {
                     waypoint = existingWaypoint
+                    waypoint.parsing = true
                   } else {
                     waypoint = Waypoint(context: existingTrip.managedObjectContext!)
                   }
+                  
+                  try! waypoint.managedObjectContext!.save()
+                  waypoint.parsing = false
                   
                   waypoint.configureWithJSONWaypoint($0)
                   waypoint.trip = existingTrip

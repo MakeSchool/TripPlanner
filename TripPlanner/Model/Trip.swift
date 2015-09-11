@@ -16,6 +16,12 @@ final class Trip: NSManagedObject, TripPlannerManagedObject {
     self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
   }
   
+  func waypointUpdated() {
+    if parsing?.boolValue == true { return }
+    
+    setPrimitiveValue(NSDate.timeIntervalSinceReferenceDate(), forKey: "lastUpdate")
+  }
+  
   override func willSave() {
     var changes = changedValues()
     changes.removeValueForKey("lastUpdate")

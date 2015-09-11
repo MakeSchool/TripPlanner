@@ -18,6 +18,7 @@ extension Waypoint {
     @NSManaged var longitude: NSNumber?
     @NSManaged var name: String?
     @NSManaged var serverID: String?
+    @NSManaged var parsing: NSNumber?
     @NSManaged var trip: Trip?
 
 }
