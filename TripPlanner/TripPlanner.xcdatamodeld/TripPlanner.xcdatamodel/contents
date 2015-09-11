@@ -6,7 +6,7 @@
         <attribute name="locationDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="parsing" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="waypoints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Waypoint" inverseName="trip" inverseEntity="Waypoint" syncable="YES"/>
+        <relationship name="waypoints" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Waypoint" inverseName="trip" inverseEntity="Waypoint" syncable="YES"/>
     </entity>
     <entity name="Waypoint" representedClassName=".Waypoint" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>

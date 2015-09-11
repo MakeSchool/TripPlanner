@@ -39,6 +39,19 @@ class CoreDataClientSpec: QuickSpec {
         
       }
       
+      describe("allWaypoints") {
+        
+        it("returns all waypoints") {
+          let _ = Waypoint(context: coreDataClient.context)
+          let _ = Waypoint(context: coreDataClient.context)
+          
+          coreDataClient.saveStack()
+          
+          let allWaypoints = coreDataClient.allWaypoints()
+          expect(allWaypoints.count).to(equal(2))
+        }
+      }
+      
       describe("tripWithServerID") {
         
         it("returns trips matching provided server identifier") {
@@ -142,5 +155,6 @@ class CoreDataClientSpec: QuickSpec {
       }
       
     }
+    
   }
 }

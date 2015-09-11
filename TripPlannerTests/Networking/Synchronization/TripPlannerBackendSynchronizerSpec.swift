@@ -195,7 +195,9 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
         
         tripPlannerSynchronizer.downloadSync()
         let allTrips = client.allTrips()
+        let allWaypoints = client.allWaypoints()
         expect(allTrips.count).to(equal(0))
+        expect(allWaypoints.count).to(equal(0))
       }
       
     }

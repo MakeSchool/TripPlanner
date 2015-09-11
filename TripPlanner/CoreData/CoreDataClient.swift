@@ -23,6 +23,10 @@ class CoreDataClient {
     return try! self.context.executeFetchRequest(NSFetchRequest(entityName: "Trip")) as! [Trip]
   }
   
+  func allWaypoints() -> [Waypoint] {
+    return try! self.context.executeFetchRequest(NSFetchRequest(entityName: "Waypoint")) as! [Waypoint]
+  }
+  
   func tripWithServerID(serverID: String) -> Trip? {
     let fetchRequest = NSFetchRequest(entityName: "Trip")
     fetchRequest.predicate = NSPredicate(format: "serverID = %@", serverID)
