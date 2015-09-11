@@ -75,6 +75,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
           let client = CoreDataClient(stack: stack)
           
           let (tripToStuttgart, temporaryContext) = client.createObjectInTemporaryContext(Trip.self)
+          tripToStuttgart.parsing = true
           tripToStuttgart.locationDescription = "Stuttgart"
           tripToStuttgart.serverID = "55f0cbb4236f44b7f0e3cb23"
           
@@ -86,6 +87,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
         
           try! temporaryContext.save()
           client.saveStack()
+          tripToStuttgart.parsing = false
           
           class TripPlannerClientStub: TripPlannerClient {
             override func fetchTrips(callback: FetchTripsCallback) {
@@ -109,6 +111,7 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
           
           let allTrips = client.allTrips()
           expect(allTrips.count).to(equal(1))
+          expect(allTrips[0].lastUpdate).to(equal(10))
           expect(allTrips[0].locationDescription).to(equal("Stuttgart New"))
           expect(allTrips[0].waypoints?.count).to(equal(1))
           expect((allTrips[0].waypoints?.anyObject() as! Waypoint).name).to(equal("Schlossplatz New"))

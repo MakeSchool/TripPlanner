@@ -14,10 +14,11 @@ import CoreData
 
 extension Trip {
 
+    @NSManaged var lastUpdate: NSNumber?
     @NSManaged var location: NSObject?
     @NSManaged var locationDescription: String?
     @NSManaged var serverID: String?
-    @NSManaged var lastUpdate: NSNumber?
+    @NSManaged var parsing: NSNumber?
     @NSManaged var waypoints: NSSet?
 
 }

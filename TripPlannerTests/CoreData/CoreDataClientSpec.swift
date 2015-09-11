@@ -130,6 +130,8 @@ class CoreDataClientSpec: QuickSpec {
         it("returns trips with a lastUpdate timestamp that is smaller than N") {
           let trip = Trip(context: coreDataClient.context)
           trip.lastUpdate = 100
+          // set to 'parsing' to avoid automatic update of 'lastUpdate' upon saving
+          trip.parsing = true
           coreDataClient.saveStack()
           
           let receivedTrips = coreDataClient.tripsThatChangedSince(1000)

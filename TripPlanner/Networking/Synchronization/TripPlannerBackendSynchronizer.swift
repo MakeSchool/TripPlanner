@@ -25,6 +25,7 @@ struct TripPlannerBackendSynchronizer {
               let existingTrip = self.coreDataClient.tripWithServerID(jsonTrip.serverID)
               
               if let existingTrip = existingTrip {
+                existingTrip.parsing = true
                 // check if server data is actually newer then local; if not return
                 if (existingTrip.lastUpdate!.doubleValue > jsonTrip.lastUpdate) {
                   return
@@ -50,6 +51,8 @@ struct TripPlannerBackendSynchronizer {
                 }
                 
                 self.coreDataClient.saveStack()
+                
+                existingTrip.parsing = false
                 
                 return
               }
