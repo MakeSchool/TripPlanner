@@ -23,7 +23,18 @@ struct TripPlannerBackendSynchronizer {
         if case .Success(let trips) = $0 {
             trips.forEach { jsonTrip in
               let existingTrip = self.coreDataClient.tripWithServerID(jsonTrip.serverID)
-              if (existingTrip != nil) {
+              if let existingTrip = existingTrip {
+                // update existing trip
+                existingTrip.configureWithJSONTrip(jsonTrip)
+                
+                jsonTrip.waypoints.forEach {
+                  let wayPoint = Waypoint(context: existingTrip.managedObjectContext!)
+                  wayPoint.configureWithJSONWaypoint($0)
+                  wayPoint.trip = existingTrip
+                }
+                
+                self.coreDataClient.saveStack()
+                
                 return
               }
             
