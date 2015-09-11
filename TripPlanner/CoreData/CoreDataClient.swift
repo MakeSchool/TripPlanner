@@ -48,7 +48,11 @@ class CoreDataClient {
   }
   
   func unsyncedTrips() -> [Trip] {
-    return []
+    let fetchRequest = NSFetchRequest(entityName: "Trip")
+    fetchRequest.predicate = NSPredicate(format: "serverID = nil")
+    let unsyncedTrips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
+   
+    return unsyncedTrips
   }
   
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {
