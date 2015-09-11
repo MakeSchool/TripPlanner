@@ -13,12 +13,13 @@ import Argo
 struct JSONWaypoint {
   let location: CLLocationCoordinate2D
   let name: String
+  let serverID: String
 }
 
 extension JSONWaypoint: Decodable {
   
-  static func create(latitude: Double)(longitude: Double)(name: String) -> JSONWaypoint {
-    return JSONWaypoint(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name)
+  static func create(latitude: Double)(longitude: Double)(name: String)(serverID: String) -> JSONWaypoint {
+    return JSONWaypoint(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), name: name, serverID: serverID)
   }
   
   static func decode(j: JSON) -> Decoded<JSONWaypoint> {
@@ -26,6 +27,7 @@ extension JSONWaypoint: Decodable {
       <^> j <| "longitude"
       <*> j <| "latitude"
       <*> j <| "name"
+      <*> j <| "_id"
   }
   
 }

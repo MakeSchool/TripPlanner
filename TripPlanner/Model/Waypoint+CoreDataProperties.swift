@@ -2,7 +2,7 @@
 //  Waypoint+CoreDataProperties.swift
 //  TripPlanner
 //
-//  Created by Benjamin Encz on 9/9/15.
+//  Created by Benjamin Encz on 9/11/15.
 //  Copyright © 2015 Make School. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,6 +17,7 @@ extension Waypoint {
     @NSManaged var latitude: NSNumber?
     @NSManaged var longitude: NSNumber?
     @NSManaged var name: String?
+    @NSManaged var serverID: String?
     @NSManaged var trip: Trip?
 
 }

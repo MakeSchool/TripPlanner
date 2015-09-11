@@ -55,6 +55,22 @@ class CoreDataClientSpec: QuickSpec {
         
       }
       
+      describe("waypointWithServerID") {
+        
+        it("returns waypoints matching provided server identifier") {
+          let waypoint = Waypoint(context: coreDataClient.context)
+          waypoint.serverID = "0"
+          
+          coreDataClient.saveStack()
+          
+          let receivedWaypoint = coreDataClient.waypointWithServerID("0")
+          
+          expect(receivedWaypoint).toNot(beNil())
+          expect(receivedWaypoint!.serverID).to(equal(waypoint.serverID))
+        }
+        
+      }
+      
       describe("createObjectInTemporaryContext(_:)") {
         
         it("returns an instance that lives in a core data context that has a parent context") {
@@ -82,6 +98,20 @@ class CoreDataClientSpec: QuickSpec {
           coreDataClient.saveStack()
 
           expect(coreDataStackMock.called).to(beTrue())
+        }
+        
+      }
+      
+      describe("unsyncedTrips") {
+        
+        it("returns trips do not have a serverID") {
+          let trip = Trip(context: coreDataClient.context)
+          
+          coreDataClient.saveStack()
+          
+          let receivedTrips = coreDataClient.unsyncedTrips()
+          
+          expect(receivedTrips.count).to(equal(1))
         }
         
       }

@@ -11,10 +11,11 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serverID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="waypoints" inverseEntity="Trip" syncable="YES"/>
     </entity>
     <elements>
         <element name="Trip" positionX="-108" positionY="-16" width="128" height="120"/>
-        <element name="Waypoint" positionX="135" positionY="-18" width="128" height="105"/>
+        <element name="Waypoint" positionX="135" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

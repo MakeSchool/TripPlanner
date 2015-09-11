@@ -33,7 +33,22 @@ class CoreDataClient {
     } else {
       return nil
     }
-
+  }
+  
+  func waypointWithServerID(serverID: String) -> Waypoint? {
+    let fetchRequest = NSFetchRequest(entityName: "Waypoint")
+    fetchRequest.predicate = NSPredicate(format: "serverID = %@", serverID)
+    let waypoints = try! self.context.executeFetchRequest(fetchRequest) as! [Waypoint]
+    
+    if (waypoints.count > 0) {
+      return waypoints[0]
+    } else {
+      return nil
+    }
+  }
+  
+  func unsyncedTrips() -> [Trip] {
+    return []
   }
   
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {

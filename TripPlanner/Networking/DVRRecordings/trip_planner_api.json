@@ -10,6 +10,7 @@
            "lastUpdate": 10,
            "waypoints": [
                          {
+                         "_id": "1a",
                          "longitude": 48.77855,
                          "latitude": 9.1799111,
                          "name": "Schlossplatz"

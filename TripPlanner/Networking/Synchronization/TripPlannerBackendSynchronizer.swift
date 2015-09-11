@@ -34,9 +34,19 @@ struct TripPlannerBackendSynchronizer {
                 existingTrip.configureWithJSONTrip(jsonTrip)
                 
                 jsonTrip.waypoints.forEach {
-                  let wayPoint = Waypoint(context: existingTrip.managedObjectContext!)
-                  wayPoint.configureWithJSONWaypoint($0)
-                  wayPoint.trip = existingTrip
+                  var waypoint: Waypoint!
+                  // check if waypoint already exists
+          
+                  let existingWaypoint = self.coreDataClient.waypointWithServerID($0.serverID)
+                  
+                  if let existingWaypoint = existingWaypoint {
+                    waypoint = existingWaypoint
+                  } else {
+                    waypoint = Waypoint(context: existingTrip.managedObjectContext!)
+                  }
+                  
+                  waypoint.configureWithJSONWaypoint($0)
+                  waypoint.trip = existingTrip
                 }
                 
                 self.coreDataClient.saveStack()
@@ -63,7 +73,7 @@ struct TripPlannerBackendSynchronizer {
   func uploadSync() -> Void {
     
   }
-  
+    
 }
 
 
