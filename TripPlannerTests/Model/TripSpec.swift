@@ -27,12 +27,35 @@ class TripSpec: QuickSpec {
         
         it("updates to current timestamp when a trip is changed & saved") {
           let (trip, temporaryContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
-          trip.lastUpdate = 0
+          trip.parsing = true
           trip.locationDescription = "Test"
+          trip.lastUpdate = 0
+          try! temporaryContext.save()
+          coreDataClient.saveStack()
+          
+          trip.parsing = false
+          // trigger a relevant update before saving
+          trip.locationDescription = "Updated"
           try! temporaryContext.save()
           coreDataClient.saveStack()
           
           expect(trip.lastUpdate).to(beCloseTo(NSDate.timeIntervalSinceReferenceDate(), within: 2.0))
+        }
+        
+        it("does not update the timestamp when a trip is saved but not changed") {
+          let (trip, temporaryContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
+          trip.parsing = true
+          trip.locationDescription = "Test"
+          trip.lastUpdate = 0
+          try! temporaryContext.save()
+          coreDataClient.saveStack()
+          
+          trip.parsing = false
+          // do not trigger a relevant update before saving
+          try! temporaryContext.save()
+          coreDataClient.saveStack()
+          
+          expect(trip.lastUpdate).to(equal(0))
         }
         
       }
