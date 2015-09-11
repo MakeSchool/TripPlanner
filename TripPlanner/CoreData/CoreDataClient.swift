@@ -55,6 +55,14 @@ class CoreDataClient {
     return unsyncedTrips
   }
   
+  func tripsThatChangedSince(timestamp: NSTimeInterval) -> [Trip] {
+    let fetchRequest = NSFetchRequest(entityName: "Trip")
+    fetchRequest.predicate = NSPredicate(format: "lastUpdate > %f", timestamp)
+    let updatedTrips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
+    
+    return updatedTrips
+  }
+  
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {
     let childContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
     childContext.parentContext = context

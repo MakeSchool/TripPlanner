@@ -105,13 +105,36 @@ class CoreDataClientSpec: QuickSpec {
       describe("unsyncedTrips") {
         
         it("returns trips do not have a serverID") {
-          let trip = Trip(context: coreDataClient.context)
-          
+          let _ = Trip(context: coreDataClient.context)
           coreDataClient.saveStack()
           
           let receivedTrips = coreDataClient.unsyncedTrips()
           
           expect(receivedTrips.count).to(equal(1))
+        }
+        
+      }
+      
+      describe("tripsUpdatedSince:") {
+        
+        it("returns trips with a lastUpdate timestamp that is larger than N") {
+          let trip = Trip(context: coreDataClient.context)
+          trip.lastUpdate = 100
+          coreDataClient.saveStack()
+          
+          let receivedTrips = coreDataClient.tripsThatChangedSince(10)
+          
+          expect(receivedTrips.count).to(equal(1))
+        }
+        
+        it("returns trips with a lastUpdate timestamp that is smaller than N") {
+          let trip = Trip(context: coreDataClient.context)
+          trip.lastUpdate = 100
+          coreDataClient.saveStack()
+          
+          let receivedTrips = coreDataClient.tripsThatChangedSince(1000)
+          
+          expect(receivedTrips.count).to(equal(0))
         }
         
       }
