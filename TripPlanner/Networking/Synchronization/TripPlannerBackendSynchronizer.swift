@@ -21,6 +21,16 @@ struct TripPlannerBackendSynchronizer {
   func downloadSync() -> Void {
       tripPlannerClient.fetchTrips {
         if case .Success(let trips) = $0 {
+          
+          let allLocalTripIds = self.coreDataClient.allTrips().map { $0.serverID }
+          // trips that exist locally, but not in the server set
+          let tripsToDelete = allLocalTripIds.filter { localTripId in !trips.contains{ $0.serverID == localTripId } }
+          
+            tripsToDelete.forEach { tripServerID in
+              let tripToDelete = self.coreDataClient.tripWithServerID(tripServerID!)
+              self.coreDataClient.context.deleteObject(tripToDelete!)
+            }
+          
             trips.forEach { jsonTrip in
               let existingTrip = self.coreDataClient.tripWithServerID(jsonTrip.serverID)
               
@@ -80,7 +90,7 @@ struct TripPlannerBackendSynchronizer {
   func uploadSync() -> Void {
     
   }
-    
+  
 }
 
 

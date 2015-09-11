@@ -165,6 +165,39 @@ class TripPlannerBackendSynchronizerSpec: QuickSpec {
         
       }
       
+      it("Deletes trips that exist locally but not on the server") {
+        let stack = CoreDataStack(stackType: .InMemory)
+        let client = CoreDataClient(stack: stack)
+        
+        let (tripToStuttgart, temporaryContext) = client.createObjectInTemporaryContext(Trip.self)
+        tripToStuttgart.locationDescription = "Stuttgart"
+        tripToStuttgart.serverID = "55f0cbb4236f44b7f0e3cb23"
+        // set lastUpdate timestamp higher than server one
+        tripToStuttgart.lastUpdate = 100
+        
+        let waypoint = Waypoint(context: temporaryContext)
+        waypoint.location = CLLocationCoordinate2D(latitude: 48.77855, longitude: 9.1799111)
+        waypoint.name = "Schlossplatz"
+        waypoint.trip = tripToStuttgart
+        
+        try! temporaryContext.save()
+        client.saveStack()
+        
+        class TripPlannerClientStub: TripPlannerClient {
+          override func fetchTrips(callback: FetchTripsCallback) {
+            // return empty result
+            callback(.Success([]))
+          }
+        }
+        
+        let tripPlannerClientStub = TripPlannerClientStub()
+        tripPlannerSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClientStub, coreDataClient: client)
+        
+        tripPlannerSynchronizer.downloadSync()
+        let allTrips = client.allTrips()
+        expect(allTrips.count).to(equal(0))
+      }
+      
     }
   }
 }
