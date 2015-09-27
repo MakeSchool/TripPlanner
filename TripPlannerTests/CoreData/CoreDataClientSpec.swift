@@ -42,8 +42,8 @@ class CoreDataClientSpec: QuickSpec {
       describe("allWaypoints") {
         
         it("returns all waypoints") {
-          let _ = Waypoint(context: coreDataClient.context)
-          let _ = Waypoint(context: coreDataClient.context)
+          let waypoint1 = Waypoint(context: coreDataClient.context)
+          let waypoint2 = Waypoint(context: coreDataClient.context)
           
           coreDataClient.saveStack()
           
