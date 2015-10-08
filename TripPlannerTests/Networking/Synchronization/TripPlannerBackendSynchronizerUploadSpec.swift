@@ -24,19 +24,28 @@ class TripPlannerBackendSynchronizerUploadSpec: QuickSpec {
           let stack = CoreDataStack(stackType: .InMemory)
           let client = CoreDataClient(stack: stack)
           let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(coreDataClient: client)
-          
-          let (trip, temporaryContext) = client.createObjectInTemporaryContext(Trip)
-          trip.serverID = "0"
-          try! temporaryContext.save()
+        
+          // 1) Create Deleted Trips
+          let deletedTripServerID = "0"
+          let deletedTrip = Trip(context: client.context)
+          deletedTrip.serverID = deletedTripServerID
+          client.saveStack()
+
+          client.markTripAsDeleted(deletedTrip)
           client.saveStack()
           
-          client.markTripAsDeleted(trip)
+          // 2) Create New Trips
+          let newTrip = Trip(context: client.context)
+          newTrip.locationDescription = "San Francisco"
           client.saveStack()
           
-          let requests = tripPlannerBackendSynchronizer.generateUploadRequests()
+          let (postRequests, deleteRequests) = tripPlannerBackendSynchronizer.generateUploadRequests()
           
-          expect(requests.count).to(equal(1))
-          expect(requests[0].resource.path).to(equal("trip/\(trip.serverID!)"))
+          expect(postRequests.count).to(equal(1))
+          expect(postRequests[0].resource.
+          
+          expect(deleteRequests.count).to(equal(1))
+          expect(deleteRequests[0].resource.path).to(equal("trip/\(deletedTripServerID)"))
         }
         
       }
