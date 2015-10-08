@@ -12,7 +12,7 @@ import CoreLocation
 
 @testable import TripPlanner
 
-class TripPlannerBackendSynchronizerSpec: QuickSpec {
+class TripPlannerBackendSynchronizerDownloadSpec: QuickSpec {
   
   override func spec() {
     

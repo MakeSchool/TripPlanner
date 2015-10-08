@@ -87,8 +87,11 @@ struct TripPlannerBackendSynchronizer {
       }
   }
   
-  func uploadSync() -> Void {
+  func generateUploadRequests() -> [TripPlannerClientDeleteTripRequest] {
+    let tripsToDelete = coreDataClient.unsyncedTripDeletions()
+    let requests = tripsToDelete.map { tripPlannerClient.createDeleteTripRequest($0) }
     
+    return requests
   }
   
 }

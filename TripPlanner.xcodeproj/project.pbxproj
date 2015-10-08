@@ -22,7 +22,8 @@
 		621F983E1BA08E63001EAE95 /* TripPlannerBackendSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F983D1BA08E63001EAE95 /* TripPlannerBackendSynchronizer.swift */; settings = {ASSET_TAGS = (); }; };
 		621F984B1BA08EE1001EAE95 /* LocationSearchSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98491BA08EE1001EAE95 /* LocationSearchSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		621F984C1BA08EE1001EAE95 /* TripPlannerClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F984A1BA08EE1001EAE95 /* TripPlannerClientSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		621F98511BA095A6001EAE95 /* TripPlannerBackendSynchronizerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		621F98511BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		6221EE711BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE701BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		6226F8D31B5EB1F700B8BFEF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226F8D11B5EB1F700B8BFEF /* Trip.swift */; };
 		622CB3B61B9EA05B0072E8AC /* JSONTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */; settings = {ASSET_TAGS = (); }; };
 		622CB3B81B9EA1160072E8AC /* JSONWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */; settings = {ASSET_TAGS = (); }; };
@@ -378,7 +379,8 @@
 		621F983D1BA08E63001EAE95 /* TripPlannerBackendSynchronizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerBackendSynchronizer.swift; sourceTree = "<group>"; };
 		621F98491BA08EE1001EAE95 /* LocationSearchSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchSpec.swift; sourceTree = "<group>"; };
 		621F984A1BA08EE1001EAE95 /* TripPlannerClientSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerClientSpec.swift; sourceTree = "<group>"; };
-		621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerBackendSynchronizerSpec.swift; sourceTree = "<group>"; };
+		621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerBackendSynchronizerDownloadSpec.swift; sourceTree = "<group>"; };
+		6221EE701BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerBackendSynchronizerUploadSpec.swift; sourceTree = "<group>"; };
 		6226F8D11B5EB1F700B8BFEF /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTrip.swift; sourceTree = "<group>"; };
 		622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWaypoint.swift; sourceTree = "<group>"; };
@@ -612,7 +614,8 @@
 		621F984D1BA08EFC001EAE95 /* Synchronization */ = {
 			isa = PBXGroup;
 			children = (
-				621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerSpec.swift */,
+				621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift */,
+				6221EE701BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift */,
 			);
 			path = Synchronization;
 			sourceTree = "<group>";
@@ -1484,6 +1487,7 @@
 			files = (
 				620448381B5DA5E200219CD4 /* TripSpec.swift in Sources */,
 				6204483B1B5DBD0800219CD4 /* CoreDataStackSpec.swift in Sources */,
+				6221EE711BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift in Sources */,
 				623E47C21B5F095B009F2863 /* MainViewControllerSpec.swift in Sources */,
 				621F984C1BA08EE1001EAE95 /* TripPlannerClientSpec.swift in Sources */,
 				62E931971B6A85EC00738950 /* AddWaypointViewControllerSpec.swift in Sources */,
@@ -1492,7 +1496,7 @@
 				62E9319A1B6A87EE00738950 /* TripDetailViewControllerSpec.swift in Sources */,
 				62A2C8EF1B61A228008CF3B1 /* CoreDataClientSpec.swift in Sources */,
 				6263CC431B754CC1003BA0FF /* WaypointDetailViewControllerSpec.swift in Sources */,
-				621F98511BA095A6001EAE95 /* TripPlannerBackendSynchronizerSpec.swift in Sources */,
+				621F98511BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift in Sources */,
 				62A2C8ED1B619590008CF3B1 /* AppDelegateSpec.swift in Sources */,
 				621F984B1BA08EE1001EAE95 /* LocationSearchSpec.swift in Sources */,
 			);
