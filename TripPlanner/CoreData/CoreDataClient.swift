@@ -85,7 +85,8 @@ class CoreDataClient {
     }
     
     // delete trip locally
-    context.deleteObject(trip)
+    let tripInMainContext = context.objectWithID(trip.objectID) as! Trip
+    context.deleteObject(tripInMainContext)
   }
   
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {
