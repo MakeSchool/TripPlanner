@@ -62,7 +62,8 @@ class CoreDataClient {
   }
   
   func unsyncedTripDeletions() -> [TripServerID] {
-    return []
+    let syncInfo = syncInformation()
+    return syncInfo.unsyncedDeletedTripsArray
   }
   
   func tripsThatChangedSince(timestamp: NSTimeInterval) -> [Trip] {
@@ -74,7 +75,17 @@ class CoreDataClient {
   }
   
   func markTripAsDeleted(trip: Trip) {
+    let syncInfo = syncInformation()
     
+    // remember deleted trips for synchronization
+    if let tripServerID = trip.serverID {
+      var deletedTripsArray = syncInfo.unsyncedDeletedTripsArray
+      deletedTripsArray.append(tripServerID)
+      syncInfo.unsyncedDeletedTripsArray = deletedTripsArray
+    }
+    
+    // delete trip locally
+    context.deleteObject(trip)
   }
   
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {
@@ -88,4 +99,27 @@ class CoreDataClient {
     stack.save()
   }
   
+  
+  // MARK: Access to Sync Information
+  
+  /** 
+    This data model only uses a single instance of `SyncInformation`. This acessor provides the single instance.
+    If it does not exist yet it will be created.
+  */
+  func syncInformation() -> SyncInformation {
+    let syncInformationFetchRequest = NSFetchRequest(entityName: "SyncInformation")
+    let syncInformationEntities = try! self.context.executeFetchRequest(syncInformationFetchRequest) as! [SyncInformation]
+    
+    if (syncInformationEntities.count == 1) {
+      return syncInformationEntities[0]
+    } else if (syncInformationEntities.count > 1) {
+      assertionFailure("Only one instance of SyncInformation should ever exist")
+      return SyncInformation()
+    } else {
+      let syncInformation = SyncInformation(context: context)
+      saveStack()
+      
+      return syncInformation
+    }
+  }
 }

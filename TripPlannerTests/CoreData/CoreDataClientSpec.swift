@@ -132,6 +132,7 @@ class CoreDataClientSpec: QuickSpec {
         
         it("returns all trip deletions that have not been synced yet") {
           let trip = Trip(context: coreDataClient.context)
+          trip.serverID = "0"
           coreDataClient.saveStack()
           
           coreDataClient.markTripAsDeleted(trip)
@@ -140,6 +141,24 @@ class CoreDataClientSpec: QuickSpec {
           let tripsToBeDeleted = coreDataClient.unsyncedTripDeletions()
           
           expect(tripsToBeDeleted.count).to(equal(1))
+        }
+        
+      }
+      
+      describe("markTripAsDeleted") {
+        
+        it("correctly marks trips for deletion and does not return them in queries") {
+          let trip = Trip(context: coreDataClient.context)
+          coreDataClient.saveStack()
+          
+          coreDataClient.markTripAsDeleted(trip)
+          coreDataClient.saveStack()
+          
+          let receivedTrips = coreDataClient.unsyncedTrips()
+          let allTrips = coreDataClient.allTrips()
+          
+          expect(receivedTrips.count).to(equal(0))
+          expect(allTrips.count).to(equal(0))
         }
         
       }
