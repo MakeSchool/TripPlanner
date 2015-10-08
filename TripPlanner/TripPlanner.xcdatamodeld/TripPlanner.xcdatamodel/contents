@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8193.2" systemVersion="14E46" minimumToolsVersion="Automatic">
+    <entity name="SyncInformation" representedClassName=".SyncInformation" syncable="YES">
+        <attribute name="lastSyncTimestamp" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="unsyncedDeletedTrips" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
     <entity name="Trip" representedClassName=".Trip" syncable="YES">
         <attribute name="lastUpdate" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -19,5 +23,6 @@
     <elements>
         <element name="Trip" positionX="-108" positionY="-16" width="128" height="135"/>
         <element name="Waypoint" positionX="135" positionY="-18" width="128" height="135"/>
+        <element name="SyncInformation" positionX="18" positionY="36" width="128" height="75"/>
     </elements>
 </model>

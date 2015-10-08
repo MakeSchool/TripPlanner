@@ -6,6 +6,8 @@
 //  Copyright © 2015 Make School. All rights reserved.
 //
 
+// Structure is inspired by: http://martiancraft.com/blog/2015/03/core-data-stack/, Thanks!
+
 import Foundation
 import CoreData
 

@@ -10,6 +10,8 @@
 		620448381B5DA5E200219CD4 /* TripSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620448371B5DA5E200219CD4 /* TripSpec.swift */; };
 		6204483B1B5DBD0800219CD4 /* CoreDataStackSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483A1B5DBD0800219CD4 /* CoreDataStackSpec.swift */; };
 		620448401B5DBF0D00219CD4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */; };
+		62052E421BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62052E401BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		62052E431BA39B29004954F4 /* SyncInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62052E411BA39B29004954F4 /* SyncInformation.swift */; settings = {ASSET_TAGS = (); }; };
 		621F98161BA08E2E001EAE95 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980D1BA08E2E001EAE95 /* BasicAuth.swift */; settings = {ASSET_TAGS = (); }; };
 		621F98171BA08E2E001EAE95 /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980E1BA08E2E001EAE95 /* LocationSearch.swift */; settings = {ASSET_TAGS = (); }; };
 		621F98181BA08E2E001EAE95 /* TripPlannerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980F1BA08E2E001EAE95 /* TripPlannerClient.swift */; settings = {ASSET_TAGS = (); }; };
@@ -364,6 +366,8 @@
 		620448371B5DA5E200219CD4 /* TripSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSpec.swift; sourceTree = "<group>"; };
 		6204483A1B5DBD0800219CD4 /* CoreDataStackSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackSpec.swift; sourceTree = "<group>"; };
 		6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		62052E401BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SyncInformation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		62052E411BA39B29004954F4 /* SyncInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncInformation.swift; sourceTree = "<group>"; };
 		621F980D1BA08E2E001EAE95 /* BasicAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
 		621F980E1BA08E2E001EAE95 /* LocationSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
 		621F980F1BA08E2E001EAE95 /* TripPlannerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerClient.swift; sourceTree = "<group>"; };
@@ -623,6 +627,8 @@
 				6226F8D11B5EB1F700B8BFEF /* Trip.swift */,
 				62B82AB21B604B5300F919DA /* TripPlannerManagedObject.swift */,
 				62E931B31B6AD2E500738950 /* Waypoint.swift */,
+				62052E401BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift */,
+				62052E411BA39B29004954F4 /* SyncInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1446,7 +1452,9 @@
 				62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */,
 				623E47B71B5EF900009F2863 /* MainViewController.swift in Sources */,
 				62E450161B66EE73004C6CA3 /* PlaceDetails+JSON.swift in Sources */,
+				62052E431BA39B29004954F4 /* SyncInformation.swift in Sources */,
 				62E931BC1B6ADE3600738950 /* Trip+CoreDataProperties.swift in Sources */,
+				62052E421BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift in Sources */,
 				62E931BD1B6ADE3600738950 /* Waypoint+CoreDataProperties.swift in Sources */,
 				62E450181B66EF98004C6CA3 /* JSONParsing.swift in Sources */,
 				62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  Trip+CoreDataProperties.swift
+//  SyncInformation+CoreDataProperties.swift
 //  TripPlanner
 //
 //  Created by Benjamin Encz on 9/11/15.
@@ -12,13 +12,9 @@
 import Foundation
 import CoreData
 
-extension Trip {
+extension SyncInformation {
 
-    @NSManaged var lastUpdate: NSNumber?
-    @NSManaged var location: NSObject?
-    @NSManaged var locationDescription: String?
-    @NSManaged var serverID: String?
-    @NSManaged var parsing: NSNumber?
-    @NSManaged var waypoints: NSSet?
-
+  @NSManaged var unsyncedDeletedTrips: NSData?
+  @NSManaged var lastSyncTimestamp: NSNumber?
+  
 }

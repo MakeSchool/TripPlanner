@@ -128,6 +128,22 @@ class CoreDataClientSpec: QuickSpec {
         
       }
       
+      describe("unsyncedTripDeletions") {
+        
+        it("returns all trip deletions that have not been synced yet") {
+          let trip = Trip(context: coreDataClient.context)
+          coreDataClient.saveStack()
+          
+          coreDataClient.markTripAsDeleted(trip)
+          coreDataClient.saveStack()
+          
+          let tripsToBeDeleted = coreDataClient.unsyncedTripDeletions()
+          
+          expect(tripsToBeDeleted.count).to(equal(1))
+        }
+        
+      }
+      
       describe("tripsUpdatedSince:") {
         
         it("returns trips with a lastUpdate timestamp that is larger than N") {

@@ -9,6 +9,8 @@
 import Foundation
 import CoreData
 
+typealias TripServerID = String
+
 class CoreDataClient {
   
   let context: NSManagedObjectContext
@@ -59,12 +61,20 @@ class CoreDataClient {
     return unsyncedTrips
   }
   
+  func unsyncedTripDeletions() -> [TripServerID] {
+    return []
+  }
+  
   func tripsThatChangedSince(timestamp: NSTimeInterval) -> [Trip] {
     let fetchRequest = NSFetchRequest(entityName: "Trip")
     fetchRequest.predicate = NSPredicate(format: "lastUpdate > %f", timestamp)
     let updatedTrips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
     
     return updatedTrips
+  }
+  
+  func markTripAsDeleted(trip: Trip) {
+    
   }
   
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {
