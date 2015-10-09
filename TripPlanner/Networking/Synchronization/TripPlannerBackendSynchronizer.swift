@@ -32,7 +32,7 @@ struct TripPlannerBackendSynchronizer {
             }
           
             trips.forEach { jsonTrip in
-              let existingTrip = self.coreDataClient.tripWithServerID(jsonTrip.serverID)
+              let existingTrip = self.coreDataClient.tripWithServerID(jsonTrip.serverID!)
               
               if let existingTrip = existingTrip {
                 existingTrip.parsing = true
@@ -48,7 +48,7 @@ struct TripPlannerBackendSynchronizer {
                   var waypoint: Waypoint!
                   // check if waypoint already exists
           
-                  let existingWaypoint = self.coreDataClient.waypointWithServerID($0.serverID)
+                  let existingWaypoint = self.coreDataClient.waypointWithServerID($0.serverID!)
                   
                   if let existingWaypoint = existingWaypoint {
                     waypoint = existingWaypoint

@@ -77,7 +77,7 @@ class TripPlannerClient {
       path: "trip/",
       queryString: nil,
       method: .POST,
-      requestBody: JSONTrip(),
+      requestBody: JSONEncoding.encodeJSONTrip(trip),
       headers: ["Authorization": BasicAuth.generateBasicAuthHeader("user", password: "password")],
       parse: parse
     )

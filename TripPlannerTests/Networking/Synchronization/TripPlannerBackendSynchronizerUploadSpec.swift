@@ -42,7 +42,7 @@ class TripPlannerBackendSynchronizerUploadSpec: QuickSpec {
           let (postRequests, deleteRequests) = tripPlannerBackendSynchronizer.generateUploadRequests()
           
           expect(postRequests.count).to(equal(1))
-          expect(postRequests[0].resource.
+          expect(postRequests[0].resource.requestBody).notTo(beNil())
           
           expect(deleteRequests.count).to(equal(1))
           expect(deleteRequests[0].resource.path).to(equal("trip/\(deletedTripServerID)"))

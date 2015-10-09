@@ -30,7 +30,7 @@ class TripPlannerClientSpec: QuickSpec {
             waitUntil {done in
               tripPlannerClient.fetchTrips { result in
                 if case let .Success(trips) = result {
-                  if (trips[0].locationDescription == "Stuttgart" && trips[0].waypoints[0].location.latitude == 48.77855) {
+                  if (trips[0].locationDescription == "Stuttgart" && trips[0].waypoints[0].location.latitude == 9.1799111) {
                     done()
                   }
                 }
