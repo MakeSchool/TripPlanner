@@ -92,7 +92,16 @@ struct TripPlannerBackendSynchronizer {
   func uploadSync(completionBlock: () -> ()) {
     let (createTripRequests, updateTripRequests, deleteTripRequests) = generateUploadRequests()
     
+    /* NOTE: 
+      Instead of using a dispatch group most developers would use Promises or a framework like ReactiveCocoa that allows
+      to create a sequence of different asynchronous tasks. However, this example solution tries not to use too many outside frameworks.
+    
+      Another possible solution would be using NSOperations and NSOperationQueue but that would require to restructure the TripPlannerClient significantly.
+    */
+    let uploadGroup = dispatch_group_create()
+    
     for createTripRequest in createTripRequests {
+      dispatch_group_enter(uploadGroup)
       createTripRequest.perform(tripPlannerClient.urlSession) {
         if case .Success(let trip) = $0 {
           // select uploaded trip
@@ -100,12 +109,13 @@ struct TripPlannerBackendSynchronizer {
           // assign server generated serverID
           createdTrip?.serverID = trip.serverID
           self.coreDataClient.saveStack()
-          completionBlock()
         }
+        dispatch_group_leave(uploadGroup)
       }
     }
     
     for updateTripRequest in updateTripRequests {
+      dispatch_group_enter(uploadGroup)
       updateTripRequest.perform(tripPlannerClient.urlSession) {
         // in success case nothing needs to be done
         if case .Failure = $0 {
@@ -118,10 +128,12 @@ struct TripPlannerBackendSynchronizer {
           updatedTrip?.lastUpdate = NSDate.timeIntervalSinceReferenceDate() + 1000
           self.coreDataClient.saveStack()
         }
+        dispatch_group_leave(uploadGroup)
       }
     }
     
     for deleteTripRequest in deleteTripRequests {
+      dispatch_group_enter(uploadGroup)
       deleteTripRequest.perform(tripPlannerClient.urlSession) {
         // in success case we can finally delete the trip
         if case .Success = $0 {
@@ -132,6 +144,15 @@ struct TripPlannerBackendSynchronizer {
             self.coreDataClient.saveStack()
           }
         }
+        dispatch_group_leave(uploadGroup)
+      }
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+      dispatch_group_wait(uploadGroup, DISPATCH_TIME_FOREVER)
+      
+      dispatch_async(dispatch_get_main_queue()) {
+        completionBlock()
       }
     }
   }

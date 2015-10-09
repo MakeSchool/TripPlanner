@@ -26,6 +26,7 @@
 		6221EE711BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE701BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		6221EE731BC73956008A631F /* JSONEncodingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE721BC73956008A631F /* JSONEncodingSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		6221EE751BC73BC2008A631F /* JSONEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE741BC73BC2008A631F /* JSONEncoding.swift */; settings = {ASSET_TAGS = (); }; };
+		6221EE771BC86264008A631F /* trip_planner_post_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 6221EE761BC86264008A631F /* trip_planner_post_trip.json */; settings = {ASSET_TAGS = (); }; };
 		6226F8D31B5EB1F700B8BFEF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226F8D11B5EB1F700B8BFEF /* Trip.swift */; };
 		622CB3B61B9EA05B0072E8AC /* JSONTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */; settings = {ASSET_TAGS = (); }; };
 		622CB3B81B9EA1160072E8AC /* JSONWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */; settings = {ASSET_TAGS = (); }; };
@@ -385,6 +386,7 @@
 		6221EE701BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerBackendSynchronizerUploadSpec.swift; sourceTree = "<group>"; };
 		6221EE721BC73956008A631F /* JSONEncodingSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncodingSpec.swift; sourceTree = "<group>"; };
 		6221EE741BC73BC2008A631F /* JSONEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONEncoding.swift; sourceTree = "<group>"; };
+		6221EE761BC86264008A631F /* trip_planner_post_trip.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trip_planner_post_trip.json; sourceTree = "<group>"; };
 		6226F8D11B5EB1F700B8BFEF /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONTrip.swift; sourceTree = "<group>"; };
 		622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWaypoint.swift; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 		621F98101BA08E2E001EAE95 /* DVRRecordings */ = {
 			isa = PBXGroup;
 			children = (
+				6221EE761BC86264008A631F /* trip_planner_post_trip.json */,
 				621F98111BA08E2E001EAE95 /* google_maps_api.json */,
 				621F98121BA08E2E001EAE95 /* google_maps_api_404.json */,
 				621F98131BA08E2E001EAE95 /* trip_planner_api.json */,
@@ -1368,6 +1371,7 @@
 				62E931C41B6C067A00738950 /* CircularImageView.xib in Resources */,
 				621F98191BA08E2E001EAE95 /* google_maps_api.json in Resources */,
 				62E450321B66FDC8004C6CA3 /* Localizable.strings in Resources */,
+				6221EE771BC86264008A631F /* trip_planner_post_trip.json in Resources */,
 				621F981A1BA08E2E001EAE95 /* google_maps_api_404.json in Resources */,
 				623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */,
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,

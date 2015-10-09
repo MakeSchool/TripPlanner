@@ -71,11 +71,15 @@ class TripPlannerBackendSynchronizerUploadSpec: QuickSpec {
           let session = Session(cassetteName: "trip_planner_post_trip", testBundle: NSBundle.mainBundle())
 
           let tripPlannerClient = TripPlannerClient(urlSession: session)
-//          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClient, coreDataClient: client)
-          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(coreDataClient: client)
+          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClient, coreDataClient: client)
           
           let newTrip = Trip(context: client.context)
           newTrip.locationDescription = "San Francisco"
+          
+          // pin `lastUpdate' to specified time stamp so it matches recorded DVR request
+          newTrip.parsing = true
+          newTrip.lastUpdate = 466117081
+          
           client.saveStack()
           
           waitUntil { done in

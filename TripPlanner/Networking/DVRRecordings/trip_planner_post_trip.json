@@ -1,0 +1,46 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1444424281.451177,
+      "response" : {
+        "body" : {
+          "_id" : "56182a59236f448010abd5be",
+          "longitude" : 0,
+          "latitude" : 0,
+          "description" : "San Francisco",
+          "waypoints" : [
+
+          ],
+          "lastUpdate" : 466117081,
+          "user" : "user"
+        },
+        "status" : 200,
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/",
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "Content-Length" : "156",
+          "Server" : "Werkzeug\/0.10.4 Python\/3.5.0rc2",
+          "Date" : "Fri, 09 Oct 2015 20:58:01 GMT"
+        }
+      },
+      "request" : {
+        "method" : "POST",
+        "body" : {
+          "waypoints" : [
+
+          ],
+          "latitude" : 0,
+          "longitude" : 0,
+          "lastUpdate" : 466117081,
+          "description" : "San Francisco"
+        },
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/",
+        "headers" : {
+          "Authorization" : "Basic dXNlcjpwYXNzd29yZA==",
+          "Content-Type" : "application\/json"
+        }
+      }
+    }
+  ],
+  "name" : "trip_planner_post_trip"
+}
