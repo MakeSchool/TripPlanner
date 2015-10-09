@@ -87,21 +87,21 @@ struct TripPlannerBackendSynchronizer {
       }
   }
   
-  func generateUploadRequests() -> (createTripRequests: [TripPlannerClientCreateTripRequest], deleteTripRequests: [TripPlannerClientDeleteTripRequest]) {
+  func generateUploadRequests() -> (createTripRequests: [TripPlannerClientCreateTripRequest], updateTripRequest: [TripPlannerClientUpdateTripRequest], deleteTripRequests: [TripPlannerClientDeleteTripRequest]) {
     let tripsToDelete = coreDataClient.unsyncedTripDeletions()
     let deleteRequests = tripsToDelete.map { tripPlannerClient.createDeleteTripRequest($0) }
     
     let tripsToPost = coreDataClient.unsyncedTrips()
     let postRequests = tripsToPost.map { tripPlannerClient.createCreateTripRequest($0) }
     
-    return (createTripRequests: postRequests, deleteTripRequests: deleteRequests)
+    let lastSyncTimestamp = coreDataClient.syncInformation().lastSyncTimestamp?.doubleValue ?? 0
+    let tripsToUpdate = coreDataClient.syncedUpdateTripsChangedSince(lastSyncTimestamp)
+    let putRequests = tripsToUpdate.map { tripPlannerClient.createUpdateTripRequest($0) }
+    
+    return (createTripRequests: postRequests, updateTripRequest: putRequests, deleteTripRequests: deleteRequests)
   }
   
 }
-
-
-    
-
 
 private func defaultTripPlannerClient() -> TripPlannerClient {
     return TripPlannerClient(urlSession: NSURLSession.sharedSession())

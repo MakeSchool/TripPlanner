@@ -74,6 +74,14 @@ class CoreDataClient {
     return updatedTrips
   }
   
+  func syncedUpdateTripsChangedSince(timestamp: NSTimeInterval) -> [Trip] {
+    let fetchRequest = NSFetchRequest(entityName: "Trip")
+    fetchRequest.predicate = NSPredicate(format: "lastUpdate > %f AND serverID != nil", timestamp)
+    let updatedTrips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
+    
+    return updatedTrips
+  }
+  
   func markTripAsDeleted(trip: Trip) {
     let syncInfo = syncInformation()
     
