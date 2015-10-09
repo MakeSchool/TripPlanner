@@ -92,6 +92,30 @@ class TripPlannerBackendSynchronizerUploadSpec: QuickSpec {
           }
         }
         
+        it("syncs trips that have been deleted and removes them from the list of outstanding syncs") {
+          let stack = CoreDataStack(stackType: .InMemory)
+          let client = CoreDataClient(stack: stack)
+          let session = Session(cassetteName: "trip_planner_delete_trip", testBundle: NSBundle.mainBundle())
+          
+          let tripPlannerClient = TripPlannerClient(urlSession: session)
+          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClient, coreDataClient: client)
+          
+          let newTrip = Trip(context: client.context)
+          newTrip.locationDescription = "San Francisco"
+          newTrip.serverID = "5618151a236f448010abd5bc"
+          client.markTripAsDeleted(newTrip)
+
+          client.saveStack()
+          
+          waitUntil { done in
+            tripPlannerBackendSynchronizer.uploadSync {
+              if client.syncInformation().unsyncedDeletedTripsArray.count == 0 {
+                done()
+              }
+            }
+          }
+        }
+        
       }
       
     }

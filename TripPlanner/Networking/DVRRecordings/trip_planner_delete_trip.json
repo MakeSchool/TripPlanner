@@ -1,0 +1,28 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1444429445.322582,
+      "response" : {
+        "body" : {
+          "tripIdentifier" : "5618151a236f448010abd5bc"
+        },
+        "status" : 200,
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/5618151a236f448010abd5bc",
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "Content-Length" : "46",
+          "Server" : "Werkzeug\/0.10.4 Python\/3.5.0rc2",
+          "Date" : "Fri, 09 Oct 2015 22:24:05 GMT"
+        }
+      },
+      "request" : {
+        "method" : "DELETE",
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/5618151a236f448010abd5bc",
+        "headers" : {
+          "Authorization" : "Basic dXNlcjpwYXNzd29yZA=="
+        }
+      }
+    }
+  ],
+  "name" : "trip_planner_delete_trip"
+}

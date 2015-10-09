@@ -134,15 +134,14 @@ struct TripPlannerBackendSynchronizer {
     
     for deleteTripRequest in deleteTripRequests {
       dispatch_group_enter(uploadGroup)
-      deleteTripRequest.perform(tripPlannerClient.urlSession) {
+      deleteTripRequest.perform(tripPlannerClient.urlSession) { 
         // in success case we can finally delete the trip
-        if case .Success = $0 {
-          // select deleted trip
-          let deletedTrip = self.coreDataClient.tripWithServerID(deleteTripRequest.tripServerID)
-          if let deletedTrip = deletedTrip {
-            self.coreDataClient.context.deleteObject(deletedTrip)
-            self.coreDataClient.saveStack()
-          }
+        if case .Success(let deletionResponse) = $0 {
+          // remove trip from list of unsynced deletes
+          var deletedTripsArray = self.coreDataClient.syncInformation().unsyncedDeletedTripsArray
+          deletedTripsArray = deletedTripsArray.filter { $0 != deletionResponse.deletedTripIdentifier }
+          self.coreDataClient.syncInformation().unsyncedDeletedTripsArray = deletedTripsArray
+          self.coreDataClient.saveStack()
         }
         dispatch_group_leave(uploadGroup)
       }

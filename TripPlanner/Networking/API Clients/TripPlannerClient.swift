@@ -13,7 +13,7 @@ import CoreLocation
 typealias FetchTripsCallback = Result<[JSONTrip], Reason> -> Void
 typealias UploadTripCallback = Result<JSONTrip, Reason> -> Void
 typealias UpdateTripCallback = Result<JSONTrip, Reason> -> Void
-typealias DeleteTripCallback = Result<TripServerID, Reason> -> Void
+typealias DeleteTripCallback = Result<JSONTripDeletionResponse, Reason> -> Void
 
 class TripPlannerClient {
   
@@ -49,7 +49,7 @@ class TripPlannerClient {
   }
   
   func createDeleteTripRequest(tripServerID: TripServerID) -> TripPlannerClientDeleteTripRequest {
-    let resource: Resource<TripServerID> = Resource(
+    let resource: Resource<JSONTripDeletionResponse> = Resource(
       baseURL: TripPlannerClient.baseURL,
       path: "trip/\(tripServerID)",
       queryString: nil,
@@ -95,10 +95,10 @@ class TripPlannerClient {
 // TODO: reduce redundancy
 
 class TripPlannerClientDeleteTripRequest {
-  var resource: Resource<TripServerID>
+  var resource: Resource<JSONTripDeletionResponse>
   var tripServerID: TripServerID
   
-  required init(resource: Resource<TripServerID>, tripServerID: TripServerID) {
+  required init(resource: Resource<JSONTripDeletionResponse>, tripServerID: TripServerID) {
     self.resource = resource
     self.tripServerID = tripServerID
   }
@@ -109,9 +109,9 @@ class TripPlannerClientDeleteTripRequest {
       dispatch_async(dispatch_get_main_queue()) {
         callback(.Failure(reason))
       }
-      }) { (deletedTrip: TripServerID) in
+      }) { (deletedTripResponse: JSONTripDeletionResponse) in
         dispatch_async(dispatch_get_main_queue()) {
-          callback(.Success(deletedTrip))
+          callback(.Success(deletedTripResponse))
         }
     }
   }
