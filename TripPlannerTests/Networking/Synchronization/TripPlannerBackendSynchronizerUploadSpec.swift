@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import CoreLocation
+import DVR
 
 @testable import TripPlanner
 
@@ -58,6 +59,33 @@ class TripPlannerBackendSynchronizerUploadSpec: QuickSpec {
           
           expect(deleteRequests.count).to(equal(1))
           expect(deleteRequests[0].resource.path).to(equal("trip/\(deletedTripServerID)"))
+        }
+        
+      }
+      
+      context("uploadSync") {
+        
+        it("syncs newly created trips and retrieves and stores serverID") {
+          let stack = CoreDataStack(stackType: .InMemory)
+          let client = CoreDataClient(stack: stack)
+          let session = Session(cassetteName: "trip_planner_post_trip", testBundle: NSBundle.mainBundle())
+
+          let tripPlannerClient = TripPlannerClient(urlSession: session)
+//          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClient, coreDataClient: client)
+          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(coreDataClient: client)
+          
+          let newTrip = Trip(context: client.context)
+          newTrip.locationDescription = "San Francisco"
+          client.saveStack()
+          
+          waitUntil { done in
+            tripPlannerBackendSynchronizer.uploadSync {
+              let syncedTrip = client.context.objectWithID(newTrip.objectID) as! Trip
+              if syncedTrip.serverID != nil {
+                done()
+              }
+            }
+          }
         }
         
       }

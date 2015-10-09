@@ -11,19 +11,9 @@ import Result
 import CoreLocation
 
 typealias FetchTripsCallback = Result<[JSONTrip], Reason> -> Void
-typealias UploadTripCallback = Result<[JSONTrip], Reason> -> Void
-typealias UpdateTripCallback = Result<[JSONTrip], Reason> -> Void
-typealias DeleteTripCallback = Result<[TripServerID], Reason> -> Void
-
-protocol TripPlannerClientRequest {
-  typealias CallbackType
-  typealias ResourceType
-  
-  var resource: Resource<[ResourceType]> { get set }
-
-  init(resource: Resource<[ResourceType]>)
-  func perform(urlSession: NSURLSession, callback: CallbackType)
-}
+typealias UploadTripCallback = Result<JSONTrip, Reason> -> Void
+typealias UpdateTripCallback = Result<JSONTrip, Reason> -> Void
+typealias DeleteTripCallback = Result<TripServerID, Reason> -> Void
 
 class TripPlannerClient {
   
@@ -59,7 +49,7 @@ class TripPlannerClient {
   }
   
   func createDeleteTripRequest(tripServerID: TripServerID) -> TripPlannerClientDeleteTripRequest {
-    let resource: Resource<[TripServerID]> = Resource(
+    let resource: Resource<TripServerID> = Resource(
       baseURL: TripPlannerClient.baseURL,
       path: "trip/\(tripServerID)",
       queryString: nil,
@@ -69,11 +59,11 @@ class TripPlannerClient {
       parse: parse
     )
 
-    return TripPlannerClientDeleteTripRequest(resource: resource)
+    return TripPlannerClientDeleteTripRequest(resource: resource, tripServerID: tripServerID)
   }
   
   func createUpdateTripRequest(trip: Trip) -> TripPlannerClientUpdateTripRequest {
-    let resource: Resource<[JSONTrip]> = Resource(
+    let resource: Resource<JSONTrip> = Resource(
       baseURL: TripPlannerClient.baseURL,
       path: "trip/\(trip.serverID)",
       queryString: nil,
@@ -83,32 +73,34 @@ class TripPlannerClient {
       parse: parse
     )
     
-    return TripPlannerClientUpdateTripRequest(resource: resource)
+    return TripPlannerClientUpdateTripRequest(resource: resource, trip: trip)
   }
   
   func createCreateTripRequest(trip: Trip) -> TripPlannerClientCreateTripRequest {
-    let resource: Resource<[JSONTrip]> = Resource(
+    let resource: Resource<JSONTrip> = Resource(
       baseURL: TripPlannerClient.baseURL,
       path: "trip/",
       queryString: nil,
       method: .POST,
       requestBody: JSONEncoding.encodeJSONTrip(trip),
-      headers: ["Authorization": BasicAuth.generateBasicAuthHeader("user", password: "password")],
+      headers: ["Authorization": BasicAuth.generateBasicAuthHeader("user", password: "password"), "Content-Type": "application/json"],
       parse: parse
     )
     
-    return TripPlannerClientCreateTripRequest(resource: resource)
+    return TripPlannerClientCreateTripRequest(resource: resource, trip: trip)
   }
   
 }
 
 // TODO: reduce redundancy
 
-class TripPlannerClientDeleteTripRequest: TripPlannerClientRequest {
-  var resource: Resource<[TripServerID]>
+class TripPlannerClientDeleteTripRequest {
+  var resource: Resource<TripServerID>
+  var tripServerID: TripServerID
   
-  required init(resource: Resource<[TripServerID]>) {
+  required init(resource: Resource<TripServerID>, tripServerID: TripServerID) {
     self.resource = resource
+    self.tripServerID = tripServerID
   }
   
   func perform(urlSession: NSURLSession, callback: DeleteTripCallback) {
@@ -117,19 +109,21 @@ class TripPlannerClientDeleteTripRequest: TripPlannerClientRequest {
       dispatch_async(dispatch_get_main_queue()) {
         callback(.Failure(reason))
       }
-      }) { (deletedTrips: [TripServerID]) in
+      }) { (deletedTrip: TripServerID) in
         dispatch_async(dispatch_get_main_queue()) {
-          callback(.Success(deletedTrips))
+          callback(.Success(deletedTrip))
         }
     }
   }
 }
 
-class TripPlannerClientCreateTripRequest: TripPlannerClientRequest {
-  var resource: Resource<[JSONTrip]>
+class TripPlannerClientCreateTripRequest {
+  var resource: Resource<JSONTrip>
+  var trip: Trip
   
-  required init(resource: Resource<[JSONTrip]>) {
+  required init(resource: Resource<JSONTrip>, trip: Trip) {
     self.resource = resource
+    self.trip = trip
   }
   
   func perform(urlSession: NSURLSession, callback: UploadTripCallback) {
@@ -138,19 +132,21 @@ class TripPlannerClientCreateTripRequest: TripPlannerClientRequest {
       dispatch_async(dispatch_get_main_queue()) {
         callback(.Failure(reason))
       }
-      }) { (uploadedTrips: [JSONTrip]) in
+      }) { (uploadedTrip: JSONTrip) in
         dispatch_async(dispatch_get_main_queue()) {
-          callback(.Success(uploadedTrips))
+          callback(.Success(uploadedTrip))
         }
     }
   }
 }
 
-class TripPlannerClientUpdateTripRequest: TripPlannerClientRequest {
-  var resource: Resource<[JSONTrip]>
+class TripPlannerClientUpdateTripRequest {
+  var resource: Resource<JSONTrip>
+  var trip: Trip
   
-  required init(resource: Resource<[JSONTrip]>) {
+  required init(resource: Resource<JSONTrip>, trip: Trip) {
     self.resource = resource
+    self.trip = trip
   }
   
   func perform(urlSession: NSURLSession, callback: UpdateTripCallback) {
@@ -159,9 +155,9 @@ class TripPlannerClientUpdateTripRequest: TripPlannerClientRequest {
       dispatch_async(dispatch_get_main_queue()) {
         callback(.Failure(reason))
       }
-      }) { (uploadedTrips: [JSONTrip]) in
+      }) { (updatedTrip: JSONTrip) in
         dispatch_async(dispatch_get_main_queue()) {
-          callback(.Success(uploadedTrips))
+          callback(.Success(updatedTrip))
         }
     }
   }

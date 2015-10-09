@@ -18,7 +18,7 @@ struct TripPlannerBackendSynchronizer {
       self.coreDataClient = coreDataClient
   }
       
-  func downloadSync() -> Void {
+  func downloadSync(completionBlock: () -> Void) -> Void {
       tripPlannerClient.fetchTrips {
         if case .Success(let trips) = $0 {
           
@@ -84,8 +84,58 @@ struct TripPlannerBackendSynchronizer {
               self.coreDataClient.saveStack()
             }
          }
+        
+        completionBlock()
       }
   }
+  
+  func uploadSync(completionBlock: () -> ()) {
+    let (createTripRequests, updateTripRequests, deleteTripRequests) = generateUploadRequests()
+    
+    for createTripRequest in createTripRequests {
+      createTripRequest.perform(tripPlannerClient.urlSession) {
+        if case .Success(let trip) = $0 {
+          // select uploaded trip
+          let createdTrip = self.coreDataClient.context.objectWithID(createTripRequest.trip.objectID) as? Trip
+          // assign server generated serverID
+          createdTrip?.serverID = trip.serverID
+          self.coreDataClient.saveStack()
+          completionBlock()
+        }
+      }
+    }
+    
+    for updateTripRequest in updateTripRequests {
+      updateTripRequest.perform(tripPlannerClient.urlSession) {
+        // in success case nothing needs to be done
+        if case .Failure = $0 {
+          // if failure ocurred we will need to try to sync this trip again
+          // set lastUpdate in near future so that trip will be selected as updated trip again
+          // TODO: use cleaner solution here
+          // select updated trip
+          let updatedTrip = self.coreDataClient.context.objectWithID(updateTripRequest.trip.objectID) as? Trip
+          // update lastUpdate
+          updatedTrip?.lastUpdate = NSDate.timeIntervalSinceReferenceDate() + 1000
+          self.coreDataClient.saveStack()
+        }
+      }
+    }
+    
+    for deleteTripRequest in deleteTripRequests {
+      deleteTripRequest.perform(tripPlannerClient.urlSession) {
+        // in success case we can finally delete the trip
+        if case .Success = $0 {
+          // select deleted trip
+          let deletedTrip = self.coreDataClient.tripWithServerID(deleteTripRequest.tripServerID)
+          if let deletedTrip = deletedTrip {
+            self.coreDataClient.context.deleteObject(deletedTrip)
+            self.coreDataClient.saveStack()
+          }
+        }
+      }
+    }
+  }
+
   
   func generateUploadRequests() -> (createTripRequests: [TripPlannerClientCreateTripRequest], updateTripRequest: [TripPlannerClientUpdateTripRequest], deleteTripRequests: [TripPlannerClientDeleteTripRequest]) {
     let tripsToDelete = coreDataClient.unsyncedTripDeletions()
