@@ -65,11 +65,11 @@ class TripPlannerClient {
   func createUpdateTripRequest(trip: Trip) -> TripPlannerClientUpdateTripRequest {
     let resource: Resource<JSONTrip> = Resource(
       baseURL: TripPlannerClient.baseURL,
-      path: "trip/\(trip.serverID)",
+      path: "trip/\(trip.serverID!)",
       queryString: nil,
       method: .PUT,
       requestBody: JSONEncoding.encodeJSONTrip(trip),
-      headers: ["Authorization": BasicAuth.generateBasicAuthHeader("user", password: "password")],
+      headers: ["Authorization": BasicAuth.generateBasicAuthHeader("user", password: "password"), "Content-Type": "application/json"],
       parse: parse
     )
     

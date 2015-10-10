@@ -42,6 +42,7 @@
 		623E47BE1B5F0686009F2863 /* CoreDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47BD1B5F0686009F2863 /* CoreDataClient.swift */; };
 		623E47C21B5F095B009F2863 /* MainViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47C11B5F095B009F2863 /* MainViewControllerSpec.swift */; };
 		623E47C31B5F0A8C009F2863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549B9C1B5D9FC000C148C4 /* Main.storyboard */; };
+		624BC5601BC8A63C0002114B /* trip_planner_update_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 624BC55F1BC8A63C0002114B /* trip_planner_update_trip.json */; settings = {ASSET_TAGS = (); }; };
 		62549B991B5D9FC000C148C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549B981B5D9FC000C148C4 /* AppDelegate.swift */; };
 		62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549B9C1B5D9FC000C148C4 /* Main.storyboard */; };
 		62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62549B9F1B5D9FC000C148C4 /* TripPlanner.xcdatamodeld */; };
@@ -401,6 +402,7 @@
 		623E47BB1B5EF9BA009F2863 /* TripMainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripMainTableViewCell.xib; sourceTree = "<group>"; };
 		623E47BD1B5F0686009F2863 /* CoreDataClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataClient.swift; sourceTree = "<group>"; };
 		623E47C11B5F095B009F2863 /* MainViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerSpec.swift; sourceTree = "<group>"; };
+		624BC55F1BC8A63C0002114B /* trip_planner_update_trip.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trip_planner_update_trip.json; sourceTree = "<group>"; };
 		62549B951B5D9FC000C148C4 /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62549B981B5D9FC000C148C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62549B9D1B5D9FC000C148C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 		621F98101BA08E2E001EAE95 /* DVRRecordings */ = {
 			isa = PBXGroup;
 			children = (
+				624BC55F1BC8A63C0002114B /* trip_planner_update_trip.json */,
 				6221EE7A1BC87632008A631F /* trip_planner_delete_trip.json */,
 				6221EE761BC86264008A631F /* trip_planner_post_trip.json */,
 				621F98111BA08E2E001EAE95 /* google_maps_api.json */,
@@ -1382,6 +1385,7 @@
 				6221EE7B1BC87632008A631F /* trip_planner_delete_trip.json in Resources */,
 				623E47BC1B5EF9BA009F2863 /* TripMainTableViewCell.xib in Resources */,
 				62549BA31B5D9FC000C148C4 /* Assets.xcassets in Resources */,
+				624BC5601BC8A63C0002114B /* trip_planner_update_trip.json in Resources */,
 				62E931C71B6C0DEA00738950 /* stuttgart.jpg in Resources */,
 				62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */,
 			);

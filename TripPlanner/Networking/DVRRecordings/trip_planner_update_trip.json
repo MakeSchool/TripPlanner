@@ -1,0 +1,47 @@
+{
+  "interactions" : [
+    {
+      "recorded_at" : 1444441741.979213,
+      "response" : {
+        "body" : {
+          "_id" : "561812b9236f448010abd5ba",
+          "longitude" : 0,
+          "latitude" : 0,
+          "waypoints" : [
+
+          ],
+          "lastUpdate" : 466134541,
+          "description" : "San Francisco",
+          "user" : "user"
+        },
+        "status" : 200,
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/561812b9236f448010abd5ba",
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "Content-Length" : "156",
+          "Server" : "Werkzeug\/0.10.4 Python\/3.5.0rc2",
+          "Date" : "Sat, 10 Oct 2015 01:49:01 GMT"
+        }
+      },
+      "request" : {
+        "method" : "PUT",
+        "body" : {
+          "waypoints" : [
+
+          ],
+          "_id" : "561812b9236f448010abd5ba",
+          "latitude" : 0,
+          "longitude" : 0,
+          "lastUpdate" : 466134541,
+          "description" : "San Francisco"
+        },
+        "url" : "http:\/\/127.0.0.1:5000\/trip\/561812b9236f448010abd5ba",
+        "headers" : {
+          "Authorization" : "Basic dXNlcjpwYXNzd29yZA==",
+          "Content-Type" : "application\/json"
+        }
+      }
+    }
+  ],
+  "name" : "trip_planner_update_trip"
+}

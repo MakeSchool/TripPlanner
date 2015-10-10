@@ -116,6 +116,37 @@ class TripPlannerBackendSynchronizerUploadSpec: QuickSpec {
           }
         }
         
+        it("syncs updated trips") {
+          let stack = CoreDataStack(stackType: .InMemory)
+          let client = CoreDataClient(stack: stack)
+          let session = Session(cassetteName: "trip_planner_update_trip", testBundle: NSBundle.mainBundle())
+
+          let tripPlannerClient = TripPlannerClient(urlSession: session)
+          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClient, coreDataClient: client)
+          
+          let updatedTrip = Trip(context: client.context)
+          updatedTrip.locationDescription = "San Francisco"
+          updatedTrip.serverID = "561812b9236f448010abd5ba"
+          
+          // pin `lastUpdate' to specified time stamp so it matches recorded DVR request
+          updatedTrip.parsing = true
+          updatedTrip.lastUpdate = 466134541
+          
+          client.syncInformation().lastSyncTimestamp = 10
+          let lastUpdateTimestamp = updatedTrip.lastUpdate
+          
+          client.saveStack()
+          
+          waitUntil { done in
+            tripPlannerBackendSynchronizer.uploadSync {
+              let syncedTrip = client.context.objectWithID(updatedTrip.objectID) as! Trip
+              if syncedTrip.lastUpdate == lastUpdateTimestamp {
+                done()
+              }
+            }
+          }
+        }
+        
       }
       
     }
