@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct TripPlannerBackendSynchronizer {
     
@@ -22,7 +23,7 @@ struct TripPlannerBackendSynchronizer {
       tripPlannerClient.fetchTrips {
         if case .Success(let trips) = $0 {
           
-          let allLocalTripIds = self.coreDataClient.allTrips().map { $0.serverID }
+          let allLocalTripIds = self.coreDataClient.allTrips().filter { $0.serverID != nil }.map { $0.serverID }
           // trips that exist locally, but not in the server set
           let tripsToDelete = allLocalTripIds.filter { localTripId in !trips.contains{ $0.serverID == localTripId } }
           
@@ -43,6 +44,10 @@ struct TripPlannerBackendSynchronizer {
                 
                 // update existing trip
                 existingTrip.configureWithJSONTrip(jsonTrip)
+                
+                existingTrip.waypoints?.forEach { waypoint in
+                  self.coreDataClient.context.deleteObject(waypoint as! NSManagedObject)
+                }
                 
                 jsonTrip.waypoints.forEach {
                   var waypoint: Waypoint!

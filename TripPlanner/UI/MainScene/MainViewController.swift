@@ -74,6 +74,20 @@ class MainViewController: UIViewController {
     }
   }
   
+  // MARK: Button Callbacks
+ 
+  @IBAction func refreshButtonTapped(sender: AnyObject) {
+    let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(coreDataClient: coreDataClient)
+    
+    tripPlannerBackendSynchronizer.uploadSync {
+      tripPlannerBackendSynchronizer.downloadSync {
+        self.trips = self.coreDataClient.allTrips()
+        self.tableView.dataSource = self.arrayDataSource
+        self.tableView.reloadData()
+      }
+    }
+  }
+  
 }
 
 extension MainViewController: UITableViewDelegate {
