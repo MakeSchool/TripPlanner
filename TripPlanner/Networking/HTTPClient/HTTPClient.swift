@@ -62,7 +62,8 @@ struct HTTPClient {
     
     let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
       if let httpResponse = response as? NSHTTPURLResponse {
-        if httpResponse.statusCode == 200 {
+        // TODO: Expand this to accept any 2xx status code
+        if (httpResponse.statusCode == 200 || httpResponse.statusCode == 201) {
           if let responseData = data {
             if let result = resource.parse(responseData) {
               completion(result)
