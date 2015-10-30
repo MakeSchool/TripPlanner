@@ -10,28 +10,29 @@
 		620448381B5DA5E200219CD4 /* TripSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620448371B5DA5E200219CD4 /* TripSpec.swift */; };
 		6204483B1B5DBD0800219CD4 /* CoreDataStackSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483A1B5DBD0800219CD4 /* CoreDataStackSpec.swift */; };
 		620448401B5DBF0D00219CD4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */; };
-		62052E421BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62052E401BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
-		62052E431BA39B29004954F4 /* SyncInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62052E411BA39B29004954F4 /* SyncInformation.swift */; settings = {ASSET_TAGS = (); }; };
-		621F98161BA08E2E001EAE95 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980D1BA08E2E001EAE95 /* BasicAuth.swift */; settings = {ASSET_TAGS = (); }; };
-		621F98171BA08E2E001EAE95 /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980E1BA08E2E001EAE95 /* LocationSearch.swift */; settings = {ASSET_TAGS = (); }; };
-		621F98181BA08E2E001EAE95 /* TripPlannerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980F1BA08E2E001EAE95 /* TripPlannerClient.swift */; settings = {ASSET_TAGS = (); }; };
-		621F98191BA08E2E001EAE95 /* google_maps_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 621F98111BA08E2E001EAE95 /* google_maps_api.json */; settings = {ASSET_TAGS = (); }; };
-		621F981A1BA08E2E001EAE95 /* google_maps_api_404.json in Resources */ = {isa = PBXBuildFile; fileRef = 621F98121BA08E2E001EAE95 /* google_maps_api_404.json */; settings = {ASSET_TAGS = (); }; };
-		621F981B1BA08E2E001EAE95 /* trip_planner_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 621F98131BA08E2E001EAE95 /* trip_planner_api.json */; settings = {ASSET_TAGS = (); }; };
-		621F981C1BA08E2E001EAE95 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98151BA08E2E001EAE95 /* HTTPClient.swift */; settings = {ASSET_TAGS = (); }; };
-		621F983E1BA08E63001EAE95 /* TripPlannerBackendSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F983D1BA08E63001EAE95 /* TripPlannerBackendSynchronizer.swift */; settings = {ASSET_TAGS = (); }; };
-		621F984B1BA08EE1001EAE95 /* LocationSearchSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98491BA08EE1001EAE95 /* LocationSearchSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		621F984C1BA08EE1001EAE95 /* TripPlannerClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F984A1BA08EE1001EAE95 /* TripPlannerClientSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		621F98511BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		6221EE711BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE701BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		6221EE731BC73956008A631F /* JSONEncodingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE721BC73956008A631F /* JSONEncodingSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		6221EE751BC73BC2008A631F /* JSONEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE741BC73BC2008A631F /* JSONEncoding.swift */; settings = {ASSET_TAGS = (); }; };
-		6221EE771BC86264008A631F /* trip_planner_post_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 6221EE761BC86264008A631F /* trip_planner_post_trip.json */; settings = {ASSET_TAGS = (); }; };
-		6221EE791BC87103008A631F /* JSONTripDeletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE781BC87103008A631F /* JSONTripDeletionResponse.swift */; settings = {ASSET_TAGS = (); }; };
-		6221EE7B1BC87632008A631F /* trip_planner_delete_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 6221EE7A1BC87632008A631F /* trip_planner_delete_trip.json */; settings = {ASSET_TAGS = (); }; };
+		62052E421BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62052E401BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift */; };
+		62052E431BA39B29004954F4 /* SyncInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62052E411BA39B29004954F4 /* SyncInformation.swift */; };
+		621BBC191BE323060050483D /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BBC181BE323060050483D /* TimeHelper.swift */; };
+		621F98161BA08E2E001EAE95 /* BasicAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980D1BA08E2E001EAE95 /* BasicAuth.swift */; };
+		621F98171BA08E2E001EAE95 /* LocationSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980E1BA08E2E001EAE95 /* LocationSearch.swift */; };
+		621F98181BA08E2E001EAE95 /* TripPlannerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F980F1BA08E2E001EAE95 /* TripPlannerClient.swift */; };
+		621F98191BA08E2E001EAE95 /* google_maps_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 621F98111BA08E2E001EAE95 /* google_maps_api.json */; };
+		621F981A1BA08E2E001EAE95 /* google_maps_api_404.json in Resources */ = {isa = PBXBuildFile; fileRef = 621F98121BA08E2E001EAE95 /* google_maps_api_404.json */; };
+		621F981B1BA08E2E001EAE95 /* trip_planner_api.json in Resources */ = {isa = PBXBuildFile; fileRef = 621F98131BA08E2E001EAE95 /* trip_planner_api.json */; };
+		621F981C1BA08E2E001EAE95 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98151BA08E2E001EAE95 /* HTTPClient.swift */; };
+		621F983E1BA08E63001EAE95 /* TripPlannerBackendSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F983D1BA08E63001EAE95 /* TripPlannerBackendSynchronizer.swift */; };
+		621F984B1BA08EE1001EAE95 /* LocationSearchSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98491BA08EE1001EAE95 /* LocationSearchSpec.swift */; };
+		621F984C1BA08EE1001EAE95 /* TripPlannerClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F984A1BA08EE1001EAE95 /* TripPlannerClientSpec.swift */; };
+		621F98511BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621F98501BA095A6001EAE95 /* TripPlannerBackendSynchronizerDownloadSpec.swift */; };
+		6221EE711BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE701BC70D49008A631F /* TripPlannerBackendSynchronizerUploadSpec.swift */; };
+		6221EE731BC73956008A631F /* JSONEncodingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE721BC73956008A631F /* JSONEncodingSpec.swift */; };
+		6221EE751BC73BC2008A631F /* JSONEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE741BC73BC2008A631F /* JSONEncoding.swift */; };
+		6221EE771BC86264008A631F /* trip_planner_post_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 6221EE761BC86264008A631F /* trip_planner_post_trip.json */; };
+		6221EE791BC87103008A631F /* JSONTripDeletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221EE781BC87103008A631F /* JSONTripDeletionResponse.swift */; };
+		6221EE7B1BC87632008A631F /* trip_planner_delete_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 6221EE7A1BC87632008A631F /* trip_planner_delete_trip.json */; };
 		6226F8D31B5EB1F700B8BFEF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226F8D11B5EB1F700B8BFEF /* Trip.swift */; };
-		622CB3B61B9EA05B0072E8AC /* JSONTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */; settings = {ASSET_TAGS = (); }; };
-		622CB3B81B9EA1160072E8AC /* JSONWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */; settings = {ASSET_TAGS = (); }; };
+		622CB3B61B9EA05B0072E8AC /* JSONTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B51B9EA05B0072E8AC /* JSONTrip.swift */; };
+		622CB3B81B9EA1160072E8AC /* JSONWaypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622CB3B71B9EA1160072E8AC /* JSONWaypoint.swift */; };
 		623DA8B51B630B5E00D8BF61 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; };
 		623DA8B61B630B6600D8BF61 /* DVR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 623DA89B1B630B4B00D8BF61 /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		623E47B21B5EF85A009F2863 /* ListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 623E47AB1B5EF7CD009F2863 /* ListKit.framework */; };
@@ -42,7 +43,7 @@
 		623E47BE1B5F0686009F2863 /* CoreDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47BD1B5F0686009F2863 /* CoreDataClient.swift */; };
 		623E47C21B5F095B009F2863 /* MainViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623E47C11B5F095B009F2863 /* MainViewControllerSpec.swift */; };
 		623E47C31B5F0A8C009F2863 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549B9C1B5D9FC000C148C4 /* Main.storyboard */; };
-		624BC5601BC8A63C0002114B /* trip_planner_update_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 624BC55F1BC8A63C0002114B /* trip_planner_update_trip.json */; settings = {ASSET_TAGS = (); }; };
+		624BC5601BC8A63C0002114B /* trip_planner_update_trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 624BC55F1BC8A63C0002114B /* trip_planner_update_trip.json */; };
 		62549B991B5D9FC000C148C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62549B981B5D9FC000C148C4 /* AppDelegate.swift */; };
 		62549B9E1B5D9FC000C148C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62549B9C1B5D9FC000C148C4 /* Main.storyboard */; };
 		62549BA11B5D9FC000C148C4 /* TripPlanner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62549B9F1B5D9FC000C148C4 /* TripPlanner.xcdatamodeld */; };
@@ -375,6 +376,7 @@
 		6204483F1B5DBF0D00219CD4 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		62052E401BA39B29004954F4 /* SyncInformation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SyncInformation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62052E411BA39B29004954F4 /* SyncInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncInformation.swift; sourceTree = "<group>"; };
+		621BBC181BE323060050483D /* TimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		621F980D1BA08E2E001EAE95 /* BasicAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicAuth.swift; sourceTree = "<group>"; };
 		621F980E1BA08E2E001EAE95 /* LocationSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearch.swift; sourceTree = "<group>"; };
 		621F980F1BA08E2E001EAE95 /* TripPlannerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripPlannerClient.swift; sourceTree = "<group>"; };
@@ -549,6 +551,22 @@
 				62E931BE1B6AE4B800738950 /* CoreDataExtensions.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		621BBBF71BE322F70050483D /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				621BBBF81BE322F70050483D /* Time */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		621BBBF81BE322F70050483D /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				621BBC181BE323060050483D /* TimeHelper.swift */,
+			);
+			path = Time;
 			sourceTree = "<group>";
 		};
 		621F980A1BA08E2E001EAE95 /* Networking */ = {
@@ -766,6 +784,7 @@
 		62549B971B5D9FC000C148C4 /* TripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				621BBBF71BE322F70050483D /* Helper */,
 				621F980A1BA08E2E001EAE95 /* Networking */,
 				62C5878F1B6C447B00C28E2F /* SwiftExtensions */,
 				62E4501E1B66FCBC004C6CA3 /* Localization */,
@@ -1485,6 +1504,7 @@
 				62E450181B66EF98004C6CA3 /* JSONParsing.swift in Sources */,
 				62B82AB31B604B5300F919DA /* TripPlannerManagedObject.swift in Sources */,
 				62E931B51B6AD2E500738950 /* Waypoint.swift in Sources */,
+				621BBC191BE323060050483D /* TimeHelper.swift in Sources */,
 				621F98171BA08E2E001EAE95 /* LocationSearch.swift in Sources */,
 				621F98181BA08E2E001EAE95 /* TripPlannerClient.swift in Sources */,
 				62E44FF71B66BA29004C6CA3 /* LocationSearchMapViewDecorator.swift in Sources */,

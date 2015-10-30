@@ -19,7 +19,7 @@ final class Trip: NSManagedObject, TripPlannerManagedObject {
   func waypointUpdated() {
     if parsing?.boolValue == true { return }
     
-    setPrimitiveValue(NSDate.timeIntervalSinceReferenceDate(), forKey: "lastUpdate")
+    updateLastUpdateTimestamp()
   }
   
   override func willSave() {
@@ -31,11 +31,16 @@ final class Trip: NSManagedObject, TripPlannerManagedObject {
     if changes.count == 0 { return }
     // for changes during parsing we don't want to modify the 'lastUpdate' timestamp
     if parsing?.boolValue == true { return }
-      
-    setPrimitiveValue(NSDate.timeIntervalSinceReferenceDate(), forKey: "lastUpdate")
+    
+    updateLastUpdateTimestamp()
+  }
+  
+  func updateLastUpdateTimestamp() {
+    setPrimitiveValue(NSDate.currentTimestamp(), forKey: "lastUpdate")
   }
   
   func configureWithJSONTrip(jsonTrip: JSONTrip) {
+    serverID = jsonTrip.serverID
     locationDescription = jsonTrip.locationDescription
     lastUpdate = jsonTrip.lastUpdate
   }

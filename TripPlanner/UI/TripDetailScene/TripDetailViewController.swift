@@ -90,8 +90,8 @@ class TripDetailViewController: UIViewController {
     if let currentWaypoint = currentWaypoint, let currentContext = currentContext, let trip = trip {
       // refetch the trip in the current context
       // TODO: refactor
-      let tripInCurrentContext = currentContext.objectWithID(trip.objectID)
-      tripInCurrentContext.addObject(currentWaypoint, forKey:"waypoints")
+      let tripInCurrentContext = currentContext.objectWithID(trip.objectID) as! Trip
+      currentWaypoint.trip = tripInCurrentContext
       try! currentContext.save()
       coreDataClient.saveStack()
     }

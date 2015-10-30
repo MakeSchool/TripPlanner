@@ -18,6 +18,16 @@ struct TripPlannerBackendSynchronizer {
       self.tripPlannerClient = tripPlannerClient
       self.coreDataClient = coreDataClient
   }
+  
+  func sync(completion: () -> Void) {
+    uploadSync {
+      self.downloadSync {
+        self.coreDataClient.syncInformation().lastSyncTimestamp = NSDate.currentTimestamp()
+        self.coreDataClient.saveStack()
+        completion()
+      }
+    }
+  }
       
   func downloadSync(completionBlock: () -> Void) -> Void {
       tripPlannerClient.fetchTrips {
@@ -39,6 +49,7 @@ struct TripPlannerBackendSynchronizer {
                 existingTrip.parsing = true
                 // check if server data is actually newer then local; if not return
                 if (existingTrip.lastUpdate!.doubleValue > jsonTrip.lastUpdate) {
+                  existingTrip.parsing = false
                   return
                 }
                 
@@ -70,8 +81,8 @@ struct TripPlannerBackendSynchronizer {
                 }
                 
                 self.coreDataClient.saveStack()
-                
                 existingTrip.parsing = false
+                self.coreDataClient.saveStack()
                 
                 return
               }
