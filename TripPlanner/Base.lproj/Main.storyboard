@@ -416,6 +416,9 @@
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="tripTitleChanged:" destination="OWH-bZ-7TQ" eventType="editingChanged" id="OqV-zK-nfr"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this trip a name!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rlc-Bk-pLD">
                                 <rect key="frame" x="219" y="256" width="162" height="21"/>
@@ -438,6 +441,9 @@
                             <constraint firstItem="fgt-eg-hrl" firstAttribute="top" secondItem="bSM-ib-3qR" secondAttribute="bottom" id="mPd-f7-eCB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tripTitleTextField" destination="gFu-3Z-2gH" id="2Td-HT-khv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZz-wh-Imb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dLN-Jn-0Ft" userLabel="Exit" sceneMemberID="exit"/>

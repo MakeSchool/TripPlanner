@@ -43,9 +43,12 @@ class MainViewController: UIViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.identifier == "AddNewTrip") {
       let (newTrip, newContext) = coreDataClient.createObjectInTemporaryContext(Trip.self)
-      newTrip.locationDescription = "Trip to San Francisco"
       currentTrip = newTrip
       temporaryContext = newContext
+      let addTripViewController = segue.destinationViewController as? AddTripViewController
+      if let addTripViewController = addTripViewController {
+        addTripViewController.currentTrip = currentTrip
+      }
     } else if (segue.identifier == "ShowTripDetails") {
       let tripDetailViewController = segue.destinationViewController as? TripDetailViewController
       if let tripDetailViewController = tripDetailViewController {

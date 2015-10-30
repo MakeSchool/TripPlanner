@@ -9,5 +9,12 @@
 import UIKit
 
 class AddTripViewController: UIViewController {
-    
+ 
+  var currentTrip: Trip!
+  
+  @IBOutlet var tripTitleTextField: UITextField!
+  
+  @IBAction func tripTitleChanged(sender: AnyObject) {
+    currentTrip.locationDescription = tripTitleTextField.text
+  }
 }
