@@ -14,7 +14,7 @@
           "lastUpdate" : 466117081,
           "user" : "user"
         },
-        "status" : 200,
+        "status" : 201,
         "url" : "http:\/\/127.0.0.1:5000\/trip\/",
         "headers" : {
           "Content-Type" : "application\/json",
