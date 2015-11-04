@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ILI-iv-ndj">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -31,10 +31,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ILI-iv-ndj" secondAttribute="trailing" id="22l-Hr-XsE"/>
+                            <constraint firstItem="ILI-iv-ndj" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="5pR-RD-hkS"/>
                             <constraint firstItem="ILI-iv-ndj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RJg-uq-RYf"/>
+                            <constraint firstItem="ILI-iv-ndj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gjH-xE-3wo"/>
+                            <constraint firstItem="ILI-iv-ndj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lcz-MN-E2r"/>
                             <constraint firstItem="ILI-iv-ndj" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="v8V-h0-M6n"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ILI-iv-ndj" secondAttribute="bottom" id="xDt-e4-alg"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gjH-xE-3wo"/>
+                                <exclude reference="lcz-MN-E2r"/>
+                                <exclude reference="v8V-h0-M6n"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Planned Trips" id="b3x-I5-U0Z">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Fq7-uw-mXb">
@@ -336,7 +346,7 @@
                                 <rect key="frame" x="279" y="109" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
