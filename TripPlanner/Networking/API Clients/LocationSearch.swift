@@ -15,19 +15,19 @@ typealias PlacesDetailsCallback = Result<PlaceWithLocation, Reason> -> Void
 
 class LocationSearch {
   
-  private var apiKey = ""
+  private var apiKey: String
   let urlSession: NSURLSession
   
-  init(urlSession: NSURLSession = NSURLSession.sharedSession(), apiKey: String = "") {
+  init(urlSession: NSURLSession = NSURLSession.sharedSession(), apiKey: String = "AIzaSyD5SSXNsZGmYd3gW76c1tB_EUryBZhFZq8") {
     self.urlSession = urlSession
     self.apiKey = apiKey
   }
     
-  func findPlaces(searchString: String, callback: LocationSearchCallback) {
+  func findPlaces(searchString: URLEncodedString, callback: LocationSearchCallback) {
     let resource: Resource<Predictions> = Resource(
       baseURL:"https://maps.googleapis.com",
       path: "maps/api/place/autocomplete/json",
-      queryString: "input=\(HTTPClient.escape(searchString))&key=\(apiKey)",
+      queryString: "input=\(searchString)&key=\(apiKey)",
       method: .GET,
       requestBody: nil,
       headers: nil,
@@ -50,7 +50,7 @@ class LocationSearch {
     let resource: Resource<PlaceDetails> = Resource(
       baseURL:"https://maps.googleapis.com",
       path: "maps/api/place/details/json",
-      queryString: "placeid=\(HTTPClient.escape(place.placeId))&key=\(apiKey)",
+      queryString: "placeid=\(String.URLEscape(place.placeId))&key=\(apiKey)",
       method: .GET,
       requestBody: nil,
       headers: nil,

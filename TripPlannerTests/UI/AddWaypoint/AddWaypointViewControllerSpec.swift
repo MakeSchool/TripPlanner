@@ -38,9 +38,9 @@ class AddWaypointViewControllerSpec: QuickSpec {
       describe("search bar") {
         it("accesses the LocationSearch when a search term is entered") {
           class LocationSearchMock: LocationSearch {
-            var searchedTerm: String?
+            var searchedTerm: URLEncodedString?
             
-            override func findPlaces(searchString: String, callback: LocationSearchCallback) {
+            override func findPlaces(searchString: URLEncodedString, callback: LocationSearchCallback) {
                 searchedTerm = searchString
             }
           }
@@ -49,14 +49,16 @@ class AddWaypointViewControllerSpec: QuickSpec {
           addWaypointViewController.locationSearch = locationSearchMock
           addWaypointViewController.searchBar(UISearchBar(), textDidChange: "Stuttgart")
           
-          expect(locationSearchMock.searchedTerm!).to(equal("Stuttgart"))
+          let searchedTerm = String(locationSearchMock.searchedTerm!)
+          
+          expect(searchedTerm).to(equal("Stuttgart"))
         }
         
         it("resets the search results without calling API when textfield is blank") {
           class LocationSearchMock: LocationSearch {
             var called = false
             
-            override func findPlaces(searchString: String, callback: LocationSearchCallback) {
+            override func findPlaces(searchString: URLEncodedString, callback: LocationSearchCallback) {
               called = true
             }
           }

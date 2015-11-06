@@ -8,7 +8,6 @@
 
 import UIKit
 import GoogleMaps
-import DVR
 import ListKit
 import MapKit
 import Result
@@ -32,7 +31,7 @@ class AddWaypointViewController: UIViewController {
   
   // MARK: Properties and Property Observers
   var errorHandler = DefaultErrorHandler()
-  var session: Session
+  var session: NSURLSession = NSURLSession.sharedSession()
   var arrayDataSource: ArrayDataSource<LocationResultTableViewCell, Place>!
   var mapViewDecorator: LocationSearchMapViewDecorator!
   var locationSearch: LocationSearch
@@ -47,7 +46,6 @@ class AddWaypointViewController: UIViewController {
   }
   
   required init?(coder aDecoder: NSCoder) {
-    session = Session(cassetteName: "google_maps_api", testBundle: NSBundle.mainBundle())
     locationSearch = LocationSearch(urlSession: session)
     
     super.init(coder: aDecoder)
@@ -63,7 +61,8 @@ class AddWaypointViewController: UIViewController {
   var searchTerm: String? {
     didSet {
       if let searchTerm = searchTerm where !searchTerm.isEmpty {
-        locationSearch.findPlaces(searchTerm, callback: handleSearchResult)
+        let urlSafeSerchTerm = URLEncodedString(string: searchTerm)
+        locationSearch.findPlaces(urlSafeSerchTerm, callback: handleSearchResult)
       } else {
         locations = []
       }

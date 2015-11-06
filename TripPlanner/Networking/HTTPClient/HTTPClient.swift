@@ -82,17 +82,6 @@ struct HTTPClient {
     task.resume()
   }
   
-  static func escape(string: String) -> String {
-    let generalDelimiters = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
-    let subDelimiters = "!$&'()*+,;="
-    
-    let allowedCharacters = generalDelimiters + subDelimiters
-    let customAllowedSet =  NSCharacterSet(charactersInString:allowedCharacters).invertedSet
-    let escapedString = string.stringByAddingPercentEncodingWithAllowedCharacters(customAllowedSet)
-    
-    return escapedString!
-  }
-  
 }
 
 func isSuccessStatusCode(statusCode: Int) -> Bool {
