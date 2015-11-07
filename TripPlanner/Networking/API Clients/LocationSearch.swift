@@ -50,7 +50,7 @@ class LocationSearch {
     let resource: Resource<PlaceDetails> = Resource(
       baseURL:"https://maps.googleapis.com",
       path: "maps/api/place/details/json",
-      queryString: "placeid=\(String.URLEscape(place.placeId))&key=\(apiKey)",
+      queryString: "placeid=\(URLEncodedString(place.placeId))&key=\(apiKey)",
       method: .GET,
       requestBody: nil,
       headers: nil,

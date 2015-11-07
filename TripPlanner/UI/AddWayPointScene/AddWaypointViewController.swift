@@ -61,7 +61,7 @@ class AddWaypointViewController: UIViewController {
   var searchTerm: String? {
     didSet {
       if let searchTerm = searchTerm where !searchTerm.isEmpty {
-        let urlSafeSerchTerm = URLEncodedString(string: searchTerm)
+        let urlSafeSerchTerm = URLEncodedString(searchTerm)
         locationSearch.findPlaces(urlSafeSerchTerm, callback: handleSearchResult)
       } else {
         locations = []
