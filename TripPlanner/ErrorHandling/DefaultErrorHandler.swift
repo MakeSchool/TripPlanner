@@ -18,4 +18,12 @@ class DefaultErrorHandler {
     
   }
   
+  func wrap(f: () throws -> Void) {
+    do {
+      try f()
+    } catch let error {
+      print(error)
+    }
+  }
+  
 }

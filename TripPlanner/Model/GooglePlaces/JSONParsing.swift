@@ -10,11 +10,17 @@ import Foundation
 import Argo
 
 func parse<T: Decodable where T == T.DecodedType>(data: NSData) -> T? {
-  let json: AnyObject? = try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-  if let j: AnyObject = json {
-    let resultDecoded: Decoded<T> = decode(j)
-    return evaluateDecodedResult(resultDecoded)
-  } else {
+  do {
+    let json: AnyObject? = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
+    if let j: AnyObject = json {
+      let resultDecoded: Decoded<T> = decode(j)
+      return evaluateDecodedResult(resultDecoded)
+    } else {
+      return nil
+    }
+  } catch let error as NSError {
+    print(error)
+    
     return nil
   }
 }

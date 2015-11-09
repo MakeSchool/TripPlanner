@@ -97,6 +97,11 @@ class CoreDataClient {
     context.deleteObject(tripInMainContext)
   }
   
+  func deleteWaypoint(waypoint: Waypoint) {
+    waypoint.trip = nil
+    context.deleteObject(waypoint)
+  }
+  
   func createObjectInTemporaryContext<T: TripPlannerManagedObject>(objectType: T.Type) -> (T, NSManagedObjectContext) {
     let childContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
     childContext.parentContext = context

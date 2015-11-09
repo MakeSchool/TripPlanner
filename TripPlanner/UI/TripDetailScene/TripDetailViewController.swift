@@ -112,4 +112,9 @@ extension TripDetailViewController: TripDetailViewDelegate {
     performSegueWithIdentifier(Storyboard.Main.TripDetailViewController.Segues.ShowWaypointDetails, sender: self)
   }
   
+  func tripDetailView(tripDetailView: TripDetailView, deletedWaypoint: Waypoint) {
+    coreDataClient.deleteWaypoint(deletedWaypoint)
+    coreDataClient.saveStack()
+  }
+  
 }

@@ -147,6 +147,43 @@ class TripPlannerBackendSynchronizerUploadSpec: QuickSpec {
           }
         }
         
+        it("syncs trips that have been updated by deletion of a waypoint") {
+          let stack = CoreDataStack(stackType: .InMemory)
+          let client = CoreDataClient(stack: stack)
+          
+          let tripPlannerClient = TripPlannerClient()
+          let tripPlannerBackendSynchronizer = TripPlannerBackendSynchronizer(tripPlannerClient: tripPlannerClient, coreDataClient: client)
+          
+          let updatedTrip = Trip(context: client.context)
+          updatedTrip.locationDescription = "San Francisco"
+          updatedTrip.serverID = "561812b9236f448010abd5ba"
+          
+          let waypoint = Waypoint(context: client.context)
+          waypoint.trip = updatedTrip
+          waypoint.name = "First Waypoint"
+          
+          // set last update initially to 0
+          updatedTrip.parsing = true
+          updatedTrip.lastUpdate = 0
+          client.syncInformation().lastSyncTimestamp = 10
+          
+          stack.save()
+          updatedTrip.parsing = false
+          stack.save()
+          
+          // remove waypoint
+          client.deleteWaypoint(waypoint)
+          stack.save()
+          
+          // refetch trip before checking last update timestamp
+          let trip = client.allTrips()[0]
+          
+          let (_, updateRequests, _) = tripPlannerBackendSynchronizer.generateUploadRequests()
+          
+          expect(trip.lastUpdate) > 0
+          expect(updateRequests.count).to(equal(1))
+        }
+        
       }
       
     }

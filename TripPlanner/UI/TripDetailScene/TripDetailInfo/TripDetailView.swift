@@ -22,6 +22,7 @@ class WaypointTableViewCell: UITableViewCell, TableViewCellProtocol {
 protocol TripDetailViewDelegate: class {
   
   func tripDetailView(tripDetailView: TripDetailView, selectedWaypoint: Waypoint)
+  func tripDetailView(tripDetailView: TripDetailView, deletedWaypoint: Waypoint)
   
 }
 
@@ -39,8 +40,9 @@ class TripDetailView: UIView {
         
         if let waypointsArray = waypointsArray {
           arrayDataSource = ArrayDataSource(array: waypointsArray, cellType:WaypointTableViewCell.self)
-          tableView.dataSource = arrayDataSource
+          tableView.dataSource = self
           tableView.delegate = self
+          tableView.reloadData()
         }
       }
     }
@@ -56,3 +58,23 @@ extension TripDetailView: UITableViewDelegate {
   
 }
 
+extension TripDetailView: UITableViewDataSource {
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (editingStyle == .Delete) {
+      let waypointToDelete = arrayDataSource.array[indexPath.row]
+      arrayDataSource.array.removeAtIndex(indexPath.row)
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+      delegate?.tripDetailView(self, deletedWaypoint: waypointToDelete)
+    }
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    return arrayDataSource.tableView(tableView, cellForRowAtIndexPath: indexPath)
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return arrayDataSource.tableView(tableView, numberOfRowsInSection: section)
+  }
+  
+}
