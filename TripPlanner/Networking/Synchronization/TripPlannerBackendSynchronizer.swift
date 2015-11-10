@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+// global synchronous queue for dispatching sync requests
+// ensures that we don't send multiple updates to server at the same time
+// server sync will be treated as atomic operation
+let syncQueue = dispatch_queue_create("syncQueue", nil)
+let syncGroup = dispatch_group_create()
+
 struct TripPlannerBackendSynchronizer {
     
   var tripPlannerClient: TripPlannerClient
@@ -20,12 +26,21 @@ struct TripPlannerBackendSynchronizer {
   }
   
   func sync(completion: () -> Void) {
-    uploadSync {
-      self.downloadSync {
-        self.coreDataClient.syncInformation().lastSyncTimestamp = NSDate.currentTimestamp()
-        self.coreDataClient.saveStack()
-        completion()
+    // ensure that only one sync can happen at a time by dispatching to a serial queue
+    dispatch_async(syncQueue) {
+      dispatch_group_enter(syncGroup)
+
+      self.uploadSync {
+        self.downloadSync {
+          self.coreDataClient.syncInformation().lastSyncTimestamp = NSDate.currentTimestamp()
+          self.coreDataClient.saveStack()
+          completion()
+          dispatch_group_leave(syncGroup)
+        }
       }
+      
+      // block syncQueue until latest sync request finished
+      dispatch_group_wait(syncGroup, DISPATCH_TIME_FOREVER)
     }
   }
       
@@ -63,7 +78,6 @@ struct TripPlannerBackendSynchronizer {
                 jsonTrip.waypoints.forEach {
                   var waypoint: Waypoint!
                   // check if waypoint already exists
-          
                   let existingWaypoint = self.coreDataClient.waypointWithServerID($0.serverID!)
                   
                   if let existingWaypoint = existingWaypoint {

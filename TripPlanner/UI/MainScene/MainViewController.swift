@@ -19,13 +19,14 @@ class MainViewController: UIViewController {
   var detailViewTrip: Trip?
   var temporaryContext: NSManagedObjectContext?
   
-  private var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>!
+  private var arrayDataSource: ArrayDataSource<TripMainTableViewCell, Trip>!
   
   var trips: [Trip]? {
     didSet {
       if let trips = trips {
         let nib = UINib(nibName: "TripMainTableViewCell", bundle: NSBundle.mainBundle())
         arrayDataSource = ArrayDataSource(array: trips, cellType: TripMainTableViewCell.self, nib: nib)
+        self.tableView.reloadData()
       }
     }
   }
@@ -108,7 +109,6 @@ extension MainViewController: UITableViewDataSource {
       arrayDataSource.array.removeAtIndex(indexPath.row)
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
       coreDataClient.markTripAsDeleted(tripToDelete)
-      tableView.reloadData()
     }
   }
   
