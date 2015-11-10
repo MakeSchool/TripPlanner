@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
   var detailViewTrip: Trip?
   var temporaryContext: NSManagedObjectContext?
   
-  private var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>?
+  private var arrayDataSource :ArrayDataSource<TripMainTableViewCell, Trip>!
   
   var trips: [Trip]? {
     didSet {
@@ -35,7 +35,7 @@ class MainViewController: UIViewController {
     
     trips = coreDataClient.allTrips()
     
-    self.tableView.dataSource = arrayDataSource
+    self.tableView.dataSource = self
   }
   
   // MARK: Segues
@@ -83,7 +83,6 @@ class MainViewController: UIViewController {
     
     tripPlannerBackendSynchronizer.sync {
       self.trips = self.coreDataClient.allTrips()
-      self.tableView.dataSource = self.arrayDataSource
       self.tableView.reloadData()
     }
   }
@@ -97,6 +96,28 @@ extension MainViewController: UITableViewDelegate {
     
     detailViewTrip = trips[indexPath.row]
     performSegueWithIdentifier("ShowTripDetails", sender: self)
+  }
+  
+}
+
+extension MainViewController: UITableViewDataSource {
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    if (editingStyle == .Delete) {
+      let tripToDelete = arrayDataSource.array[indexPath.row]
+      arrayDataSource.array.removeAtIndex(indexPath.row)
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+      coreDataClient.markTripAsDeleted(tripToDelete)
+      tableView.reloadData()
+    }
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    return arrayDataSource.tableView(tableView, cellForRowAtIndexPath: indexPath)
+  }
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return arrayDataSource.tableView(tableView, numberOfRowsInSection: section)
   }
   
 }
