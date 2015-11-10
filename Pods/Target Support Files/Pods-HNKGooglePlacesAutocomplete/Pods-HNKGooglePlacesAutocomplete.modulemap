@@ -1,6 +1,0 @@
-framework module HNKGooglePlacesAutocomplete {
-  umbrella header "Pods-HNKGooglePlacesAutocomplete-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -92,7 +92,7 @@ class CoreDataClient {
     fetchRequest.predicate = NSPredicate(format: "lastUpdate > %f AND serverID != nil", timestamp)
     let updatedTrips = errorHandler.wrap {
       try self.context.executeFetchRequest(fetchRequest) as! [Trip]
-    }
+    } ?? []
     
     return updatedTrips
   }

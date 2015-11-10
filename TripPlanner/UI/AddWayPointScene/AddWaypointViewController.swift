@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleMaps
 import ListKit
 import MapKit
 import Result

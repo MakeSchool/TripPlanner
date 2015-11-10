@@ -1,6 +1,0 @@
-framework module HNKServerFacade {
-  umbrella header "Pods-HNKServerFacade-umbrella.h"
-
-  export *
-  module * { export * }
-}
