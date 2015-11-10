@@ -113,7 +113,6 @@ class CoreDataClient {
   }
   
   func deleteWaypoint(waypoint: Waypoint) {
-    waypoint.trip = nil
     context.deleteObject(waypoint)
   }
   

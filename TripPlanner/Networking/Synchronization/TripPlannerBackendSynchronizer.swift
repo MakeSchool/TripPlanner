@@ -71,22 +71,16 @@ struct TripPlannerBackendSynchronizer {
                 // update existing trip
                 existingTrip.configureWithJSONTrip(jsonTrip)
                 
+                // TODO: For now we're re-generating all waypoints from server locally
+                // could be more efficient in future by using a server identifier 
+                // that maps local waypoints to ones from server
                 existingTrip.waypoints?.forEach { waypoint in
                   self.coreDataClient.context.deleteObject(waypoint as! NSManagedObject)
                 }
                 
                 jsonTrip.waypoints.forEach {
-                  var waypoint: Waypoint!
-                  // check if waypoint already exists
-                  let existingWaypoint = self.coreDataClient.waypointWithServerID($0.serverID!)
-                  
-                  if let existingWaypoint = existingWaypoint {
-                    waypoint = existingWaypoint
-                    waypoint.parsing = true
-                  } else {
-                    waypoint = Waypoint(context: existingTrip.managedObjectContext!)
-                  }
-                  
+                  let waypoint = Waypoint(context: existingTrip.managedObjectContext!)
+
                   try! waypoint.managedObjectContext!.save()
                   waypoint.parsing = false
                   
