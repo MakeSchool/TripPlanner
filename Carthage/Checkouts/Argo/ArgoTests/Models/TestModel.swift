@@ -10,11 +10,13 @@ struct TestModel {
   let eStringArray: [String]
   let eStringArrayOpt: [String]?
   let userOpt: User?
+  let dict: [String: String]
 }
 
 extension TestModel: Decodable {
   static func decode(j: JSON) -> Decoded<TestModel> {
-    return curry(self.init)
+    let curriedInit = curry(self.init)
+    return curriedInit
       <^> j <| "numerics"
       <*> j <| ["user_opt", "name"]
       <*> j <| "bool"
@@ -23,6 +25,7 @@ extension TestModel: Decodable {
       <*> j <|| ["embedded", "string_array"]
       <*> j <||? ["embedded", "string_array_opt"]
       <*> j <|? "user_opt"
+      <*> (j <| "dict" >>- { [String: String].decode($0) })
   }
 }
 

@@ -1,3 +1,4 @@
-github "thoughtbot/Argo" "td-swift-2"
+github "thoughtbot/Argo"
 github "venmo/DVR" "master"
 github "antitypical/Result"
+github "Ben-G/ListKit"

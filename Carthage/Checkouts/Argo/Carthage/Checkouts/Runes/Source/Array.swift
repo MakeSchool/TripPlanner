@@ -1,7 +1,7 @@
 /**
     map a function over an array of values
 
-    This will return a new array resulting from the transformation function beind applied to each value in the array
+    This will return a new array resulting from the transformation function being applied to each value in the array
 
     - parameter f: A transformation function from type `T` to type `U`
     - parameter a: A value of type `[T]`
@@ -36,7 +36,7 @@ public func <*> <T, U>(fs: [T -> U], a: [T]) -> [U] {
 
     - returns: A value of type `[U]`
 */
-public func >>- <T, U>(a: [T], @noescape f: T -> [U]) -> [U] {
+public func >>- <T, U>(a: [T], f: T -> [U]) -> [U] {
     return a.flatMap(f)
 }
 
@@ -50,7 +50,7 @@ public func >>- <T, U>(a: [T], @noescape f: T -> [U]) -> [U] {
 
     - returns: A value of type `[U]`
 */
-public func -<< <T, U>(@noescape f: T -> [U], a: [T]) -> [U] {
+public func -<< <T, U>(f: T -> [U], a: [T]) -> [U] {
   return a.flatMap(f)
 }
 

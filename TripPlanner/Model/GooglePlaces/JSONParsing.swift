@@ -38,13 +38,11 @@ func parse<T: Decodable where T == T.DecodedType>(data: NSData) -> [T]? {
 }
 
 func evaluateDecodedResult<T>(decoded: Decoded<T>) -> T? {
+  
   switch decoded {
   case let .Success(value): return value
-  case let .TypeMismatch(error):
-    assertionFailure(error)
-    return nil
-  case let .MissingKey(error):
-    assertionFailure(error)
+  default:
+    assertionFailure()
     return nil
   }
 }

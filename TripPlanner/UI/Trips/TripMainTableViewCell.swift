@@ -9,7 +9,7 @@
 import Foundation
 import ListKit
 
-class TripMainTableViewCell: UITableViewCell, TableViewCellProtocol {
+class TripMainTableViewCell: UITableViewCell, ListKitCellProtocol {
   
   @IBOutlet weak var destinationLabel: UILabel!
   

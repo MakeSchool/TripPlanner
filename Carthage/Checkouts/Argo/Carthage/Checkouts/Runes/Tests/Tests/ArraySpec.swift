@@ -1,131 +1,101 @@
-import Fox
-import Nimble
-import NimbleFox
-import Quick
+import SwiftCheck
+import XCTest
 import Runes
 
-private func generateArray(block:[String] -> Bool) -> FOXGenerator {
-    return forAll(array(string())) { array in
-        return block(array as! [String])
+class ArraySpec: XCTestCase {
+    func testFunctor() {
+        // fmap id = id
+        property("identity law") <- forAll { (xs: [Int]) in
+            let lhs = id <^> xs
+            let rhs = xs
+
+            return lhs == rhs
+        }
+
+        // fmap (f . g) = (fmap f) . (fmap g)
+        property("function composition law") <- forAll { (a: ArrayOf<Int>, fa: ArrowOf<Int, Int>, fb: ArrowOf<Int, Int>) in
+            let xs = a.getArray
+            let f = fa.getArrow
+            let g = fb.getArrow
+
+            let lhs = compose(f, g) <^> xs
+            let rhs = compose(curry(<^>)(f), curry(<^>)(g))(xs)
+
+            return lhs == rhs
+        }
     }
-}
 
-class ArraySpec: QuickSpec {
-    override func spec() {
-        describe("Array") {
-            describe("map") {
-                // fmap id = id
-                it("obeys the identity law") {
-                    let property = generateArray() { array in
-                        let lhs = id <^> array
-                        let rhs = array
+    func testApplicative() {
+        // pure id <*> x = x
+        property("identity law") <- forAll { (xs: [Int]) in
+            let lhs = pure(id) <*> xs
+            let rhs = xs
 
-                        return lhs == rhs
-                    }
+            return lhs == rhs
+        }
 
-                    expect(property).to(hold())
-                }
+        // pure f <*> pure x = pure (f x)
+        property("homomorphism law") <- forAll { (x: Int, fa: ArrowOf<Int, Int>) in
+            let f = fa.getArrow
 
-                // fmap (g . h) = (fmap g) . (fmap h)
-                it("obeys the function composition law") {
-                    let property = generateArray() { array in
-                        let lhs = compose(append, prepend) <^> array
-                        let rhs = compose(curry(<^>)(append), curry(<^>)(prepend))(array)
+            let lhs: [Int] = pure(f) <*> pure(x)
+            let rhs: [Int] = pure(f(x))
 
-                        return lhs == rhs
-                    }
+            return rhs == lhs
+        }
 
-                    expect(property).to(hold())
-                }
-            }
+        // f <*> pure x = pure ($ x) <*> f
+        property("interchange law") <- forAll { (x: Int, fa: ArrayOf<ArrowOf<Int, Int>>) in
+            let f = fa.getArray.map { $0.getArrow }
 
-            describe("apply") {
-                // pure id <*> v = v
-                it("obeys the identity law") {
-                    let property = generateArray() { array in
-                        let lhs = pure(id) <*> array
-                        let rhs = array
+            let lhs = f <*> pure(x)
+            let rhs = pure({ $0(x) }) <*> f
 
-                        return lhs == rhs
-                    }
+            return lhs == rhs
+        }
 
-                    expect(property).to(hold())
-                }
+        // f <*> (g <*> x) = pure (.) <*> f <*> g <*> x
+        property("composition law") <- forAll { (a: ArrayOf<Int>, fa: ArrayOf<ArrowOf<Int, Int>>, fb: ArrayOf<ArrowOf<Int, Int>>) in
+            let x = a.getArray
+            let f = fa.getArray.map { $0.getArrow }
+            let g = fb.getArray.map { $0.getArrow }
 
-                // pure f <*> pure x = pure (f x)
-                it("obeys the homomorphism law") {
-                    let property = generateString() { string in
-                        let lhs: [String] = pure(append) <*> pure(string)
-                        let rhs: [String] = pure(append(string))
+            let lhs = f <*> (g <*> x)
+            let rhs = pure(curry(compose)) <*> f <*> g <*> x
 
-                        return rhs == lhs
-                    }
+            return lhs == rhs
+        }
+    }
 
-                    expect(property).to(hold())
-                }
+    func testMonad() {
+        // return x >>= f = f x
+        property("left identity law") <- forAll { (x: Int, fa: ArrowOf<Int, Int>) in
+            let f: Int -> [Int] = compose(fa.getArrow, pure)
 
-                // u <*> pure y = pure ($ y) <*> u
-                it("obeys the interchange law") {
-                    let property = generateString() { string in
-                        let lhs: [String] = pure(append) <*> pure(string)
-                        let rhs: [String] = pure({ $0(string) }) <*> pure(append)
+            let lhs = pure(x) >>- f
+            let rhs = f(x)
 
-                        return lhs == rhs
-                    }
+            return lhs == rhs
+        }
 
-                    expect(property).to(hold())
-                }
+        // m >>= return = m
+        property("right identity law") <- forAll { (x: [Int]) in
+            let lhs = x >>- pure
+            let rhs = x
 
-                // u <*> (v <*> w) = pure (.) <*> u <*> v <*> w
-                it("obeys the composition law") {
-                    let property = generateArray() { array in
-                        let lhs = pure(append) <*> (pure(prepend) <*> array)
-                        let rhs = pure(curry(compose)) <*> pure(append)  <*> pure(prepend) <*> array
+            return lhs == rhs
+        }
 
-                        return lhs == rhs
-                    }
+        // (m >>= f) >>= g = m >>= (\x -> f x >>= g)
+        property("associativity law") <- forAll { (a: ArrayOf<Int>, fa: ArrowOf<Int, Int>, fb: ArrowOf<Int, Int>) in
+            let m = a.getArray
+            let f: Int -> [Int] = compose(fa.getArrow, pure)
+            let g: Int -> [Int] = compose(fb.getArrow, pure)
 
-                    expect(property).to(hold())
-                }
-            }
+            let lhs = (m >>- f) >>- g
+            let rhs = m >>- { x in f(x) >>- g }
 
-            describe("flatMap") {
-                // return x >>= f = f x
-                it("obeys the left identity law") {
-                    let property = generateString() { string in
-                        let lhs: [String] = pure(string) >>- compose(append, pure)
-                        let rhs: [String] = compose(append, pure)(string)
-
-                        return lhs == rhs
-                    }
-
-                    expect(property).to(hold())
-                }
-
-                // m >>= return = m
-                it("obeys the right identity law") {
-                    let property = generateArray() { array in
-                        let lhs = array >>- pure
-                        let rhs = array
-
-                        return lhs == rhs
-                    }
-
-                    expect(property).to(hold())
-                }
-
-                // (m >>= f) >>= g = m >>= (\x -> f x >>= g)
-                it("obeys the associativity law") {
-                    let property = generateArray() { array in
-                        let lhs = (array >>- compose(append, pure)) >>- compose(prepend, pure)
-                        let rhs = array >>- { x in compose(append, pure)(x) >>- compose(prepend, pure) }
-
-                        return lhs == rhs
-                    }
-
-                    expect(property).to(hold())
-                }
-            }
+            return lhs == rhs
         }
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import ListKit
 
-class WaypointTableViewCell: UITableViewCell, TableViewCellProtocol {
+class WaypointTableViewCell: UITableViewCell, ListKitCellProtocol {
   var model: Waypoint? {
     didSet {
       if let model = model {

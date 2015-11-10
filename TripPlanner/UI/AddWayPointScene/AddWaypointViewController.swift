@@ -12,7 +12,7 @@ import MapKit
 import Result
 
 //TODO: Show google logo as part of search
-class LocationResultTableViewCell: UITableViewCell, TableViewCellProtocol {
+class LocationResultTableViewCell: UITableViewCell, ListKitCellProtocol {
   var model: Place? {
     didSet {
       if let model = model {
