@@ -15,6 +15,7 @@ class CoreDataClient {
   
   let context: NSManagedObjectContext
   let stack: CoreDataStack
+  let errorHandler = DefaultErrorHandler()
   
   init(stack: CoreDataStack) {
     self.stack = stack
@@ -22,17 +23,23 @@ class CoreDataClient {
   }
   
   func allTrips() -> [Trip] {
-    return try! self.context.executeFetchRequest(NSFetchRequest(entityName: "Trip")) as! [Trip]
+    return errorHandler.wrap {
+      try context.executeFetchRequest(NSFetchRequest(entityName: "Trip")) as! [Trip]
+    } ?? []
   }
   
   func allWaypoints() -> [Waypoint] {
-    return try! self.context.executeFetchRequest(NSFetchRequest(entityName: "Waypoint")) as! [Waypoint]
+    return errorHandler.wrap {
+      try context.executeFetchRequest(NSFetchRequest(entityName: "Waypoint")) as! [Waypoint]
+    } ?? []
   }
   
   func tripWithServerID(serverID: String) -> Trip? {
     let fetchRequest = NSFetchRequest(entityName: "Trip")
     fetchRequest.predicate = NSPredicate(format: "serverID = %@", serverID)
-    let trips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
+    let trips = errorHandler.wrap {
+      try context.executeFetchRequest(fetchRequest) as! [Trip]
+    } ?? []
     
     if (trips.count > 0) {
       return trips[0]
@@ -44,7 +51,9 @@ class CoreDataClient {
   func waypointWithServerID(serverID: String) -> Waypoint? {
     let fetchRequest = NSFetchRequest(entityName: "Waypoint")
     fetchRequest.predicate = NSPredicate(format: "serverID = %@", serverID)
-    let waypoints = try! self.context.executeFetchRequest(fetchRequest) as! [Waypoint]
+    let waypoints = errorHandler.wrap {
+      try context.executeFetchRequest(fetchRequest) as! [Waypoint]
+    } ?? []
     
     if (waypoints.count > 0) {
       return waypoints[0]
@@ -56,7 +65,9 @@ class CoreDataClient {
   func unsyncedTrips() -> [Trip] {
     let fetchRequest = NSFetchRequest(entityName: "Trip")
     fetchRequest.predicate = NSPredicate(format: "serverID = nil")
-    let unsyncedTrips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
+    let unsyncedTrips = errorHandler.wrap {
+      try context.executeFetchRequest(fetchRequest) as? [Trip]
+    } ?? []
    
     return unsyncedTrips
   }
@@ -69,7 +80,9 @@ class CoreDataClient {
   func tripsThatChangedSince(timestamp: NSTimeInterval) -> [Trip] {
     let fetchRequest = NSFetchRequest(entityName: "Trip")
     fetchRequest.predicate = NSPredicate(format: "lastUpdate > %f", timestamp)
-    let updatedTrips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
+    let updatedTrips = errorHandler.wrap {
+      try context.executeFetchRequest(fetchRequest) as! [Trip]
+    } ?? []
     
     return updatedTrips
   }
@@ -77,7 +90,9 @@ class CoreDataClient {
   func syncedUpdateTripsChangedSince(timestamp: NSTimeInterval) -> [Trip] {
     let fetchRequest = NSFetchRequest(entityName: "Trip")
     fetchRequest.predicate = NSPredicate(format: "lastUpdate > %f AND serverID != nil", timestamp)
-    let updatedTrips = try! self.context.executeFetchRequest(fetchRequest) as! [Trip]
+    let updatedTrips = errorHandler.wrap {
+      try self.context.executeFetchRequest(fetchRequest) as! [Trip]
+    }
     
     return updatedTrips
   }

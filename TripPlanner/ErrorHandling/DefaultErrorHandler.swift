@@ -17,12 +17,22 @@ class DefaultErrorHandler {
   func displayErrorMessage(message: String) {
     
   }
-  
-  func wrap(f: () throws -> Void) {
+    
+  func wrap<ReturnType>(@noescape f: () throws -> ReturnType) -> ReturnType? {
     do {
-      try f()
+      return try f()
     } catch let error {
       print(error)
+      return nil
+    }
+  }
+  
+  func wrap<ReturnType>(@noescape f: () throws -> ReturnType?) -> ReturnType? {
+    do {
+      return try f()
+    } catch let error {
+      print(error)
+      return nil
     }
   }
   
